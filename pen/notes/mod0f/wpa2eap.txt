@@ -1,0 +1,53 @@
+EAP
+    * Extensible Authentication Protocol
+    * EAP is a framework for authentication with a variety of implementation types
+    * TLS:
+        - original 2008 EAP standard. Still secture if warnings about false credentials are heeded
+    * PEAP:
+        - encapsulates EAP in a TLS tunnel
+    * TTLS:
+        - Server authentication by its CA signed PKI
+    * EAP/FAST
+        * Assign Protocol Access Credential (PAC) to each user. Difficult to do without running in insecure mode
+
+Radius
+    * Remote Authentication Dial in User Service
+    * Authentication, Authorization, Accounting
+    * Authentication:
+        - Historically used locally stored flat file, modern servers use external services (Kerberos, LDAP, AD)
+    * Authorization:
+        - 3 responses (reject, challenge, accept)
+        - other attributes (stored or connection parameters)
+    * Accounting:
+        - Accounting start, interim update, and accounting stop
+
+Attacking EAP:
+    * Assumptions:
+        - Network SSID is easily spoofed, thus unreliable
+        - TLS gives us a way to validate the access point
+    * Actual Practice:
+        - Some deployments of EAP will disable validation and trust any Access point
+        - Attacker sets up a fake AP mirroring the actual SSID
+    * It gets better
+        - Some wireless clients will attempt multiple EAP types during authentication
+
+Securing Wireless Networks
+    * Do not use TKIP or WEP
+    * Use WPA/EAP, PEAP, TTLS, or TLS for authentication
+    * Have clients check the AP certificate
+    * Avoid using pre-shared keys, if you must, then use password over 16 characters
+    * Do not use hidden access points
+    * Disable insecure EAP types 
+    * Firewall the wireless network from your internal network
+
+Wireless IDs approaches
+    * Detect
+        - deauth attacks
+        - DoS attacks
+        - Rogue Access Points
+    * IDS = detection, not prevention
+
+SHEWHART/DEMING Cycle
+    * Plan-Do-Check-Act
+    * Assessments must be performed on a regular basis
+    * Third-Party is helpful

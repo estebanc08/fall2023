@@ -1,0 +1,19 @@
+median and selection problems
+   * Selection: Given n elements from a totally ordered universe, find kth smallest 
+        - Minimum: k=1, max: k=n
+        - Median: k=floor((n+1)/2)
+        - O(n) compares from min or max
+        - O(nlogn) compares by sorting
+        - O(nlogk) compares with binary heap
+
+Choosing the pivot element
+    * Divide n elements into ⎣n / 5⎦ groups of 5 elements each (plus extra).
+    * Find median of each group (except extra).
+    * Find median of ⎣n / 5⎦ medians recursively.
+    * Use median-of-medians as pivot element.
+
+Median-of-medians selection algorithm recurrence.
+	* Select called recursively with ⎣n / 5⎦ elements to compute MOM p.
+	* At least 3 ⎣n / 10⎦ elements ≤ p.
+	* At least 3 ⎣n / 10⎦ elements ≥ p.
+	* Select called recursively with at most n – 3 ⎣n / 10⎦ elements.

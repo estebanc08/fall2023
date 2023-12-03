@@ -1,0 +1,42 @@
+HTTP
+    * Hypertext transfer protocol defined in several RFCS
+    * Current version is HTTP/1.1.
+    * Supports a small set of commands
+        * GET (*+s)         * Options (+s)
+        * POST              * CONNECT
+        * HEAD (*+s)        * PATCH             
+        * PUT (+)           * TRACK (--)
+        * DELETE (+)        * DEBUG (--)
+        * TRACE (+s)             
+    * *required, +idempotent, --not int HTTP/1.1 --, SAFE(s)
+
+RFC FTW
+    * If you want to talk to web servers, you need to know the API
+    * HTTP 1.1 API is described in RFC 2616
+    * Either directly connecting to a web server to see API interactions, or inspecting them
+
+HTTP Response Codes
+    * 1xx informational
+    * 2xx success
+    * 3xx redirection
+    * 4xx client error
+    * 5xx server error
+
+HTTP information response codes
+    * 100 continue                  * 201 accepted
+    * 101 switching protocols       * 205 no content
+    * 200 OK                        * 206 partial content
+    * 201 Created                   * 400 Bad request
+    * 401 unathorized               * 404 not found
+    * 500 Internal Server Error     
+
+Requests for data
+    * GET, HEAD, and POST are the most common methods of requesting data
+    * GET requests data from a URL and passes any parameters as a suffix to the URL. GET is a SAFE
+    method, thus the server is not supposed to modify any resources based on such a request
+    * HEAD requests just HTTP header information. No body is returned. This reduces bandwith if only headers aer important
+    * POST seperates the URL from the parameters. Post is not considered safe and may be employed with reqests that cause modification
+
+Javascript
+    * Javascript is everywhere. Interpretive language is critical to browsing. Runs in both web browser client and many web servers
+    * Javascript is sometimes (incorrectly) employed to enforce security in the web client. This is inherently unsafe.

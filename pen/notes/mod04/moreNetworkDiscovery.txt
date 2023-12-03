@@ -1,0 +1,64 @@
+More Network Discovery
+
+
+pings dont always work
+    - by default, nmap performs host discovery
+    - Sends each of these:
+        * ICMP echo request
+        * ICMP timestamp
+        * TCP SYN to port 443
+        * TCP ACK to port 80
+    - To disable host discovery and still do a default network scan, we provide the -Pn parameter to nmap
+
+Some other types of scans
+    - TCP connect scan (SYN, SYN/ACK, ACK) flags -sT
+    - TCP SYN scan (half-open Scanning, stealthy) flags: -sY
+    - Received:
+        * SYN/ACK response from listening host
+        * RST/ACK from non-listening port
+        * TCP FIN scan (unix hosts send RST for closed ports) flags: -sF
+        * TCP Xmas Tree (FIN, URG, PUSH - should get back RST for closed ports) flags: -sX
+        * TCP Null scan (should send RST for all closed ports) flags: -sN
+        * TCP ACK scan (some firewall rules only allow established connections i.e. those with ACK set) flags: -sA
+        * UDP scan (port unreachable response = closed) flags: -sU
+
+Identifying services with nmap
+    - by default, nmap scans the 1,000 most popular service ports
+    - Identifies one of six different states:
+        * Open
+        * closed
+        * filtered
+        * unfiltered
+        * open|filtered
+        * closed|filtered
+
+    States:
+    - Open :
+        * a packet with SYN received a SYN|ACK response. Actively accepting TCP connections, UDP datagrams, or SCTP associations
+    - Closed:
+        * A packet with a SYN received an RST response. Accessible, but no application is listenining on it. May come alive later
+    - Filtered:
+        * A packet with SYN received no response whatsoever. nmap cannot determing whether open because packets dont seem to reach host
+    - Unfiltered:
+        * ACK scan shows that packages can get through firewall, but no other response is identified
+    - Open|Filtered:
+        * Some scan types dont give a response for open ports. In such cases, nmap cannot determine if the port is open or unfiltered
+    - Closed|Filtered
+        * Similar to open|filtered
+
+NMAP NSE Scripts
+    - NSE is the Nmap scripting engine
+    - Nmap uses this to interact with services discovered on machines it is scanning
+    - Scripts are written using Lua
+    - Script categories include
+        * Network discovery     * Vulnerability detection
+        * Version Detection     * Backdoor Detection
+
+ZMAP
+    - zmap is a project of the university of Michigan
+    - It is a single-packet scanner that sends packets to IP addresses in an order determined by cyclic multiplicative
+    - Generates packedts up to speeds of 1.4 million per second
+
+MASSCAN
+    - Uses custom TCP/IP stack to improve network performances. Sends up to 10M packets per second
+    - Can use few capabilities of nmap but in same cases can be hard to use because of custom network stack

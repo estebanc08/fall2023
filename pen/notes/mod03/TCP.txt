@@ -1,0 +1,65 @@
+TCP in More Detail
+
+TCP Source Port
+    Ports ae 16 bit numbers and more conceptual locations and not actual locations
+    Source port is associated with a program on the machine sending the packet
+
+TCP Destination Port
+    Destination port (16 bits)
+    Destination port is associated with the program being contacted on the machine receiving the packet
+
+Sequence Number
+    TCP sequence number identifies which packet this is in the senders TCP stream
+    Packets may arrive out of order and must be reassembled in order
+
+Acknowledgment number
+    The Acknowledgment number is the sequence number of the next packet expected to be received by the sender
+    All packets with lower numbers have been receieved
+
+Data offset
+    Size of the TCP header in 32 bit words (also the offset to where the packet data begins)
+    Identifies how many options have been identifed
+    Min Value: 5
+    Max Value: 15
+
+Flags
+    Identify any control information communicated by a packet and are very important
+    
+         NS     (Nonce Sum): Explicit Congestion Notification (ECN) protection
+         CWR    (Congestion Window Reduced)
+         ECE    ECN Congestion
+         URG    Urgent pointer field is significant
+         ACK    Acknowledgement field is significant
+         PSH    Push buffered data to the application
+         RST    Reset the connection
+         SYN    Synchronize sequence numbers
+         FIN    No more data from sender
+
+Checksum
+    Used to verify the header and data 
+    Checksum is set to 0 to calculate this field
+
+Urgent Pointer
+    
+Options
+
+Data (variable)
+
+Connection Establishment
+    To establish a connection on a TCP port, a 3-way handshake is used
+        1 - Client sends a packet with FLAGS==SYN message to the server with sequence number A (chosen randomly)
+        2 - Server replies with a packet FLAGS==SYN|ACK and ackowledgment field = A+1 and sequences number B (Chosen Randomly)
+        3 - Client sends packet with FLAGS==ACK and with sequence number A+1 and acknowledgment number B+1
+
+Connection Termination
+    Terminating a handshake involves a 4-way handshake
+        1 - Machine X sends packet with FLAGS==FIN
+        2 - Machine Y sends packets with FLAGS==ACK
+        3 - Machine Y sends packet with FLAGS==FIN
+        4 - Machine X sends packet with FLAGS==ACK
+    Packets 2 and 3 can be combined to send ACK|FIN for a 3 way disconnect
+    If one sends a FIN but the other has not, the connection is said to be half open
+
+
+
+

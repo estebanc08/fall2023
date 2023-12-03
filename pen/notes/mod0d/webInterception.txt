@@ -1,0 +1,52 @@
+Finding out about web servers using netcat
+    * nc 192.168.1.191 80
+        GET / HTTP/1.0
+        GET /mutillidae/ HTTP/1.1
+    * can get back responses
+
+Browsers and Servers lie
+    * API messages sent between browsers and server provide a wealth of information about the software that is running, properties of the endpoint, computers, and user information
+    * All of these things can be false information
+    * Servers may not be running the software they claim. Browser user agent strings can be forged. User information can be fake
+
+Intercepting and modifying API messages
+    * You can intercept messages in two ways
+        - using a proxy
+        - using a browser tool
+    * Proxy is an appointed representative to act on your behalf
+    * web proxy is a program specifically designed to forward API messages to web servers on behalf of your browser and then return the server responses
+
+Why to be a proxy
+    * Proxies can provide benefits
+        - store commonly referenced pages
+        - restrict web web usage
+        - track web usage
+    * The burp suite implements a web proxy that provides the ability to cappture, edit, replay, manipulate, and programmatically control the 
+    interactions between web browser
+
+Web connection without proxy
+    * browser running on random port, Server running apache on port 80
+    * Browser sends request to server, server sends response to browser
+Web connection With proxy
+    * browser sends request to possibly local proxy
+    * Proxy relays request to server
+    * Server responds to proxy
+    * Proxy relays response to server
+
+Proxy configuration
+    * Set proxy parameters to specificy IP address and listening port
+    * set browser preferences to use Proxys IP address
+
+Browser Interception tools
+    * Rather than separate proxy process, these tools modify an augment behavior of your browser to modify web API
+
+Javascript validation bypass
+    * Servers may try to enforce security by using javascript client-side code to validate input
+    * This can be used oo filter special characters out of password fields
+    * Because the server trusts the browser to do the right thing and the browser is under the users control thus inherently unreliable
+
+SQL injection
+    * Structured Query Language. Used in many web sites to provide a way to query databsaes
+    * SQL injections is an attack in whcih user data is inserted into SQL query
+
+tamperchrome walkthrough here

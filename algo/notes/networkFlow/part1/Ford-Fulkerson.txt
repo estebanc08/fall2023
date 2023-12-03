@@ -1,0 +1,32 @@
+Toward a max-flow algorithm
+    * Greedy algorithm
+        - Start with f(e) = 0 for each edge e ∈ E
+        - Find an s↝ t path P where each edge has f (e) < c(e).
+        - Augment flow along path P.
+        - Repeat until you get stuck
+    Q. Why does the greedy algorithm fail?
+    A. Once greedy algorithm increases flow on an edge, it never decreases it.
+
+Residual Network
+    * Original Edge e=(e,v) ∈ E
+        - Flow f(e)
+        - Capacity c(e)
+    * Reverse edge e^reverse = (v,u)
+        - Undo flow sent
+    * Residual Capacity
+        - c(e) = {  c(e) - f(e) if e ∈ E
+                 {  f(e^reverse) if e^reverse ∈ E
+
+Augmenting Path
+    * Def: An augmenting path is a simple  s↝ t path in the residual network G_f
+    * Def: The bottleneck capacity of an augmenting path P is the minimum residual capacity of any edge in P.
+    * Key property: Let f be a flow and let P be an augmenting path in Gf .
+        Then, after calling f ′ ← AUGMENT(f, c, P), the resulting f ′ is a flow and
+        val(f ′) = val(f ) + bottleneck(Gf, P)
+
+Ford–Fulkerson 
+    * Ford–Fulkerson augmenting path algorithm.
+        -  Start with f (e) = 0 for each edge e ∈ E.
+        -  Find an s↝ t path P in the residual network Gf .
+        -  Augment flow along path P.
+        -  Repeat until you get stuck

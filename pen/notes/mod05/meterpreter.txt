@@ -1,0 +1,39 @@
+Using the meterpreter
+    Metasplot Module Rank
+        Each metasploit module has a rank
+            * Excellent (will never crash the service)
+            * great (has default target and will auto-detect or use application specific return address)
+            * good (has a default target which is the common case)
+            * normal (reliable but depends upon a specific version)
+            * average (unreliable or difficult to exploit)
+            * low (nearly impossible to exploit)
+            * manual (unstable or difficult to exploit or of no use unless configured by the user)
+        Ranking are assigned by the module author (use as upper bound)
+
+    What payload should I use given an exploit
+        Many payloads are available, but use meterpreter for:
+            stealth
+            reliable
+            flexible
+        Meterpreter ( Meta interpreter) is a payload that has the following properties
+            * Provides a command interpreter that runs as the user who was executing the exploited process
+            * Must useful command: help
+            * Supports listing of remote systems files, file uploaded and downloaded, remote shell execution and many other functions
+    
+    How does the meterpreter work
+        * uses a stager to download code and inject into a DLL
+        * payload is small, but meterpreter is large
+        * in windows, uses DLL injection. Written into the code section of executing library and no file is created
+        * TLS/1.0 (transport layer security) is used to encrypt communications
+
+    Communications security
+        * Meterpreter uses TLS for obfuscation, not security
+        * TLS/1.0 is insecure, susceptible to padding oracle attack
+        * Wes McGrew (Horne Cyber) presented DEFCON talk about lack of security in pen testing education materials and tools. Demonstrated ability to hijak meterpreter session
+        * supports the creation of payloads using paranoid mode that can avoid this problem
+
+    Meterpreter versions
+        * Which version to use?
+        * grep meterpreter show payloads
+
+

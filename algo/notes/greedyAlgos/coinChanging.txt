@@ -1,0 +1,32 @@
+(sep 12)
+
+Goal: Given US currency denominations {1,5,10,25,100}, devise a method to pay amount to customer using fewest coins
+Ex: 32 cents 
+Cashiers algorithm: at each iteration. add coin of the largest value that does not take us past the amount to be paid
+
+Is the cashiers algorithm optimal?
+    Yes but because of special properties of US coin denominations
+
+Is this optimal for every set of denominations?
+    No, consider US postage 1, 10, 21, 34, 70, 100, 350, 1225, 1500
+    Cashiers algorithm: 140c = 100 + 34 + 1 + 1 + 1 + 1 + 1
+    optimal: 140c = 70 + 70
+    In some cases, might not even be a feasible solution for example if c1 > 1. 
+
+Properties of coin change with us currency:
+
+            ・  property: number of pennies <= 4    pf: replace 5 pennies with 1 nickel
+                  
+            ・  Property: number of nickels <= 1    pf: replace 2 nickels with a dime
+
+            ・  property: number of quarters <= 3   pf: replace 4 quarters with dollar coin
+
+            ・  property: number of nickels + number of dimes <= 2  pf: number of nickels <= 1 and thus with 2 dimes we can replace with a quarter
+
+            
+Theorem: Cashiers algorithm is optimal for US coins {1, 5, 10, 25, 100}
+pf by induction on amount to be paid x
+    Consider optimal way to change ck <= x < xk+1 greedy takes coin k
+    We claim that any optimal solution must take coin k
+       - if not, it needs enough coins of type c1,...,ck-1 to add up to x
+           -  table below indicates no optimal solution can do this

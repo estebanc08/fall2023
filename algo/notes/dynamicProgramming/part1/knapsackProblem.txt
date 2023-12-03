@@ -1,0 +1,22 @@
+Knapsack Problem:
+    * Goal: Pack knapsack so as to maximize total value of items taken
+        - There are n items: items i provide values v_i > 0 and weights w_i > 0
+        - Value of a subset of items = sum of values of individual items
+        - Knapsack has weight limit of W
+
+Dynamic programming: two variables
+    * Def. OPT(i, w) = optimal value of knapsack problem with items 1, …, i subject to weight limit w.
+    * Goal. OPT(n, W).
+    * Case 1. OPT(i, w) does not select item i.
+    	- OPT(i, w) selects best of { 1, 2, …, i – 1 } subject to weight limit w.
+    * Case 2. OPT(i, w) selects item i.
+    	- Collect value vi.
+    	- New weight limit = w – wi.
+    	- OPT(i, w) selects best of { 1, 2, …, i – 1 } subject to new weight limit.
+
+Knapsack problem: running time
+    * Theorem. The DP algorithm solves the knapsack problem with n items and maximum weight W in Θ(n W) time and Θ(n W) space.
+    * Pf.
+    	- Takes O(1) time per table entry.
+    	- There are Θ(n W) table entries.
+    	- After computing optimal values, can trace back to find solution: OPT(i, w) takes item i iff M [i, w] > M [i – 1, w].

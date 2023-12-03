@@ -1,0 +1,51 @@
+Social Engineering
+    * Skillfully maneuvering human beings to take action in some aspect of life
+    * Most pen tests use some sort of social engineering even if just for recon
+
+Information Gathering
+    * Finding vulnerabilities in people
+    * Nothing is fully irrelevant
+    * May involve dumpster diving, sticking malicious usb's where they will see, fake website based off their interests
+    * Elements of interest in a communication are:
+        - Source
+        - Channel
+        - Message
+        - Target
+        - Feedback
+
+Elicitation
+    * Act of bringing something out or arriving at a conclusion
+    * People want to appear intelligent
+    * If they are praised, people will talk more
+    * Elicitation is conversation
+
+Pretexting
+    * Establishing a false identity through speech, dress, grooming, etc
+    * the simpler the pretext, the better
+    * Props can be useful: outfits
+    * Illegal if used to obtain information that is protected by laws
+    * Truth default theory says that most people are willing to believe you 
+
+Mind tricks
+    * Many people fall into one of these categories:
+        - Visual
+        - Auditory
+        - Kinaesthetic 
+    * Microexpressions are facial expressions that can occur in reaction to emotions. Can be as short as 1/25 of a second
+
+Tools
+    * Physical tools:
+        - cameras
+        - gps tracking
+    * Online tools
+        - Maltego
+        - social engineering toolkit
+        - phishing tools
+    * Telephone tools
+        - caller ID spoofing
+        - asterisk
+        - scripts
+
+
+Jethro Tull
+

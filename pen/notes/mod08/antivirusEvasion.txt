@@ -1,0 +1,49 @@
+Antivirus Techniques
+    * AV programs try to identify malware
+    * Techniques vary, Lenny zeltser identifies with these approaches
+        - Signature detection
+        - Heuristic detection ( attributes of the file as a whole such as entropy)
+        - Behavioral detection (run the program and see what it does and see if its suspicious)
+
+Negative outcome to pen testers
+    * Scenario:
+        - Generate meterpreter executable
+        - Give it to a host via remote mount
+        - Execute
+        - FAIL
+
+Changing AV Landscape
+    - in 2008, meterpreter.exe was recognized by 3 of 32 antivirus products
+    - Use of encoders would help
+    - Some encoders had 100% avoidance (Shikata ga nai)
+
+Finding the signature
+    * Typically, only a few bytes in a file compromise the signture that most AV products will identify
+    * You can use the wolf-fence method made popular for debugging to identify the offending code or data
+
+AV bypass methods
+    * Encoders
+        - MSF encoders, msfvenom, packers (UPX, etc)
+    * Ghost writers
+        - command substitution, custom metasploit stagers
+    * Payload scripts with interpreters
+
+You only need to defeat your clients AV
+    * Ask client what AV they use
+    * Install it on your system
+
+If you still want to encode
+    * Use of default exe template will likely fail. There are a few others that may evade AV
+    * Multiple encodings rarely help
+    * Purchase a code signing certificate (reduces rejection rate by a fctor of 4) according to a 2012 study 
+
+Ghost writing tools are also available
+    * Hyperion
+    * Shellter
+    * Backdoor Factory
+    * Astrobaby generator
+    * Metasm
+
+Using payload scripts
+    * pyinjector
+    * Veil

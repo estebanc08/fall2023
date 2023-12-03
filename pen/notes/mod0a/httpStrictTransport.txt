@@ -1,0 +1,25 @@
+What problems does HSTS Address
+    * Users may navigate to HTTP sresources accidentally and get MtiMd by attackers
+    * Web applications reached by HTTPS links may contain HTTP link
+    * MiTM attack may attempt to provide an invalid certificate for the user to accept
+
+How does HSTS stop these
+    * HTTP requests are auto redirected by the browser to identified HTTPS servers
+    * HSTS redirects page-embedded HTTP links for identified domains to HTTPS links
+    * HSTS prohibits user certificae override for idenfied domains
+
+How does HSTS work
+    * Web application must request that the browser use HSTS by providing Strict-Transport-Security header
+    * If the browser supports HSTS, it stores a super cookie which cannot be removed through any browser-supported action.
+    * Max lifetime of an HSTS cookie is 31,536,000 seconds
+    * If the header lacks the includeSubDomains specification, attackers can spoof subdomains
+
+Does anyone use HSTS?
+    * about 12.5% websites use HSTS
+
+Vulnerabilites
+    * If you can catch the first connection by a client to an HSTS enabled-site, you can intercept the HSTS header and prevent super cookie regrestation
+    * if the header neglets to include subdomains, you can spoof for example www.art.com to wwww.art.com
+
+Tools
+    * sslstrip2

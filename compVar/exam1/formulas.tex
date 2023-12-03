@@ -1,0 +1,125 @@
+\documentclass{article}
+
+\usepackage{bibunits}
+\usepackage{comment}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{numprint}
+\usepackage[inline]{enumitem}
+
+% processes above options
+\usepackage{palatino}  %OR newcent ncntrsbk helvet times palatino
+\usepackage{url}
+\usepackage{footmisc}
+\usepackage{endnotes}
+\makeatletter
+% This command ignores the optional argument for itemize and enumerate lists
+\newcommand{\inlineitem}[1][]{%
+\ifnum\enit@type=\tw@
+    {\descriptionlabel{#1}}
+  \hspace{\labelsep}%
+\else
+  \ifnum\enit@type=\z@
+       \refstepcounter{\@listctr}\fi
+    \quad\@itemlabel\hspace{\labelsep}%
+\fi}
+\makeatother
+\parindent=0pt
+
+\usepackage{amsfonts}
+
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+
+\setcounter{secnumdepth}{3}
+\begin{document}   
+    
+    \begin{center}
+            Algebraic Properties of Complex Numbers
+    \end{center}
+    \begin{itemize} 
+        \item $z = x + iy$
+        \inlineitem $z^{-1} = (\frac{x}{x^2+y^2}, \frac{-y}{x^2+y^2})$
+        \inlineitem($z*z^{-1} = 1$)
+        \item $\frac{z_1}{z_2} = z_1z_2^{-1}$ 
+        \inlineitem $(z_1+z_2)^n=  \sum_{k=0}^n{n \choose k}z_1^{n-k}z_2^k $
+    \end{itemize}
+    \begin{center}
+        Modulus Properties
+    \end{center}
+    \begin{itemize}
+        \item $|z| = \sqrt{x^2+y^2}$
+        \inlineitem $|z|^2=(Re(z))^2 + (Im(z))^2$
+        \inlineitem $Re(z) \leq |Re(z)| \leq |z|$
+        \item $|z_1-z_2| = \sqrt{(x_1-x_2)^2+(y_1-y_2)^2}$
+        \inlineitem $|z_1+z_2| \leq |z_1|+|z_2|$
+        \item $|z_1z_2|^2 = (|z_1||z_2|)^2$
+        \inlineitem $|z^n| = |z|^n$
+    \end{itemize}
+    \begin{center}
+        Complex Conjugate Properties
+    \end{center}
+    \begin{itemize}
+        \item $\bar{z} = x - iy$ \inlineitem $|\bar{z}| = |z|$
+        \inlineitem $\overbar{z_1+z_2} = \bar{z_1} + \bar{z_2}$
+    \end{itemize}
+
+    \begin{center}
+        Exponential and Polar Form
+    \end{center}
+    \begin{itemize}
+        \item $z=r(cos\theta + i*sin\theta)$ \inlineitem $-\pi < Arg(z) \leq \pi$
+        \inlineitem $arg(z) = artctan(\frac{y}{x})$
+        \item $arg(z) = Arg(z) + 2n\pi$ where $(n=0, \pm1,\pm2,...)$
+        \item Eulers Formula: $e^{i\theta} = cos(\theta) + i*sin(\theta)$
+        \inlineitem $e^{i\pi} = -1$ \inlineitem $e^{i\pi/2} = i$ 
+        \item Exponential form: $z = re^{i\theta}$
+        \inlineitem $z^{-1} = \frac{1}{re^{i\theta}} = \frac{1}{r}(cos(\theta)-i*sin(\theta))$
+        \item $e^{i\theta_1}e^{i\theta_2} = e^{i(\theta_1+\theta_2)}$
+        \inlineitem $z_1z_2=(r_1r_2) e^{i(\theta_1+\theta_2)}$
+        \inlineitem $z^n = r^ne^{in\theta}$
+        \item De Moivre's Formula: $(cos(\theta)+i*sin(\theta))^n = cos(n\theta) +i*sin(n\theta)$
+        \item $arg(\frac{z_1}{z_2}) = arg(z_1)-arg(z_2)$
+        \item Roots: $z^{1/n}=(x+iy)^{1/n} = r^{1/n}e^{i(\frac{\theta+2\pi * k}{n}})$ 
+            \ where k= 0, 1, ... ,n-1
+    \end{itemize}
+
+    \begin{center}
+        Complex Functions
+    \end{center}
+
+    \begin{itemize}
+        \item $f(z) = u(x,y) +iv(x,y)$ \inlineitem $f(x+iy) = u+iv$
+        \item $\lim\limits_{z \to z_0} f(z) = \omega_0$  For each positive number $\epsilon$,
+            there is a positive number $\delta$ such that $|f(z)-\omega_0| < \epsilon$ whenever $0 < |z-z_0| < \delta$
+        \item $\lim\limits_{z \to z_0}f(z) = \infty$ \ if \  $\lim\limits_{z \to z_0}\frac{1}{f(z)} = 0$
+        \item $\lim\limits_{z \to \infty}f(z) = \omega_0$ \ if \ $\lim\limits_{z \to 0}f(\frac{1}{z}) = \omega_0$
+         \inlineitem $\lim\limits_{z \to \infty}f(z) = \infty$ \ if \ $\lim\limits_{z \to 0}\frac{1}{f(1/z)}=0$
+        \item $\frac{d}{dz}c=0$ \inlineitem $\frac{d}{dz}z=1$ \inlineitem $\frac{d}{dz}z^n=nz^{n-1}$
+        \item $\frac{d}{dz}[f(z)+g(z)]=f'(z)+g'(z)$ 
+        \inlineitem $\frac{d}{dz}[f(z)g(z)]=f(z)g'(z)+f'(z)g(z)$
+        \item $\frac{d}{dz}[\frac{f(z)}{g(z)}=\frac{f'(z)g(z)-f(z)g'(z)}{[g(z)]^2}$
+        \inlineitem $F(z)=g[f(z)] \rightarrow F'(z)=g'[f(z)]f'(z)$
+    \end{itemize}
+   
+   \begin{center}
+            Terminology
+    \end{center}
+    \begin{itemize}
+        \item \textbf{Neighborhood}: "Closeness" of two points. $|z-z_0| < \epsilon$ which consists
+            of all points z lying inside a circle centered at $z_0$ with a radius of $\epsilon$
+        \item \textbf{Deleted Neighborhood}: $0 < |z-z_0| < \epsilon$. \ Same idea as neighborhood but
+            center is not contained in the set either
+        \item \textbf{Interior Point}: A point $z_0$ is interior of a set S whenever there is some
+            neighborhood of $z_0$ containing only points of S
+        \item \textbf{Exterior Point}: A point is exterior when there is no neighborhood that contains
+            any points of S
+        \item \textbf{Boundary Point}: A point is a boundary point when every neighborhood consists of
+            at least one exterior and interior point
+        \item \textbf{Open Set}: Does not contain any of its boundary points and all points are interior
+        \item \textbf{Closed Set}: Contains all of its boundary points
+        \item \textbf{Closure}: The closure of a set is the closed set consisting of all points in set S
+            together with the boundary of S.
+        \item \textbf{Connected Set}: An open set is connected if each pair of points can be joined by a polygonal  line
+            consisting of finite number of line segments joined end to end
+    \end{itemize}
+\end{document}

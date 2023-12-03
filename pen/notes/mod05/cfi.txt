@@ -1,0 +1,78 @@
+Control Flow Integrity
+    Program Control Flow Graph
+        A graph with nodes corresponding to basic blocks or instructions and edges corresponding to control-flow transfer instructions, such as jumps and call instructions
+        * Control-flow transfer instructions may be
+            - Direct: Their target instructions are either implix or provided as part of the instructions
+            - Indirect: Their target instructions are provided by data stored either in registers or memory locations that are referenced by the instruction
+        - Generally not Possible to construct an exact control-flow graph for complicated programs, thus, a statically computed CFG for a program is often an approximation
+    
+    Control Flow Integrity (CFI)
+        - CFI for a program is preserved if the set of possible control-flow transfers is limited to just those that are strictly required for correct program execution
+        - To preserve CFI, usually a 2-phase process:
+            * Analysis (to produce CFG)
+            * Enforcement (to ensure that all branches to be encountered at runtime to edges of CFG)
+        - CFI mechanisms typically assume code integity so direct branches are assumed to be correct. Various
+        methods are used employed to enforce the correspondence of indirect branches to graph edges produced during analysis
+    
+    Axes of Comparing CFI methods
+        * Performace:
+            We want to limit performance penalties associated with enforcement mechanisms
+            Typical benchmarks show overhead between 0 and 20 for most CFI approaches
+        * Security
+            Want to improve security
+            Average indirect target reduction (AIR) is one measure of security improvement. Typical AIR numbers are over 99%
+    
+    Analysis of CFI mechanism
+        * Qualitative:
+            Precision in the forward direction
+            Precision in the backwards direction
+            Supported control-flow transfer types
+            Reported Performance
+        * Quantitative
+            SPEC CPU2006 Benchmark
+   
+   Reducing the possible transfers 
+        * Most CFI methods operate by reducing the set of possible transfers using the CFG
+   
+   Control-flow transfer classes
+        Primary Categories: Forward vs Backward
+            * Forward:
+                Direct jump
+                Direct Call
+                Indirect jump
+                Indirect call
+            * Backward:
+                Return
+
+    Existing Methods of Forward CFI analysis
+        - No forward branch validation          - Rapid-type analysis
+        - Ad-hoc algo and heuristics            - Flow-sensitive anlysis
+        - Context and flow insensitive anlysis  - Context sensitive analysis
+        - Labeling equivalence classes          - Context and flow sensitive analysis
+        - Class-heirarchy anylsis               - Dynamic Analysis
+    quiz password:Lou Reed
+
+    Existing Methods of backwards CFI
+        - No backward branch validation (bad idea)
+        - Labeling equivalence classes
+        - Shadow stack
+
+    Two basic CFI methods
+        * Address Space Layout Randomization
+            - Main program Heap and stack will be placed at random locations in memory
+            - Library code may or may not be compiled to support ASLR
+            - Non-ASLR library code can be targeted
+        * Data Execution Prevention (DEP)
+            - Supported by NX enforcement
+            - An exception is raised if EIP is set to address for which NX bit is set
+            - Usually applied to stack
+
+    What is ROP
+        * Early binary exploitation methods would write code into memory, then overwrite an indirect trasfer location to transfer control to that code
+        * Return-Orientated Programming (ROP) employs code that contains indirect returns, overwriting return address to employed code
+        that already appears in process memory without modifying instructions
+        * ROP gadget is a sequence of process instructions that ends with an indirect return or branch
+        * ROP programming is achieved by assembling a sequence of gadgets to achieve a programs aim, then constructing a series of indirect return points that can be written to
+        the stack to arrange for that sequence of gadgets to be executed 
+        * ROP has been shown to be turing complete
+

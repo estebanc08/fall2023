@@ -1,0 +1,125 @@
+%  Make this into a pdf document as follows:
+%
+%
+% The edit the Report.tex file appropriately to include only those elements that
+% make sense for the assignment you're reporting on.
+%
+% You can use a tool like TeXShop or Texmaker or some other graphical tool
+% to convert Report.text into a pdf file.
+%
+% If you are making this with command line tools, you'd run the following command:
+%
+%     latex Report.tex
+%
+% That will generate a dvi (device independent) document file called Report.dvi
+% The pages reported in the table of contents won't be correct, since latex only
+% processes one pass over the document. To adjust the page numbers in the contents,
+% run latex again:
+%
+%    latex Report.tex
+%
+% Then run
+%
+%   dvipdf Report.dvi
+%
+% to generate Report.pdf
+%
+% You can view this file to check it out by running
+%
+% xdg-open Report.pdf
+%
+% That's it.
+  
+\def\cvss(#1,#2,#3,#4,#5,#6,#7,#8,#9){
+	\indent\textbf{CVSS Base Severity Rating: #9}  AV:#1 AC:#2 PR:#3 UI:#4 S:#5 C:#6 I:#7 A:#8}
+  
+\def\ttp(#1, #2, #3, #4, #5, #6){
+   \indent\textbf{#1:} #2 \\
+   \indent\indent\textbf{#3:} #4 \\
+   \indent\indent\indent\textbf{#5:} #6 \\}
+
+\documentclass[notitlepage]{article}
+
+\usepackage{bibunits}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{datetime}
+\usepackage{numprint}
+
+% processes above options
+\usepackage{palatino}  %OR newcent ncntrsbk helvet times palatino
+\usepackage{url}
+\usepackage{footmisc}
+\usepackage{endnotes}
+
+\setcounter{secnumdepth}{3}
+\begin{document}
+
+\nplpadding{2}
+\newdateformat{isodate}{
+  \THEYEAR -\numprint{\THEMONTH}-\numprint{\THEDAY}}
+  
+\title{Penetration Test - Exercise 0a0}
+\author{Esteban Calvo}
+\date{\isodate\today}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+\section{Technical Report}
+
+  \subsection{Finding: \emph{Network User Compromised}}
+	\subsubsection*{Severity Rating}
+	Risk Factor: High
+    \cvss(N,L,N,N,C,L,L,L,8.3)
+		
+  	\subsubsection*{Vulnerability Description}
+  		A list of hashes was found using a mimikatz exploit. This list was used against
+        a list of known hashes to find the credentials of a network user. This attack revealed
+        the credentials of one user. 
+
+  	\subsubsection*{Confirmation method}
+  	The hashes that had been previously found must be formatted in \textbf{user:hash} format. The use
+    of the John the Reaper tool along with the rockyou wordlist must be employed as follows
+    \begin{verbatim}
+john --wordlist=<pathToRockYou.txt> --format=NT passwordHashes.txt
+    \end{verbatim}
+    
+    \subsubsection*{Mitigation or Resolution Strategy}
+    It is recommended to change all user passwords and to make sure that the hashes are checked against
+    well known wordlists such as rockyou and that more password requirements are enforced such as longer password
+    lengths as is recommended by NIST Publication 800-63B. Creating more complex passwords checked against
+    dictionaries and longer passwords must be employed to prevent this kind of attack from occurring again.
+
+
+
+\section{Attack Narrative}
+    \subsection{Formatting}
+    The lsadump with the local Security Account Manager (SAM) NT hashes was used for this exercise. The specifications
+    for the John the Ripper tool specified that it must be in \textbf{user:hash} format and therefore the file
+    was formatted as follows for all users
+    \begin{verbatim}
+Administrator:d9a8...dab9
+    \end{verbatim}
+
+    \subsection{Password Cracking}
+    As stated above, John the Ripper was used as follows 
+    \begin{verbatim}
+john --wordlist=<pathToRockYou.txt> --format=NT passwordHashes.txt
+    \end{verbatim}
+    which revealed the following partially hidden password and login
+    \begin{verbatim}
+User: d.darkblood
+Password: De...09
+    \end{verbatim}
+
+    \subsection{MITRE ATT{\&}CK Framework TTPs}
+   
+   \subsubsection*{}
+   \ttp(TA0006, Credential Access, T1110, Brute Force, .002, Password Cracking)
+   
+   \end{document} 
+

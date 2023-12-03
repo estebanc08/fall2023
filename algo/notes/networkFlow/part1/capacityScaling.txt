@@ -1,0 +1,46 @@
+Analysis of Ford-Fulkerson algorithm when capacities are integral
+    * Assumption: Every edge capacity c(e) is an integer between 1 and C
+    * Integral Invariant: Throughout Ford-Fulkerson
+        - Pf: By induction on the number of augmenting paths
+    * Theorem: Ford-Fulkerson terminates after at most val(f*) <= nC augmenting paths, where f* is a max flow
+        - Pf:  Each augmentation increases the value of the flow by at least 1
+    * Corollary: The running of Ford-Fulkerson is O(mnC)
+        - Pf: Can use either BFS or DFS to find the augmenting path in O(m) time
+    * Integrality Theorem: There exists an integral max flow f*
+        - Pf: Since Ford-Fulkerson terminates, theorem follows from integrality invariant
+
+Choosing Good augmenting paths
+    * Use care when selecting augmenting paths
+        - some choice lead to exponential algorithms
+        - Clever choices lead to polynomial time
+    * Pathology: When edge capacities can be irrational, no guarantee that Ford-Fulkerson terminates or converges
+    * Choose augmenting paths with:
+        - Max bottleneck capacity ("fattest")
+        - Sufficiently large bottleneck capacity
+        - Fewest Edges
+
+Capacity-Scaling Algorithm
+    * Overview: Choosing augmenting paths with large bottleneck capacity
+        - Maintain Scaling Parameter Δ
+        - Let G_f{Δ} be the part of the residual network containing only those edges with capacity >= Δ 
+        - Any augmenting path in G_f(Δ) has bottleneck capacity >= Δ
+
+Capacity-scaling algorithm: analysis of running time
+    * Lemma 1. There are 1 + ⎣log2 C⎦ scaling phases.
+        - Pf: Initially C/ 2 < Δ ≤ C; Δ decreases by a factor of 2 in each iteration
+    * Lemma 2. Let f be the flow at the end of a Δ-scaling phase. Then, the max-flow value ≤ val(f) + m Δ.
+        - Pf:
+            ・We show there exists a cut (A, B) such that cap(A, B) ≤ val(f) + m Δ.
+            ・Choose A to be the set of nodes reachable from s in Gf (Δ).
+            ・By definition of A: s ∈ A.
+            ・By definition of flow f: t ∉ A
+    * Lemma 3. There are ≤ 2m augmentations per scaling phase.
+        - Pf:
+            ・ Let f be the flow at the beginning of a Δ-scaling phase.
+            ・ Lemma 2 ⇒ max-flow value ≤ val(f) + m (2 Δ).
+            ・ Each augmentation in a Δ-phase increases val(f ) by at least Δ
+    * Theorem. The capacity-scaling algorithm takes O(m^2 log C) time.
+        - Pf:
+            - Lemma 1 + Lemma 3 ⇒ O(m log C) augmentations.
+            - Finding an augmenting path takes O(m) time
+

@@ -1,0 +1,56 @@
+Connectivity in directed graphs
+    directed reachability: Given a node s, find all nodes reachable from s
+    Def: Nodes u and v are mutually reachable if there is both a path from u to v and also path from v to u
+    Def: A graph is strongly connected if every pair of nodes is mutually reachable
+    Lemma: Let s be an any node. G is strongly connected iff every node is reachable from s and s is reachable from every node
+    Def: A strong component is a maximal subset of mutually reachable nodes
+
+DAGS and topological orderings
+    Def: A DAG is a directed graph that contains no directed cycles
+    Def: A topological order of a directed graph is an ordering of its nodes as v1,v2,...,vn so that for every edge we have i < j
+
+    Precendence Constraints: Edge (vi,vj) means task vi must occur before vj
+
+    Applications:
+        Course prereq graph: course vi must be taken before vj
+        Compilation: Module vi must be compiled before vj
+        pipeline of jobs: output of job vi needed to determine input of job vj
+
+    Lemma: If G has a topological order, then G is a DAG
+    pf by contradiction
+        Suppose that G has a topological order v1,v2,...,vn and that G also has a directed cycle C
+        Let vi be the lowest-indexed node in C and let vj be the node just before vi; thus (vj,vi) is an edge
+        By our choice of i, we have i < j 
+        On the other hand, since (vj,vi) is an edge and v1,v2,...vn is a topological order, we must have j < i, a contradiction
+
+    Does every DAG have a topological ordering? Yes
+    
+    Lemma: if G is a DAG. then G has a node with no entering edges
+    pf by contradiction:
+        Suppose that G is a DAG and every node has at leats one entering edge
+        Pick any node v, and begin following edges backward from v. Since has at least one entering edge (u,v) we can walk backward to U
+        Then, since u has at least one entering edge (x,u) we can walk backward to x
+        Repeat until we visit a node, say w, twice
+        Let C denote the sequence of nodes encountered between successive visits to w. C is a cycle
+
+    Lemma: If G is a DAG, then G has a topological ordering
+    Pf by induction on n
+        Base case: true if n=1
+        Given DAG on n> 1 nodes, find a node v with no entering edges
+        G-{v} is a DAG since deletng v cannot create cycles
+        By inductive hypothesis, G-{v} has a topological ordering
+        Place v first in a topological ordering, then append nodes of G-{v}
+        In topological order. this is valid since v has no entering edges
+
+    Theorem: Algorithm finds a topological order in O(m+n) time
+    Pf:
+        Maintain the following information
+            count(w) = remaining number of incoming edges
+            S = set of remaining nodes with no incoming edges
+        Initialization: O(m+n) via single scan through a graph
+        Update: to delete v
+            remove v from S
+            decrement count(w) for all edges from v to w and add w to S if count(w) hits 0
+            this is O(1) per edge
+
+

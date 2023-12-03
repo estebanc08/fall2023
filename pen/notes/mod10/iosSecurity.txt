@@ -1,0 +1,33 @@
+iOS Security
+    * At initial release, apple said that no third-party apps would run
+    * Developers were told to use web apps instead
+    * They eventually allowed third party apps
+
+Security Added
+    * Third-party apps run as mobile users
+    * Sandboxing restricts apps to limited set of resources
+    * Code signature verification was added (apple signing required) both load time and run time
+    * Compile-time options for Xcode support ASLR for operating systems and libraries
+    * iOS is now one of the most secure consumer-grade operating systems
+
+jailbreaking caveats
+    * code signature validation is turned off. Thus unsigned malicious code can be executed
+    * Malware that attacks jailbroken iPhones has been found (Key Raider)
+
+Different types of jailbreaks
+    * Tethered if it requires your phone to connected to a computer to boot jailbroken
+    * Untethered if persistent across reboots
+    * Semi-untethered which can boot unjailbroken but can run app to jailbreak
+
+Unc0ver Jailbreak
+    * Most recent jailbreak at this time
+    * The unc0ver jailbreak applies to all iOS versions from 11-13.5
+    * Installation involves either
+        - Cydia impactor
+        - AltStore
+
+Hacking iDevices of others
+    * iOS devices have a small network profile with no services
+    * Exploits often aim at client-side vulnerabilities, local network hack 
+
+

@@ -1,0 +1,90 @@
+%  Make this into a pdf document as follows:
+%
+%
+% The edit the Report.tex file appropriately to include only those elements that
+% make sense for the assignment you're reporting on.
+%
+% You can use a tool like TeXShop or Texmaker or some other graphical tool
+% to convert Report.text into a pdf file.
+%
+% If you are making this with command line tools, you'd run the following command:
+%
+%     latex Report.tex
+%
+% That will generate a dvi (device independent) document file called Report.dvi
+% The pages reported in the table of contents won't be correct, since latex only
+% processes one pass over the document. To adjust the page numbers in the contents,
+% run latex again:
+%
+%    latex Report.tex
+%
+% Then run
+%
+%   dvipdf Report.dvi
+%
+% to generate Report.pdf
+%
+% You can view this file to check it out by running
+%
+% xdg-open Report.pdf
+%
+% That's it.
+  
+\def\cvss(#1,#2,#3,#4,#5,#6,#7,#8,#9){
+	\indent\textbf{CVSS Base Severity Rating: #9}  AV:#1 AC:#2 PR:#3 UI:#4 S:#5 C:#6 I:#7 A:#8}
+  
+\def\ttp(#1, #2, #3, #4, #5, #6){
+   \indent\textbf{#1:} #2 \\
+   \indent\indent\textbf{#3:} #4 \\
+   \indent\indent\indent\textbf{#5:} #6 \\}
+
+\documentclass[notitlepage]{article}
+
+\usepackage{bibunits}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{datetime}
+\usepackage{numprint}
+
+% processes above options
+\usepackage{palatino}  %OR newcent ncntrsbk helvet times palatino
+\usepackage{url}
+\usepackage{footmisc}
+\usepackage{endnotes}
+
+\setcounter{secnumdepth}{3}
+\begin{document}
+
+\nplpadding{2}
+\newdateformat{isodate}{
+  \THEYEAR -\numprint{\THEMONTH}-\numprint{\THEDAY}}
+  
+\title{Penetration Test Report Title}
+\author{Esteban Calvo}
+\date{\isodate\today}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+
+\section{Attack Narrative}
+
+\subsection{Address}
+To find the address of the house, I used reverse image search to see if I could find the original source. Using reverse image search I was able to see that this was an event at 8404 12th Ave, Brooklyn, NY 11228
+\subsection{Neighborhood}
+Once I was able to find the event, I looked up where the event is held and also confirmed that there was a park nearby with the name. The name of the neighborhood is Dyker Heights in Brooklyn New York.
+
+\subsection{Date and Time}
+The tool exiftool was used to see the time the picture was taken. The tool revealed that the picture was taken 2021:12:27 18:12:34 or December 27th, 2021 at 6:12 PM.
+
+\subsection{Event Name}
+The name of the event was also revealed during the reverse image search. The event is called Dyker Heights Christmas Lights Tour 2021 and is organized by several residents of the neighborhood every year near Christmas time. 
+\subsection{Organizer}
+Googling the event revealed that the original organizer of the event was Lucy Spata and she started this tradition back in the 1980s. She herself carried this tradition on that her mother had started long before. 
+	
+\end{document} 
+

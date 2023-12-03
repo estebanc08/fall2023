@@ -1,0 +1,39 @@
+Matching
+    * Def: Given an undirected graph G=(V,E), subset of edges M ⊆ E is a matching if each node appears in at most one edge in M
+    * Max Matching: Given a graph G, find the max-cardinality matching
+
+Bipartite Matching
+    * Def: A graph G is bipartite if the nodes can be partitioned into two subsets L and R such that every edge connects a node in L with a node in R
+    * Bipartite Matching: Given a bipartite graph G = (L U R, E), find a max-cardinality matching
+
+Formulation:
+    - Create digraph G′ = (L ∪ R ∪ {s, t}, E′ ).
+    - Direct all edges from L to R, and assign infinite (or unit) capacity.
+    - Add unit-capacity edges from s to each node in L
+	- Add unit-capacity edges from each node in R to t
+
+Proof of correctness
+    * Theorem: 1-1 Correspondence between matchings of cardinality k in G and integral flows of value k in G'
+    * Pf:
+        - Let M be a matching in G of cardinality k
+        - Consider flow f that sends 1 unit of each of the k corresponding paths
+        - f is a flow of value k
+
+Perfect Matchings in Bipartite Graphs
+    * Def: Given a graph G=(V,E), a subset of edges M ⊆ E is a perfect matching if each node appears in exactly one edge in M
+    * Structure of Bipartite graphs with perfect matchings
+        - Clearly, we must have |L| = |R|
+    * Notation: Let S be a subset of nodes, and let N(S) be a set of nodes adjacent to nodes in S
+    * Observation: If a bipartite graph G=(L U R, E) has a perfect matching, then |N(s)| >= |S| for all subsets S ⊆ L
+    * Pf: Each node in S has to be matched to a different node in N(S)
+
+Halls Marriage Theorem
+    * Theorem: Let G=(L U R,E) be a bipartite graph with |L|= |R|. Then graph G has a perfect matching iff |N(S)| >= |S| for all subsets S ⊆ L
+    * Pf: Suppose G does not have a perfect matching
+        - Formulate as a max-flow problem and let (A, B) be a min cut in G′.
+        - By max-flow min-cut theorem, cap(A, B) < |L|.
+        - Define L_A = L ∩ A, L_B = L ∩ B, R_A = R ∩ A.
+        - cap(A, B) = |L_B |+ |R_A |⇒ |R_A |< |L_A |.
+        -  Min cut can’t use ∞ edges ⇒ N(L_A) ⊆ R_A.
+        - |N(L_A) |≤ |R_A |< |L_A |
+        - Choose S = L_A

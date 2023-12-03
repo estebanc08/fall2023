@@ -1,0 +1,132 @@
+%  Make this into a pdf document as follows:
+%
+%
+% The edit the Report.tex file appropriately to include only those elements that
+% make sense for the assignment you're reporting on.
+%
+% You can use a tool like TeXShop or Texmaker or some other graphical tool
+% to convert Report.text into a pdf file.
+%
+% If you are making this with command line tools, you'd run the following command:
+%
+%     latex Report.tex
+%
+% That will generate a dvi (device independent) document file called Report.dvi
+% The pages reported in the table of contents won't be correct, since latex only
+% processes one pass over the document. To adjust the page numbers in the contents,
+% run latex again:
+%
+%    latex Report.tex
+%
+% Then run
+%
+%   dvipdf Report.dvi
+%
+% to generate Report.pdf
+%
+% You can view this file to check it out by running
+%
+% xdg-open Report.pdf
+%
+% That's it.
+  
+\def\cvss(#1,#2,#3,#4,#5,#6,#7,#8,#9){
+	\indent\textbf{CVSS Base Severity Rating: #9}  AV:#1 AC:#2 PR:#3 UI:#4 S:#5 C:#6 I:#7 A:#8}
+  
+\def\ttp(#1, #2, #3, #4, #5, #6){
+   \indent\textbf{#1:} #2 \\
+   \indent\indent\textbf{#3:} #4 \\
+   \indent\indent\indent\textbf{#5:} #6 \\}
+
+\documentclass[notitlepage]{article}
+
+\usepackage{bibunits}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{datetime}
+\usepackage{numprint}
+
+% processes above options
+\usepackage{palatino}  %OR newcent ncntrsbk helvet times palatino
+\usepackage{url}
+\usepackage{footmisc}
+\usepackage{endnotes}
+
+\setcounter{secnumdepth}{3}
+\begin{document}
+
+\nplpadding{2}
+\newdateformat{isodate}{
+  \THEYEAR -\numprint{\THEMONTH}-\numprint{\THEDAY}}
+  
+\title{Penetration Test - Exercise 03}
+\author{Esteban Calvo}
+\date{\isodate\today}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Technical Report}
+% Include one of these headings for each finding.
+
+  \subsection{Finding: \emph{Private IP Subdomains}}
+  
+	\subsubsection*{Severity Rating}
+	    During network scanning, several private subdomains were discovered visible to users without
+            the required privileges. This vulnerability can lead to the exposure of internal infrastructure, internal network scanning, and exploitation of user data.
+            
+		\cvss(L,L,L,N,U,L,N,N,3.3)
+		
+  	\subsubsection*{Vulnerability Description}
+            This vulnerability can be present on various machines within the organization, typically those responsible for DNS configuration and management. Specifically, it may affect DNS servers and related services responsible for resolving domain names to IP addresses.
+  		
+  	\subsubsection*{Confirmation method}
+            To confirm these vulnerabilities, the use of CeWl and fierce in the kali command line can be used. Running the command "cewl http://www.artstailor.com -d 3 -o -w list.txt" and then using this list to run "fierce -{}-domain artstailor.com -{}-subdomain-file list.txt" will reveal several subdomains with IP addresses starting with 10. This IP address is generally reserved for private internal networks and should not be exposed to the  public.
+		
+    \subsubsection*{Mitigation or Resolution Strategy}
+        To resolve this issue, the client can carefully review the companies DNS configuration to figure out where this information is being exposed from. From here, ensure that only public facing subdomains are shown in the DNS records. Also, figure out why these were available to begin with and see if more checks need to be implemented on who can change this configuration. 
+
+\newpage
+
+
+\section{Attack Narrative}
+    To find the private subdomains, there were several different steps. Firstly, I ran "fierce -{}-domain artstailor.com" and got a list of some subdomains, but all of these were public domains. From here, I wanted to find where this list was coming from to confirm how it was found. Running "locate fierce \textbar{} grep '\textbackslash.txt'" showed me that where the default list was and running grep on this list along with the outcome of fierce showed me how these subdomains were found. From inside the fierce source code, I was also able to see that running -{}-subdomain-file changes what file it reads. The blocks found up this point are 
+    
+     \begin{align*}
+        & 172.70.184.3 : mail.artstailor.com \\
+        & 172.70.184.3 : innerouter.artstailor.com. \\
+        & 172.70.184.133 : ns.artstailor.com. \\
+        & 172.70.184.3 : pop.artstailor.com. \\
+        & 10.70.184.90 : pdc.artstailor.com.  \\
+        & 10.70.184.91 : books.artstailor.com.
+     \end{align*} 
+     
+    After this, I ran CeWL and used the list generated as an argument for fierce using the previous flag. From here, I was able to see several private subdomains that should have been hidden but were not such as 
+    
+    \begin{align*}
+        & 10.70.184.39 : costumes.artstailor.com \\ 
+        & 10.70.184.40 : KEY005-hKku4/qTxNsmJIG0iT8pSQ.artstailor.com.
+    \end{align*} 
+    
+    On a similar note, running  "fierce -{}-domain artstailor.com -{}-wide" also revealed several other private networks such as
+    
+    \begin{align*}
+    & 10.70.184.133 : linuxserver.artstailor.com \\
+    & 10.70.184.100 : devbox.artstailor.com 
+    \end{align*}
+    
+    that were not visible simply by using the CeWL list.
+    
+    \subsection{MITRE ATT{\&}CK Framework TTPs}
+    \subsubsection*{}
+    \ttp(TA0043, Reconnaissance, T1595, Active Scanning, .001, Scanning IP Blocks)
+    \subsubsection*{}
+    \ttp(TA0043, Reconnaissance, T1595, Active Scanning, .003, Wordlist Scanning)
+
+    
+\end{document} 
+

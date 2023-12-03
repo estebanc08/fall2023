@@ -1,0 +1,24 @@
+Sequence alignment in linear space
+    * Theorem. [Hirschberg] There exists an algorithm to find an optimal alignment in O(mn) time and O(m + n) space.
+    	- Clever combination of divide-and-conquer and dynamic programming.
+    	- Inspired by idea of Savitch from complexity theory.
+
+Hirscbergs Algorithm
+    * Edit distance graph.
+        - Let f (i, j) denote length of shortest path from (0,0) to (i, j).
+        - Lemma: f(i, j) = OPT(i, j) for all i and j.
+        - Can compute f (·, j) for any j in O(mn) time and O(m + n) space
+    * Edit distance graph.
+        - Let g(i, j) denote length of shortest path from (i, j) to (m, n).
+        - Can compute g(i, j) by reversing the edge orientations and inverting the roles of (0, 0) and (m, n).
+    * Observation 1: The length of a shortest path that uses (i, j) is f (i, j) + g(i, j)
+    * Observation 2: let q be an index that minimizes f(q, n / 2) + g(q, n / 2). Then, there exists a shortest path from (0, 0) to (m, n) that uses (q, n / 2).
+    * Divide: Find index q that minimizes f (q, n / 2) + g(q, n / 2); save node i–j as part of solution.
+    * Conquer: Recursively compute optimal alignment in each piece.
+
+Hirschberg’s algorithm: space analysis
+    * Theorem. Hirschberg’s algorithm uses Θ(m + n) space.
+    * Pf:
+    	- Each recursive call uses Θ(m) space to compute f (·, n / 2) and g(·, n / 2).
+    	- Only Θ(1) space needs to be maintained per recursive call.
+    	- Number of recursive calls ≤ n.

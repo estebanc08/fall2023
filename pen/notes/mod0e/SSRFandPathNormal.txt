@@ -1,0 +1,23 @@
+What is SSRF
+    * Server side request forgery is an attack in which one causes a server to generate and satisfy an unintended HTTP request
+    * Web servers must parse URLs, headers, and body requests
+    * Modern software development depends on the use of library code to solve subproblems
+    * Different library functions may be used by different phases of processing a web request
+
+what is a URL
+    * foo://example.com:4444/path/info?param=value#whatup
+    * Scheme
+        We mostly care about http and https
+    * Authority example.com:4444
+    * path /path/info
+    * query ?param=value
+    * fragment #whatup
+
+Different Parsers get different results
+    * Imagine you have code to accept urls of google.com, but reject all other urls and you see this
+        * http://google.com#@evil.com/...
+    * PHP parse_url interprets this is a google link
+    * PHP readfile interprets this as an evil.com link
+
+Using Unicode to exploit parsing
+    * can inject Hex characters to change google.com/path/NN/password to google.com/path/../password

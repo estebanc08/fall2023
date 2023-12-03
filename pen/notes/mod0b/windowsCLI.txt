@@ -1,0 +1,83 @@
+Why do you need to know this
+    * When you exploit windows hosts over a network, you may or may not be able to have remote desktop
+    * Also you may not want to use remote desktop to increase your stealth
+    * Sometimes your only option is to use the command line to achieve your goals
+    * Being able to manipulate the system services, users group permissions, and firewall settings can be valuable
+
+Make Victims work for you
+    * Make it work for you
+    * Good pentesters need to use the same kinds of techniques botnet providers use to maintain persistence and control when they take over machines
+    * If the machine is easily accessible to you thats good. You may want to create or manipulate users and local groups
+    * Well configured victim machines willl be running few services. You need to get them to start services up for you to ease your task
+
+Users are good, add them as necessary
+    * See what users exist
+        - net user
+    * Use the net command to add users
+        - net user [username][password] /add
+        - net user haxox Password /add
+    * Make an inactive user active
+        - net user guest /active yes
+    * Inactivate an active user
+        - net user Administrator /active no
+
+Groups are good too
+    * See what local groups are available
+        - net LocalGroup
+    * if this fails to work, see next page
+    * Service-specific groups exist as well, for things like RDP
+    * The telnetClient group identifies those uers who can connect using telnet
+        - net LocalGroup TelnetClients /add
+        - net LocalGroup TelnetClients hexor /add
+    * Other groups identify users that have specific privileges
+        - net LocalGroup Administrator haxor /add
+
+If net localgroup DOESNT work
+    * Your meterpreter may be running as NT AUTHORITY\SYSTEM
+    * Check by executing
+        - getuid
+    * If running a command yields a 1312 error and you are in the meterpreter context, you may be able to overcome this by issuing this command:
+        - use incognito impersonate_token "NT AUTHORITY\NETWORK SERVICE"
+    * Then starting a shell and issuing the command may work for you 
+
+Some especially useful services
+    * TELNET    * SSH       * VNC       * RDP
+
+Starting/stopping services
+    * sc.exe (service control manager) provices comprehensive control over services
+        - start     -stop       -query     -configure
+
+How to enable telnet services
+    * see if its already running
+        - sc query tlntsvr
+    * configure telnet to start on demand
+        - sc config tlntsvr start= demand
+    * Start the service up
+        - sc start tlntsvr
+    * Open a firewall connection
+        - netsh firewall add portopening protocol= TCP
+            port= 23 name= telnet mode= enable
+            scope= custom address= [AttackeIPAddress]
+        
+Other uses of SC
+    * you can view all configured services with 
+        - sc query
+    * You can stop or even delete services such as firewalls, antivirus, etc
+        - typiccaly it is better to stop a service rather than delete it
+        - You should restart when you are done
+
+When you are finished, clean up
+    * Any changes you make to break system you must revert when you are done
+    * You may introduce vulernabilites that can be exploited by other attackers
+    * Before completing your penetration test:
+        - if you stop any services, restart them
+        - if you start any services, stop them
+        - if you open any firewall ports, close them
+        - etc
+    * Keep a comprehensive list of all changes you made 
+
+Windows Management Interface Command-Line
+    * VMIC lets you consult and configure a huge range of information and settings on local or multiple remote machines
+    * Command exmple:
+        - WMIC service where state='running' get caption, name, state
+            > services.tsv

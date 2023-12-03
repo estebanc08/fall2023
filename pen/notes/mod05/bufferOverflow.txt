@@ -1,0 +1,40 @@
+Buffer Overflow Stack Smashing
+    Prack Magazine:
+       * Proto Hacker Magazine
+       * Often cited as a source of early hacking techniques
+    Aleph Ones Prack Paper
+        * Buffer Overflow
+        * Sample vulnerable overflow:
+
+                #include <string.h>
+
+                void vulnFunc(char * arg){
+                    char buffer[96]; //buffer is of fixed length
+                    strcpy(buffer, arg); //strcpy copies until it finds a 0 byte
+                    //what if string is too long?? (More than 96 bytes)
+                }
+
+                int main(int argc, char **argv){
+                    vulnFunc(argv[1]);
+                }
+                        -----
+            buffer      |   |
+                        |   |
+                        |   |
+                        -----
+            Next Frame  |   |
+                        |   |
+                        -----
+            Rtr Addr    |   |
+                        |   |
+                        -----
+            Possible for string to overflow to next frame and return address until it encounters a 0 byte
+
+    Control Flow Integrity
+        Numerous Methods have been devised to make malicious modifications using buffer overflow more difficult
+            * Address Space Layout Randomization (ASLR)
+            * Stack Canaries
+            * No-execute stack pages
+
+
+

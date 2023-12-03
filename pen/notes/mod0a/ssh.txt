@@ -1,0 +1,43 @@
+What does SSH connection do
+    * ssh server:
+        - listens for connection on port 22
+        - Negotiates the secure connection
+        - Authenticates the connecting part
+        - Creates the correct environment if the credentials are accepted
+    * ssh client
+        - Initiates the TCP handshake 
+        - Negotiatest the secure connection
+        - Verifies the server identity 
+        - Provide authentication credentials to commuicate
+Requirements for best use
+    * key exchange starts with each participant guessing which of a list of kex algos the participants supports
+    * Each participant sends an initial key exchange packet according to the algorithm.
+    * The guess is wrong if the participants have different preferred algorithms and no other algorithm can be agreed upon.
+    * Output from Key Exchange is a shared secret key K and an exchange hash H. Each key exchange algorithm has a hash algorithm HASH.
+    * H, K, and other determinable values are used to compute an IV for encryption, server and client encryption keys, and server and client integrity keys.
+ 
+ Encrypting the session
+    * Symmetric encryption session key is negotiated using Diffie-Hellman algo
+    * client and server together identify a large prime p
+    * client and server agree on encryption generator g
+    * client chooses a random number x and the server chooses a random number y (private keys)
+    * client and server each use their private keys together with p and g to create a public key that can be shared
+    * client and server exchange keys 
+    * each party use their private key, and the other parties public key to create a shared secret key
+
+How is user access authenticated
+    * Password authentication
+        - user sends encrypted password
+    * Public Key authentication
+        - user has already created a pub/priv pair and shares the public key
+        - client sends a signature encrypted with the private key
+        - the server checks the users authorized_keys file to verift this pair
+        - if it matches the server generates a random number (nonce) and encrypts it with the clients public key and sends it to the client
+        - the client decrypts the nonce and sends back its MD5 hash
+        - the server compares that value to the MD5 hash of the nonce, if they match, the session proceeds
+
+Where is the Vulnerability
+    * MITM server can carry out password authenticaton without the clients knowledge
+    * Only protection the client has is to notice that the stored fingerprint for the server doesnt match the communiacted fingerprint
+    * the fingerprint changes whenever the server priv/public key changes. This can happen legit when an OS is upgraded or if the credentials have been compromised
+    * Since this exploits user behavior rather than an algo error, one can consider this to be a social-engineering attack

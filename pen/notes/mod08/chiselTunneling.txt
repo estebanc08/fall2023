@@ -1,0 +1,37 @@
+Chisel
+    * Lets you tunnel TCP and UDP connections from one host to another
+    * helps pass communications through firewalls
+    * uses http with ssh to encrypt communications
+    * developed in go and can ported to many other OS architecture
+
+Tunneling capabilities
+    * Two principle types of tunneling
+        - port forwarding
+        - proxying
+    * A SOCket Secure (SOCKS) proxy server allows a client in another network to connect to the server 
+    * Once a client is connected, a process on the server can request all its network traffic should be forwarded to clients network
+
+Proxychains
+    * Linux program that uses a local SOCKS proxy to tunnel a programs network communications
+    * Proxychains uses a configuration file (usually in /etc) but using the -f file optiona allows to override
+    * -q option avoids sending excess log information to the console. Program can be very noisy 
+
+Using Chisel to evade a firewall
+    * You are an attacker trying to communicate through a compromised victim machine
+    * You run a chisel server on the attack host and a chisel client on the victim host
+    * Chisel server arguments of interest are these 
+        - server        tell chisel you are running in server mode
+        - -p ##         tell chisel what server port to open for client connections
+        - --reverse     allow the client to specify a server port to forward
+        - --socks5      allow the client to request SOCKS5 proxying
+
+Using Chisel Client
+    * Chisel client arguments of interest
+        - client        tell chisel you are running in client mode
+        - host:port     identify the host and port whose chisel server you want to connect
+        - R:fwd-port:tft-host:tft-port
+                        direct the server to forward a port to a target-host port
+        - R:socks       allow the server to SOCKS5 proxy process to your network
+        - R:port:socks  specify SOCKS5 proxying through a non-default SOCKS5 server port
+
+    

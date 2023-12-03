@@ -1,0 +1,30 @@
+What is ARP?
+    * Address resolution protocol
+    * Used to identify the correspondence between an IP address (layer 3) of a host and its associated MAC address (layer 2) to support delivery of IP packets in datalink layer
+
+ARP messages
+    * Request (broadcast)
+        - whoever has this ip addr, tell me your MAC
+    * Reply
+        - This is my IP addr and here is my MAC
+    * Reverse Request (RARP)
+    * Reverse Response
+
+ARP spoofing
+    * When a host sees an ARP reply, it usually trusts that it is correct. No way to verify info is correct
+    * You can lie (spoof ARP reply) in order to get info intended for a machine at a given IP
+    * When you send a reply to a machine, it will generally trust id and this will poison its ARP cache (put bogus info in cache)
+
+ARPSpoof
+    * Need to put yourseld on the local network 
+    * ip_forward
+    * man in the middle, must have ip_forwarding enabled
+    * arpsoof -i interface -t target -r host
+
+Poisoning the cache
+    * Message 1: Attacker tells gateway he is the target
+    * Message 2: Attacker tells target he is the gateway 
+    * MITM message from target to server 
+
+Where will thiss not work?
+    * Amazon EC2, Amazon VPC, Google Compute Engine, MS Azure

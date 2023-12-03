@@ -1,0 +1,10 @@
+Shortest path with negative weights
+        Shortest-path problem: Given a diagraph G = (V,E) with arbitrary edge lengths l_{vw}, find shortest parth from source node s to destination node t
+
+Failed attempts:
+    * Dijkstra. May not produce shortest paths when edge lengths are negative.
+    * Reweighting. Adding a constant to every edge length does not necessarily make Dijkstra’s algorithm produce shortest paths
+
+
+sarahdmabe@gmail.com
+Izzomabe1

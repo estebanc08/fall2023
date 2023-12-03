@@ -1,0 +1,27 @@
+Integer addition and subtraction
+    * addition: Given two n-bit integers a and b, compute a+b
+    * Subtraction: Given two n-bit integers a and b, compute a-b
+    * Grade school algorithms: Phi(n) bit operations
+
+Integer Multiplication
+    * Multiplication: Given two n-bit integers a and b, compute a x b
+    * Grade school algorithm (long multiplication): Phi(n^2) bit operations
+
+Divide and Conquer multiplication
+    * To multiply two n-bit integers x and y:
+        - Divide x and y into low and high order bits
+        - multiply four 1/2n bit integers, recursively
+        - add and shift to obtain result
+            * m = ⎡ n / 2 ⎤
+
+            * a = ⎣ x / 2m ⎦ b = x mod 2m
+
+            * c = ⎣ y / 2m ⎦ d = y mod 2m
+
+Karatsuba trick
+    * To multiply two n-bit integers x and y:
+        - Divide x and y into low- and high-order bits
+             bc + ad = ac + bd – (a – b) (c – d)
+        - To compute middle term bc + ad, use identity:
+        - Multiply only three ½n-bit integers, recursively\
+    * proposition: Karatsubas algorithm requires O(n^1.585) bit operations to multiply two n-bit integers

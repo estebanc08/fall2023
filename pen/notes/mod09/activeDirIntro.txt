@@ -1,0 +1,86 @@
+Organizational Units (OUS)
+    - OUs are AD containers that hold objects of various kinds
+        * Security Principles are associated with SIDs and can be user accounts, groups, or computer accounts
+        * No other objects in an OU are security principals
+
+Security Principles
+    - Security Principles can be
+        * assigned permissions to access resources
+        * given user rights
+        * audited by tracking their actions
+
+OU structureal overview
+    - OUs contain
+        * Users
+        * Groups
+        * computers
+        * Shared Folder Objects
+        * Contacts
+        * Printers
+        * InetOrgPerson objects
+        * Other OUs
+        * Can support multiple hierarchical layers
+        * Support inheritances of OU settings in child OUs
+
+OU Logical Groupings
+    - Group resources Hierarchically
+        * We use the term resource in all senses of the word to include both people and things
+        * Hierarchical groupings correspond to business structure are commonly employed
+        * Sales:
+            - Us
+            - International
+        * Marketing
+        * Engineering
+            - Development
+            - IT
+            - Testing
+
+Inheritance and OUS
+    - OUs are the smallest domain unit to which admin permissions and group policies can be assigned
+    - Examples:
+        * One sysadmin role for IT computing resources and another for development
+        * One individual responsible for all users and group security permissions
+    - Principle of Least Privilege should be employed:
+        * Users should have minimum permissions unless otherwise specified
+
+How do groups work
+    - Groups have a type:
+        * Security Group
+            Have associated rights and permissions and can receive email
+        * Distributions Group
+            Used for email only
+    - Groups should have a scope
+        * Domain Local
+            Remain in the domain in which created can grant permissions in that single domain
+        * Global
+            Can contain other groups from in which created. Can give permissions in any domain in the forest
+        * Universal
+            Can include groups and accounts from any domain in the domain tree or forest. Can include permissions in any domain as well
+ 
+ Group Policies
+    - Group policies can be assigned at the site, domain, and OU level
+    - They can be applied to user accounts and computer accounts
+    - Sample policies:
+        * Restrict users from installing new programs 
+        * Disallow use of control panel
+        * Limit choices for display and desktop settings
+        * gpedit.msc
+
+ACLS and ACES
+    - Each object in AD has an Access Control List (ACL)
+    - This is a list of user accounts and groups that are allowed to access the resource
+    - For each ACL, there is an access control entry (ACE) defining what those users can do with the resource
+    - Deny permissions are always listed first. Access is denied to a denied user even if a later allow permissioon allows them access
+
+Using Group Policy for Security
+    - password policies, lockout paramters
+    - can create group policy object and link to OU
+    - samples:
+        * Enforce password history
+        * Lockout Duration
+        * Min psswd length
+        * Reset account timer
+        * Accounts: Rename admin account
+        * Domain Controller: Allow server operators to schedule tasks
+        * Interactive Logon: Do no display last user naem
+        * Shutdown

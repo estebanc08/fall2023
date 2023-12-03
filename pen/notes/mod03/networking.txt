@@ -1,0 +1,28 @@
+OSI 7-Layer model
+    Application
+    Presentation
+    Session
+    Transport
+    Network
+    Data Link
+    Physical
+Service Data units from upper layers are encapsulated in protocol data units as messages go layer from layer
+Pen testers tend to deal with all layers from physical wire taps to higher level application layer exploits
+
+IPV4
+    IPV4 packets are 32 bits
+    Are not guaranteed to arrive in correct sequence
+    Time to Live (TTL) decrements upon forwarding to guarantee packets dont travel forever. When TTL is 0, packet stops forwarding. TTL is 8 bits
+
+ICMP Network Layer Packet Structure 
+    Internet Control Message Protocol packets embedded in IP with protocol = 1 
+    These messages can be used for control or diagnostic purposes or can be generated in response to errors with IP operations
+
+UDP and TCP: What are they
+    User Datagram Protocol is a communication protocol that provides communication of datagrams or packets of octets
+    Transmission Control Protocol is a communication protocol that provides reliable ordered streams of octets between programs
+
+UDP vs TCP
+    TCP has ordered sequences of packets. Need order to be maintained such as file transfer
+    UDP is useful for real-time communications where speed of transmission is more important than order of receipt (Youtube Streaming or gaming)
+

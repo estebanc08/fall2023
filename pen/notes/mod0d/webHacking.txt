@@ -1,0 +1,65 @@
+ Sample Files
+    * Web servers are difficult to configure from the ground up. Thus they are distributed with numerous sample files
+    * Microsoft IIS 4.0 sample file vulnerability. Sample scripts showcode.asp and codebrews.asp
+
+Source code disclosure
+    * if an attack allows one to view source code, it may be possible to leverage this to find other files or information
+    * global.asa+.htr where htr is one IIS version caused part of the contents of the reference file to be returned
+    * global.asa configuration file resides in a known location
+    * it contains code associations with new sessions (objects, variables, declarations)
+    * may contain database connect code with databse username and password
+
+More source code disclosure
+    * Bugtraq 2527 reported problem 
+
+Canonicalization
+    * Often more than one representation for the same string (URL, filename) exists. In order to determine if a URL or filename matches particular
+    resource, canonicalization is used to map a name to a particular form
+    * Canonicalization errors usually occurs when the web server canonicalization process fails to faithfully carry out law. This causes
+    the web server to fail to recognize that a url is associated with the specific file that it addresses
+    * Example:
+        - relatively recent versions of apache for windows could be configured as follows
+            DocumentRoot "C:/Documents and settings/http/site/docroot"
+            ScriptAlias /cgi-bin/ "C:/Documents and Settings/http/site/docroot/cgi-bin"
+        - normal usage would expect a URL like the following and would execute the script foo:
+            http://[target]/cgi-bin/foo
+        - But the source code of the file would be delivered using this URL:
+            http://[target]/CGI-BIN/foo
+        - apaches routing code is case sensitive, Windows file system requests are case insensitive. Apache didnt canonicalize that path names properly
+    * URL encoding requires decoding. Often the decoding is done more than one place. This is a mistake
+    * Consider the %25 decodes to % and that %5c decodes to \. Then multiple steps of decoding once can convert URLS like
+        /scripts/..%255c../winnt
+    into
+        /scripts/..%5c../winnt
+    and lastlt
+        /scripts/..\../winnt
+
+Server Extensions
+    * WebDav is a wonderful idea often gone wrong. It was intended to let groups of people remotely author web content
+    * if WebDAV is enabled, requests such as this may function
+        GET /global.asa\ HTTP/1.0
+        Host: 192.168.20.10
+        translate: f
+        [CRLF]
+        [CRLF]
+    * translate: f says to use ISAPI filter httpext.dll before IIS sees the request, and the trailing \ is handlded by that filter in a way that causes
+    the request to be sent to the underlying OS filesystem
+
+Input Validation
+    * dinosaur hack except not extinct. Can lead to buffer overflows, integer errors, and heap exploits
+
+Denial of Service
+    * Naive programming language hash table implementation to waste server time using a meet in the middle attack
+    * This attack:
+        - identifies many strings that are likely to hash to the same location
+        - presents these strings as post parameters (which are typically stored in a hash table) to cuase server thrashing
+    * All modern runtime environments (php5. .net, java, python) were susceptible at the time of release in 2011
+
+Avoidance
+    * sample files
+        Dont provide them. Dont use them. Dont leave them around
+    * Source code Disclosure: Fix the server
+    * Canonicalization: Fix the server
+    * Server Extensions: Dont use them
+    * Input Validation: Fix the server and fix your code
+    * Denial of Service: Fix the plugins

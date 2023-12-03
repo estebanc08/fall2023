@@ -1,0 +1,32 @@
+Simple Unit-Capacity Networks
+    * Def: A flow network is a simple unit-capacity network if:
+        - Every Edge has capacity 1
+        - Every node has exactly one entering edge, or exactly one leaving edge, or both
+    * Property: Let G be a simple unit-capacity network and let f be a 0-1 flow
+
+Analysis
+    * Shortest-augmenting-path algorithm.
+        ・ Normal augmentation: length of shortest path does not change.
+        ・ Special augmentation: length of shortest path strictly increases.
+    * Theorem. [Even–Tarjan 1975] In simple unit-capacity networks, Dinitz’ algorithm computes a maximum flow in O(m n1/2) time.
+        - Pf.
+            ・ Lemma 1. Each phase of normal augmentations takes O(m) time.
+            ・ Lemma 2. After n^{1/2} phases, val( f ) ≥ val(f*) – n^{1/2}
+            ・ Lemma 3. After ≤ n^{1/2} additional augmentations, flow is optimal.
+
+    * Lemma 1. A phase of normal augmentations takes O(m) time.
+        - Pf:
+            ・ O(m) to create level graph LG.
+            ・ O(1) per edge (each edge involved in at most one advance, retreat, and
+            augmentation).
+            ・ O(1) per node (each node deleted at most once)
+
+    * Lemma 2. After n^{1/2} phases, val( f ) ≥ val(f*) – n^{1/2}
+        ・ After n^{1/2} phases, length of shortest augmenting path is > n^{1/2}
+        ・ Thus, level graph has ≥ n^{1/2} levels (not including levels for s or t).
+        ・ Let 1 ≤ h ≤ n^{1/2} be a level with min number of nodes ⇒ ⎢Vh ⎢ ≤ n^{1/2}
+        ・ Let A = {v : ℓ(v) < h} ∪ {v : ℓ(v) = h and v has ≤ 1 outgoing residual edge}.
+        ・ cap_f (A, B) ≤ ⎢Vh ⎢ ≤ n^{1/2} ⇒ val( f ) ≥ val(f*) – n^{1/2}
+
+    * Lemma 3. After ≤ n^{1/2} additional augmentations, flow is optimal
+        - Pf. Each augmentation increases flow value by at least 1

@@ -1,0 +1,39 @@
+Service Discovery
+
+What are these services?
+    - Service one would like to discover provided by programs running on servers (devices running a service)
+    - A service will listen for incoming connections on a well-known port
+    - When a connection is received, the service will satisfy some application program interface (API) requirements that are most often
+    specified by Internet Engineering Task Force (IETF) Request for Comment (RFC). RFCs specify how a client and server are to communicate
+    - Taking FTP as an example, the ftp protocol is defined by RFCs
+
+
+ Is there a list of services?
+    - List of TCP and UDP port numbers (wikipedia)
+    - A mahine can provide any service of any port in range 1-65,535
+    - Quiz : Deep Purple
+    - nmap -sS f4rmc0rp.com -p 80:
+        * nmap performs a SYN scan and uses a table to tell if the likely service on port 80 and it reports that service associated with port 80
+    - nmap -sV f4rmc0rp.com -p 80:
+        * nmap performs a version scan, analyzing results of communicating with port 80 to figure out what services its actually running
+
+One Way to do a banner grab
+    - Use netcat (program that communicates between stdin, stdout, and the internet) on kali:
+        * nc f4rmc0rp.com 80
+    - This use of netcat attempts to connect to port 80 of the server f4rmc0rp.com and lets use type input to the service and see its response
+    - No banner is immediately printed
+
+How should I use nmap if I dont know how to?
+    - A couple of useful scan types are the following
+        * -O OS detection scan
+        * -A enables OS detection, version detection, script scanning, and traceroute
+
+What are the most common services?
+    - Fyodor gives this list:
+        * 80 (http)      *  25 (smtp)   *  22 (ssh)         *  53 (domain)      * 554 (rtsp)                
+        * 443 (https)    *  21 (ftp)    *  113 (auth)       *  23 (telnet)      * 3389 (MS-Term-Server)
+
+Automated Scanners:
+    - Nessus, Nexpose, and OpenVAS are the most common popular commercial network audit tools
+    - Often not used as are quite loud, mainly used if stealth not important
+    - Your kali VM would normally act as both client and server

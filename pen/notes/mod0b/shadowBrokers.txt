@@ -1,0 +1,35 @@
+What is TAO
+    * unlike programs revealed by edward snowden, such as xKeyScore, that are aimed at mass surveillance, the tailored access operations groups
+    at fort meade engages in directed operations to breach the security of communications by specific individuals
+    * Some of the methods employed by TAO are software exploits
+
+Shadow Brokers
+    * The Shadow Brokers (TSB) surfaced on 13 august 2016 with an auction of exploit tools developed by the equation group
+        The equation group is presumably an NSA team name kaspersky
+    * That leak includes the extrabacon CISCO 0-Day exploit, an authentication bypass exploit that provides control to anyone who knows the SNMP community string
+    * TSB released 5 groups of exploits altogether. Their final leak considered to be the most damaging, included the Fuzzbunch exploitation framework and the ExternalBlue windows exploit
+    * Release 5 (Lost in Translation) occured on saturday 14 april 2017, to the great distress of numerous system admins looking forward to either a relaxing weekend or spending time filing their taxes
+
+EternalBlue Patch Timing
+    * Some time before march of 2017, the NSA warned Microsoft that a probable leak of exploit tools had occured
+    * On march 14 2017, Microsoft released a patch for MS17-010 (EternalBlue) as a result of NSAs communication
+    * Microsoft even released an emergency patch for Windows XP and Windows Server 2003 even though those systems were well beyond EOL
+
+Patching Fails
+    * On Friday, 12 May 2017, the WannaCry ransomware attack began. This attack used the EternalBLue exploit and DoublePulsar downloader to achieve its goal
+    * This attack was unwittingly stopped by Marcus Hutchins who registered a domain referenced in the software, 
+    only to find that registering it enabled a kill switch that would caseu the malware to stop
+    * August of 2017, after attending DEFCON 25 and being hailed as a minor hero, marcus was arrested on six federal hacking related charges 
+
+How does EternalBlue work
+    * EternalBlue exploits a buffer overflow opportunity in large non-paged kernel pool memory
+    * EternalBlues method is much more complex than the kind of stack smashing attack that AlephOne described
+
+Execution chain of events
+    1) service is called resulting in overflow of groom packets internal metadata
+    2) the memory descriptor list (MDL) of the overwritten grooms packet struct results in arbitrary write-what-where primitive on the next data transmitted
+    3) MDL used to disable data execution prevention (DEP) on a fixed static region of the HAL heap whose page table entry is also fixed
+    4) second malicious used to overflwo another buffer
+    5) MDL used to place shellcode in a newly executable region
+    6) address for the SRVNET struct is in overwritten and conatins handler function pointer which is the address of the shellcode
+    7) corrupted groom packet 

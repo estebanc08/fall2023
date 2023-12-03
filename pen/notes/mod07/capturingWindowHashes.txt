@@ -1,0 +1,36 @@
+What is SMB?
+    - SMB usually refers to the windows server message block service
+        * Supports file sharing with common internet file system CIFS network browsing, printing, service, and interprocess communication
+        * TCP ports 137, 139, and 445 as well as UDP ports 137 and 138 are used to support SMB
+
+Microsoft Authentication protocol History
+    - LM (14 character password. No salt. Only authenticates cleint (weakly) to server. DES-based encryption
+    - NTLM Challenge Response
+    - NTLMv1: Server generated challenge
+    - NTLMv2: Mutual authentication of server and client
+    - Kerberos (Windows 2000): Requires NT hash for authentication
+
+LMV1/NTLMV1 Challenge-Response
+    - A rogue server can capture hashed passwords using static salt (1122334455667788) and use rainbow tables to get password
+
+NTLM Reflextive Attack
+    - This uses the client itself as a server, letting it provide server responses. MS08-068 Patch: SMb refuses to answer a challenge that is has just issued
+
+NTLM Relay Attack
+    - Exploited by Zack Attack
+    - Can be avoided using extended protection of authentication (EPA) on a per-service basis
+
+Kerberos (MIT)
+    - Trusted third-party architecture. Ditch DTLM right?
+    1) Client request TGT from KDC
+    2) Authentication service sends encrypted TGT and session key
+    3) Client requests server access from TGS
+    4) TGS sends encrypted session key and ticket
+    5) Client sends service ticket
+
+NTLM still required
+    - For the following situations:
+        * Client authenticates to server using IP address
+        * Client authenticates to server belonging to different active directory forest using legacy NTLM trust instead of transitive inter-forest trust
+    - Blocked events are logged with windows
+    - Can enforce NTLMv2 in local security policy if you can

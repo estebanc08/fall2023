@@ -1,0 +1,31 @@
+Local vs Domain Account
+    - Domain user accounts are registered with an active directory server for a network of machiens
+        * Authorized credentials, access rights, and privileges are associated with that account within the entire domain
+        * Users in the Domain Admin group have admin rights over every machine in the domain
+    - Local user accounts are recorded in the SAM database on a local machine and the acc4ess rights and privileges of the account extend only to local machine
+        * Local account will not support kerberos
+
+Network Shares
+    - Filesystems, printers, interprocess communications
+    - net share to see what can be shared remotely
+    - net view
+
+User Account Control
+    - Maintains process integrity levels (high medium low) that determine a processes rights
+    - Notififications
+
+Integrity Levels
+    - High: Server Generated challenge
+    - Medium: Mutual authentication of server and client
+    - Low: Requires NT hash for auth
+
+UAC bypass
+    - Given:
+        * admin process at med integrity
+        * Default UAC notification settings. Notify me only when programs try to make changes to my computer
+        * bypass_injection (Metasplot module that employs admin session to spawn payload)
+        * use exploit/windows/local/bypassuac_injection
+        * set session ..
+        * set payload ..
+
+Local Admins are still powerfull

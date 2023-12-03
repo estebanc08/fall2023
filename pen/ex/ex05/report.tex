@@ -1,0 +1,161 @@
+%  Make this into a pdf document as follows:
+%
+%
+% The edit the Report.tex file appropriately to include only those elements that
+% make sense for the assignment you're reporting on.
+%
+% You can use a tool like TeXShop or Texmaker or some other graphical tool
+% to convert Report.text into a pdf file.
+%
+% If you are making this with command line tools, you'd run the following command:
+%
+%     latex Report.tex
+%
+% That will generate a dvi (device independent) document file called Report.dvi
+% The pages reported in the table of contents won't be correct, since latex only
+% processes one pass over the document. To adjust the page numbers in the contents,
+% run latex again:
+%
+%    latex Report.tex
+%
+% Then run
+%
+%   dvipdf Report.dvi
+%
+% to generate Report.pdf
+%
+% You can view this file to check it out by running
+%
+% xdg-open Report.pdf
+%
+% That's it.
+  
+\def\cvss(#1,#2,#3,#4,#5,#6,#7,#8,#9){
+	\indent\textbf{CVSS Base Severity Rating: #9}  AV:#1 AC:#2 PR:#3 UI:#4 S:#5 C:#6 I:#7 A:#8}
+  
+\def\ttp(#1, #2, #3, #4, #5, #6){
+   \indent\textbf{#1:} #2 \\
+   \indent\indent\textbf{#3:} #4 \\
+   \indent\indent\indent\textbf{#5:} #6 \\}
+
+\documentclass[notitlepage]{article}
+
+\usepackage{bibunits}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{datetime}
+\usepackage{numprint}
+
+% processes above options
+\usepackage{palatino}  %OR newcent ncntrsbk helvet times palatino
+\usepackage{url}
+\usepackage{footmisc}
+\usepackage{endnotes}
+
+\setcounter{secnumdepth}{3}
+\begin{document}
+
+\nplpadding{2}
+\newdateformat{isodate}{
+  \THEYEAR -\numprint{\THEMONTH}-\numprint{\THEDAY}}
+  
+\title{Exercise 05}
+\author{Esteban Calvo}
+\date{\isodate\today}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+
+\section{Attack Narrative}
+
+\subsection{TCP Scan}
+    To run an nmap scan on arts tailor shop, the following command was performed
+    \begin{verbatim}
+        sudo nmap -sV -O www.artstailor.com
+    \end{verbatim}
+    and this yielded the following results:
+    \begin{verbatim}
+        Starting Nmap 7.94 ( https://nmap.org ) at 2023-09-20 22:14 EDT
+        Nmap scan report for www.artstailor.com (172.70.184.133)
+        Host is up (0.00058s latency).
+        rDNS record for 172.70.184.133: ns.artstailor.com
+        Not shown: 997 closed tcp ports (reset)
+        PORT   STATE SERVICE VERSION
+        22/tcp open  ssh     OpenSSH 9.2p1 Debian 2 (protocol 2.0)
+        53/tcp open  domain  ISC BIND 9.18.16-1~deb12u1 (Debian Linux)
+        80/tcp open  http    Apache httpd 2.4.57 ((Debian))
+        No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+        TCP/IP fingerprint:
+        OS:SCAN(V=7.94%E=4%D=9/20%OT=22%CT=1%CU=43456%PV=N%DS=2%DC=I%G=Y%TM=650BA70
+        OS:A%P=x86_64-pc-linux-gnu)SEQ(SP=108%GCD=1%ISR=10A%TI=Z%II=I%TS=A)OPS(O1=M
+        OS:5B4ST11NW7%O2=M5B4ST11NW7%O3=M5B4NNT11NW7%O4=M5B4ST11NW7%O5=M5B4ST11NW7%
+        OS:O6=M5B4ST11)WIN(W1=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE88%W6=FE88)ECN(R=Y%
+        OS:DF=Y%T=40%W=FAF0%O=M5B4NNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%F=AS%RD=
+        OS:0%Q=)T2(R=N)T3(R=N)T4(R=N)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)
+        OS:T6(R=N)T7(R=N)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=G%RUCK=G%
+        OS:RUD=G)IE(R=Y%DFI=N%T=40%CD=S)
+
+        Network Distance: 2 hops
+        Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+        
+        Nmap done: 1 IP address (1 host up) scanned in 25.18 seconds
+    \end{verbatim}
+    From this command, we can several open ports as well as their operating system. These ports are
+    pretty standard ports and there was not much to observere here.
+
+\subsection{UDP Scan}
+    To run nmap on the UDP ports, we used the command
+    \begin{verbatim}
+        sudo nmap -sU -p 1-256 -sV www.artstailor.com
+    \end{verbatim}
+    and got the following results:
+     \begin{verbatim}
+        Starting Nmap 7.94 ( https://nmap.org ) at 2023-09-20 22:35 EDT
+        Nmap scan report for www.artstailor.com (172.70.184.133)
+        Host is up (0.00066s latency).
+        rDNS record for 172.70.184.133: ns.artstailor.com
+        Not shown: 254 closed udp ports (port-unreach)
+        PORT   STATE         SERVICE VERSION
+        40/udp open|filtered unknown
+        53/udp open          domain  ISC BIND 9.18.16-1~deb12u1 (Debian Linux)
+        Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+        Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+        Nmap done: 1 IP address (1 host up) scanned in 369.53 seconds    
+     \end{verbatim}
+    Here, the interesting port was port 40 which may be a threat if it is running tcp, but there was little
+    to suggest that this port was a threat in the current state.
+
+\subsection{Comparison}
+    From the scan, we can clearly see that TCP is much faster than UDP considering that tcp scanned
+    1000 ports and ran in 25 seconds while UDP scanned 256 ports and took 370 seconds. The reason
+    for this lies in the protocol itself as a three-way handshake is much easier to establish
+    using TCP and UDP's stateless protocol.
+
+\subsection{Searchsploit}
+    Using Searchsploit on all the ports did not reveal any potential vulnerabilites. It is possible
+    There previously some vulnerabilities that have been patched with recent updates, but 
+    there is no reason to belive that the current setup has any real risks.
+
+\subsection{Key}
+    To find the key, wireshark was used to examine the packets sent to the suspicous UDP port 40.
+    Here, some of the packets sent back and forth contained the key which turned out to combine to:
+    \begin{verbatim}
+        KEY007-52kyxvjHNa8SNF/s55JH0A
+    \end{verbatim}
+
+\subsection{Findings}
+    Running both the TCP and the UDP scan, there were no vulnerabilites found. 
+    \subsubsection{MITRE ATT{\&}CK Framework TTPs}
+    \subsubsection*{}
+    \ttp(TA0043, Reconnaissance, T1595, Active Scanning, .002, Vulnerability Scanning)
+    \subsubsection*{}
+    \ttp(TA0043, Reconnaissance, T1592, Gather Victim Host Information, .001, Hardware)
+    \subsubsection*{}
+    \ttp(TA0043, Reconnaissance, T1592, Gather Victim Host Information, .002, Software)
+\end{document} 

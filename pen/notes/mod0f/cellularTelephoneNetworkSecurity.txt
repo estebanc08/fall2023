@@ -1,0 +1,8 @@
+Cellular Telephony
+    * GSM is the global system for mobile communications
+    * CDMA (code division multiple access) primarily US and Canada
+    * LTE (Long term evolution), soon to be 5g
+
+What if service is bad
+    * Some providers will let you use a microcell or femtocell
+

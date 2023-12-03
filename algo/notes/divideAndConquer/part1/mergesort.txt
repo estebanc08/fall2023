@@ -1,0 +1,59 @@
+Divide and Conquer Paradigm
+    * Divide and Conquer
+        - Divide up problem into several subproblems (of the same kind)
+        - Solve (conquer) each subproblem recursively
+        - Combine solutions to subproblems into several solution
+    * Most Common usage
+        - Divide problem of size n into two subproblems of size n/2 O(n) time
+        - Solve (conquer) two problems recursively
+        - Combine two solutions into overall solution
+    * Consequence
+        - Brute Force Θ(n^2)
+        - Divide-and-conquer O(nlogn)
+    * Examples
+        - Mergesort and quicksort
+        - Quickhull and mergegull
+        - Shamos-Hoey
+------------------------------------------------------------------------------
+
+MERGESORT
+   
+Sorting Problem: Given a list L of n elements from a totally ordered univese, rearrange them  in ascending order
+
+Sorting Applications
+    * Obvious applications
+        - Organize MP3 library      - Display Google PageRank results
+    * Some problems become easier once elements are sorted
+        - identify statistical outliers
+        - binary search in database
+        - remove duplicates in mailing list
+    * Non-obvious applications
+        - Convex hull       - Closest pair of points    - interval scheduling partition
+
+Mergesort
+    * Recursively sort left half
+    * Recursively sort right half
+    * Merge two halves to make sorted whole
+
+Merging
+    * Goal: Combine two sorted lists A and B into a sorted whole C
+        - Scan A and B from left to right
+        - Compare a_i and b_j
+        - if a_i < b_j, append a_i to C (no larger than any remaining element in B)
+        - if a_i > b_j, append b_j to C (smaller than every remaining element in A)
+
+Useful recurrence relation
+    * Def T(n) = max number of compares to mergesort a list of length n
+    * Recurrence
+                T(n) <= 0 if n=1        T(n) <= T(floor(n/2)) + T(ceil(n/2)) + n if n>1
+    * Solution T(n) is O(nlog_2(n))
+
+Sorting lower bound
+    * Theorem: Any deterministic compare-based sorting algorithm must take Ω(nlogn) compares in the worst case
+REQUIREMENTS FOR BEST USE
+        - Assume array consists of n distinct values a1 through an.
+        - Worst-case number of compares = height h of pruned comparison tree.
+        - Binary tree of height h has ≤ 2^h leaves.
+        - n! different orderings ->  n! reachable leaves.
+        - Stirlings Formula: 2^h >= nlog_2(n) - n/ln2
+ 

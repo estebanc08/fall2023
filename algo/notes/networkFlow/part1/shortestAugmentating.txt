@@ -1,0 +1,26 @@
+Shortest Augmenting Path
+    Q: How to choose next augmenting path in Ford-Fulkerson
+    A: Pick one that uses the fewest edges
+
+Shortest augmenting path: overview of analysis
+    * Lemma 1. The length of a shortest augmenting path never decreases.
+    	- Pf. Ahead.
+    * Lemma 2. After at most m shortest-path augmentations, the length of a shortest augmenting path strictly increases.
+    	- Pf. Ahead.
+    * Theorem. The shortest-augmenting-path algorithm takes O(m^2 n) time.
+    	- Pf.
+            ・ O(m) time to find a shortest augmenting path via BFS.
+            ・ There are ≤ m n augmentations.
+                - at most m augmenting paths of length k
+                - at most n−1 different lengths
+
+Level Graph
+    * Def: Given a digraph G = (V, E) with source s, its level graph is defined by:
+        - ℓ(v) = number of edges in shortest s↝ v path.
+        - LG = (V, E_G) is the subgraph of G that contains only those edges (v, w) ∈ E with ℓ(w) = ℓ(v) + 1
+        - Key property: P is a shortest s↝ v path in G iff P is an s↝ v path in L_G
+
+Shortest augmenting path: review of analysis
+    - Lemma 1: Throughout the algorithm, the length of a shortest augmenting path never decreases.
+    - Lemma 2: After at most m shortest-path augmentations, the length of a shortest augmenting path strictly increases.
+    - Theorem: The shortest-augmenting-path algorithm takes O(m^2*n) time.

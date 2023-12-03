@@ -1,0 +1,51 @@
+Cross-site scripting
+    * An injection problem in which an attacker injects a malicious script into a web site
+    1) Persistent
+        A script stored in a persistent medium on the target server (usually a database) is inserted into a web page
+        by the server and then delivered to the users browser
+    2) Reflected
+        User is given a URL that includes a script that will be inserted into a web page by the server and then reflected back
+        to the users browser
+    3) DOM-based
+        User is given a URL of a static page containing parameter with a script in its value. If the parameter is used in the 
+        javascript code modifying the Document Object Model including the parameters value, then the browser itself has inserted
+        the script not the server
+
+XSS is injection
+    * Cross site scripting (XSS) causes injection of malicious code into a web page
+    * Web page is rendered by a browser
+    * Browser executes the malicous code
+
+Ways to avoid XSS
+    * validate the form of data on the server side. Try to avoid putting it in the database if possible
+    * If you choose to sanitize data, denying dangerous characters is a poor method of addressing. Instead allow safe characters
+        - standards will change
+        - database can be modified directly to include malicious content
+    * Allowing valid data to be used as input is more reliable
+
+More ways to Avoid xss
+    * never insert untrusted data anywhere
+    * if you need to use untrusted data, escape it appropriately
+    * Use HTTPOnly cookies, inaccessible to javascript
+    * use as restrictive a content Secure Policy (CSS) as possible
+
+Delivering Reflected XSS
+    * Often delivered via phishing attack
+    * Obfuscated URLs containing scripts may be tranmsitted via email
+    * Link on a web page
+
+Beef: Browser exploitation framework
+    * BeEF is platform for generating and delivering payload directly yo the browser
+    * goes byeond typical XSS and provides a robust platform for penetration testing
+    * Modules supporting interprocess communicaiton and exploitation, history gathering, intelligence, network recond,
+    host information gathering, browser plugin detection, persistence, exploits
+
+BeEF structure
+    * Beef console -> Beef server -> Numerous zombie browsers
+
+Beed hooking
+    * browser must execute hook.js on the beef server
+        - deliver hook via xss or directly from a web page
+    * Beef supports mobile browsers and QR codes
+    * Once a browser is hooked, it connects to server
+    * default username and password is beef

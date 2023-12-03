@@ -1,0 +1,54 @@
+Wireless
+    * IEEE 802.11 family of standards defines how wireless LANs are implemented
+    * 802.11 b/g work in the range of 2.4-2.483 GHz
+    * This bandwidth range is broken up into 14 overlapping channels
+    * US channels 1-11 are supported and above 11 is prohibited in the US
+
+SSID
+    * Service Set Identifier (network name)
+    * BSSID (Basic SSID): Mac address of the access point
+    * ESSID (Extended SSID) name for one or more APs providing the same service (UF Guest)
+
+802.11 Handshake
+    * Probe request to Access Point (AP) ----->
+    * Probe response to station <------
+    * Auth request ---->
+    * Auth challenge <-----
+    * Auth response ---->
+    * Auth success   <-----
+    * Associate Request ---->
+    * Associate Response <-----
+    * Data <------->
+
+Wireless encryption 
+    * Open: no encryption can be seen in things like coffee shops
+    * WEP (Wired Equivalent Privacy)
+        - Uses RC4 stream cipher and CRC32 for integrity check
+    * WPA (Wifi protocol Access)
+        - Uses temporary key integrity protocol (TKIP)
+        - Message integrity check subject to key reinstallation and spoofing
+
+ARP and FMS attack
+    * ARP (Address Resolution Protocol)
+        - Destination is always FF:FF:FF:FF:FF:FF and size is 86 or 68 bytes
+
+FMS WEB cracking deals
+    * Each WEP packet is separately encrypted (rather than stream encrypted) because of the likelihood of single packet drop
+    * WEP key is a string of 10 hex digits
+    * IVs are transmitted in clear text
+    * RC4 is a stream cipher so if a known message is sent many times with many different IVs the stream can be decrypted
+    * WEP is cracked by sniffing an ARP packet, then replaying it over and over again to generate many encrypted replies with different IVs
+
+How does WPA encryption
+    * The access point and the client station share pairwise master key (PMK)
+    * The AP and station use a four way handshake to establish a pairwise transient key (PTK) for a session encryption and group for a session encryption and group temporal key (GTK) for broadcast and multicast
+    * First WPA implementation used TKP (Temporal key integrity protocol) which is based on RC4
+
+WPA3
+    * WPA3 was released in 2018 as a more secure alternative to WPA2
+    * in 2020 became mandatory
+
+How to use Kali for wireless hacking
+    * You don't usually use the host wireless connection, though it is possible with some machines
+    * Better to use a USB wireless Adaptor
+

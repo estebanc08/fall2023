@@ -1,0 +1,37 @@
+HTTP Basic Authentication
+    * When an authorized-required web page is reached in response to a GET or POST request
+        1) Server sends 401 error
+        2) Browser recieves error message and pops up auth window
+        3) Browser sends username:password base64 encoded as the Auth header
+
+Arranging basic auth with Apache Server
+    * htpasswd: Creates encrypted flat files containing usernames and associated passwords for a realm 
+    * htaccess file: Specific type of auth required, auth group and users, and limits of authentication 
+
+HTTP Digest Authentication
+    * Uses htdigest command
+    * client issues GET/path
+    * Server sends 401 with auth realm (made up by server), qop
+    * Client prompts for username and password and sends response including
+        - Username
+        - Cnonce
+        - Response = MD5
+
+HTTP Integrated Windows Authentication
+    * No password is provided by the user
+    * Client users windows user information is supplied by browser to the server via cryptographic exhange
+    * subject to MITM
+
+HTTP form-based authentication
+    * By far the most common authentication method
+    * Form-based authentication requires the client to provide username/password information via HTTP form fields
+    * Not inherently encrypted
+        - must use HTTPS
+    * Often poorly implemented
+
+What if we know the private key
+    * Knowing the private key allows Wireshark to inspect packets, determine the sessions master key exchanged during the TLS setup, and decrypt the session
+
+Decrypting the session
+    * With the correct RSA Key in place, you can right click on GET packets
+

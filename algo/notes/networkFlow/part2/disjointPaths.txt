@@ -1,0 +1,44 @@
+Edge-Disjoint Paths
+    * Def: Two paths are edge-disjoint if they have no edge in common
+    * Edge-Disjoint paths problem: Given a digraph G=(V,E) and two nodes s and t, find the max number of edge-disjoint s↝ t paths
+    * Max-flow formulation. Assign unit capacity to every edge.
+    * Theorem. 1–1 correspondence between k edge-disjoint s↝t paths in G and integral flows of value k in G′.
+    * Pf: ⇒
+        - Let P_1, …, P_k be k edge-disjoint s↝ t paths in G.
+        - set f(e) =    {1 edge e participates in some path P_j
+                        {0 otherwise
+        - Since paths are edge-disjoint, f is a flow of value k
+
+Network Connectivity
+    * Def: A set of edges F ⊆ E disconnects t from s if every s↝ t path uses at least one edge in F
+    * Network Connectivity: Given a digraph G=(V,E) and two nodes s and t, find min number of edges whose removal disconnects s from t
+
+Menger's Theorem
+    * Theorem [Menger]: The max number of edge-disjoint s↝ t paths equals the min number of edges whose removal disconnects t from s
+    * Pf: <=
+        - suppose the removal of F ⊆ E disconnects t from s, and |F| = k
+        - Every s ↝ t path uses at least one edge in F
+        - Hence, the number of edge-disjoint paths is <= k
+    * Pf: ≥
+        - Suppose max number of edge-disjoint s↝ t paths is k.
+        - Then value of max flow = k.
+        - Max-flow min-cut theorem ⇒ there exists a cut (A, B) of capacity k.
+        - Let F be set of edges going from A to B.
+        - |F| = k and disconnects t from s
+
+Edge-disjoint paths in undirected graphs
+    * Def: Two paths are edge-disjoint if they have no edge in common.
+    * Edge-disjoint paths problem in undirected graphs. Given a graph G = (V, E)  and two nodes s and t, find the max number of edge-disjoint s–t path
+    * Max-flow formulation. Replace each edge with two antiparallel edges and assign unit capacity to every edge.
+    * Observation. Two paths P1 and P2 may be edge-disjoint in the digraph but not edge-disjoint in the undirected graph
+
+More Menger theorems
+    * Theorem. Given an undirected graph and two nodes s and t,
+        the max number of edge-disjoint s–t paths equals the min number of edges
+        whose removal disconnects s and t.
+    * Theorem. Given an undirected graph and two nonadjacent nodes s and t,
+        the max number of internally node-disjoint s–t paths equals the min number
+        of internal nodes whose removal disconnects s and t.
+    * Theorem. Given a directed graph with two nonadjacent nodes s and t,
+        the max number of internally node-disjoint s↝ t paths equals the min
+        number of internal nodes whose removal disconnects t from s

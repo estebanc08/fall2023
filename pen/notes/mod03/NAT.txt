@@ -1,0 +1,33 @@
+Private IP
+    We can distinguish between 3 kinda of internet connected hosts within a network
+        1 - Hosts that only need access to locally connected resources as a client and provide no services
+        2 - Host that need access to a small range of outside services as a client and provide few or no services
+        3 - Hosts that need unfettered access to outside services and provide services to other internet hosts
+        There are MANY hosts in cat 1 and 2
+
+    RFC 1918 - Address allocation for private internets
+    The following address ranges are provided for private networks
+        - 10.0.0.0/8 (10.0.0.0 - 10.255.255.255) For example - Inside the University, you can use 10.x.x.x IP networks to provide content to students
+        and staff while outside of the University, the school provides class B network to deliver content
+        - 172.16.0.0/12 (172.16.0.0 - 172.31.255.255) Often used for virtual machine hosting
+        - 192.168.0.0/16 (192.168.0.0 - 192.168.255.255) Routers for home use
+
+Port Forwarding
+    - Allows a router with a public IP address to forward communications to a a NATed machines private IP address
+    - This allows machines on the wide area network (internet) side of your router to communicate inside your network (usually bad idea)
+    - Some applications (video games) require you to provide access to a service running on your maching. For gaming, this enables direct communication between
+    multiple players without burdening the game server
+
+    What does it require?
+        Need to identify:
+            Destination IP adddress (that is the port that other clients will specify as the IP destination for their packets). usually your routers WAN address
+            Destination port number of the forwarding device
+            Target IP address (usually a local IP address) where the packets will finally end up
+            port number of the target machine
+            A service needs to be running to actually achieve communication
+
+Pfsense pfsense
+
+Initial state:
+    nc is running on Kali but my PC cannot make contact
+    kali: nc -l -p 8080

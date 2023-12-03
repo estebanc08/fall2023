@@ -1,0 +1,20 @@
+Sticky Keys
+    - hold shift down (5 times in a row)
+    - popup asks if you want to enable shift, control, alt sticky keys
+
+Running sticky keys before login
+    - What user ran the sticky keys?
+        * NT Authority/System
+    - Default location
+        * C:\Windows\sethc.exe
+    - Can set with registry entry
+        * HKLM\Software\Microsoft\Windows NT\CurrentVersion\Image
+
+Requirements for modification:
+    - offline or elevated access to filesystem
+    - microsoft digitally signed binary req
+    - substitute binary must be in \System32\
+    - substiture binary must be in windows protected file list
+    - cmd.exe satisfies all of these requirements
+
+

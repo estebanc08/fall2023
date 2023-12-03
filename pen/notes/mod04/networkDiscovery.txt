@@ -1,0 +1,39 @@
+Network Discovery
+
+What systems can I reach?
+    -   Determining what systems can be reached from any given host is an important capability when trying to
+    gain control over what hosts in a network
+        -   The security of every network is preserved only if every individual device on that network is secure
+        -   All intrusion is in th end based on interaction with some kind of host
+   
+   Identifying hosts with ARP (ADDRESS RESOLUTION PROTOCOL)
+        - ARP is used to translate a devices OSI layer 3 (network) IP address into an OSI layer 2 (datalink) media access control (MAC) address
+        - Media Access Control (MAC) address:
+            * Unique Six-octet number identifying a specific network attached device
+            * Example: 00:50:56:2c:9d:43
+            * First 3 bytes identify the vendor and the last three bytes represent the specific device
+        - Devices on a physical local (unrouted) network segemtn will respond to ARP requests
+        - Thus, to find out all the devices on the local network, one can sweep through all IP address expected to be found on the local network asking for
+        their associated MAC addresses. This is known as an arp scan
+
+    Discovering local hosts: ARP-Scan
+        -   An executable program arp-scan is used to consult the system table that keeps track of local host IP address to MAC address
+            * argument --interface=xxxx tells it to scan using a particular network interface
+            * argument --localnet tell its to identify all hosts on the local network to which you are attached
+
+    nmap
+        -   Scanning software written by Fyodor (Gordon Lyon)
+            * Host discovery
+            * Port scanning
+            * Version Detection
+            * OS detection
+            * Scriptable interactions with the nmap scripting engine (NSE)
+
+    Discoverying hosts using ICMP ECHO
+        - ICMP echo request (message type 8) will be satisfied (responded to) by many machines. They will respond with an ICMP echo reply (type 0)
+        - Ping scans (unlike ARP scans) can reach beyond the unrouted local network across routers (because it uses OSI layer 3 IP packets which are routed)
+        - You can use ping to send ICMP echo packets. The ping application parameters vary from system to system. Check local listings 
+        - on kali, -c tels how many packets to send "ping -c 1 172.30.0.128"
+
+    Writing bash program to do a ping sweep
+        - Shell programming is very useful to pen testing

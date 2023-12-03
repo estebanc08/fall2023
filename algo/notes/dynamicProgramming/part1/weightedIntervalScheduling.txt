@@ -1,0 +1,51 @@
+Greed: Process the input in some order, myopiccaly making irrevocable decisions
+
+Divide and conquer: Break up a problem into independent subproblems; sovle each subproblem; combine solutions to subproblems to form solution to original problem
+
+Dynamic Programming: Break up a problem into a serioes of overlapping subproblems; combine solutions to smaller subproblems to form solution to large subproblem 
+                     Cache intermediate results in a table for later reuse
+
+Weighted Interval Scheduling
+    * Job j starts at s_j, finishes at f_j, and has weight w_j > 0
+    * Two jobs are compatible if they dont overlap
+    * Goal: Find max-weight subset of mutually compatible jobs
+
+Earliest Finish time first algorithm
+    * Consider jobs in ascending order of finish time
+    * Add job to subset if it is compatible with previously chosen jobs
+    * Recall: Greedy algorithms is correct if all weights are 1
+    * Observation: Greedy algorithm fails for weighted version
+    * Convention: Jobs are in ascending order of finish time: f_1 <= f_2 <= ... <= f_n
+    * Def p(j) = largest index i < j such that job i is compayible with j
+
+Dynamic Programming: Binary choice
+    * Def: OPT(j) = max weighto of any subset of mutually compatible jobs for subproblem consisting only of jobs 1,2,...,j
+    * Goal: OPT(n) = max weight of any subset of mutually compatible jobs
+    * Case 1: OPT(j) does not select job j
+        - must be optimal solution to problem consisting of remaining jobs 1,2,...,j-1
+    * Case 2: OPT(j) selects job j
+        - collect profit w_j
+        - Cant use incompatible jobs { p(j)+1, p(j)+2, ... , j-1 }
+        - must include optimal solution to problem consisting of remaining compatible jobs 1,2,...,p(j)
+ 
+ Weighted interval scheduling: Brute Force
+    * Observation: Recursive algorithm is spectacularly slow because of overlapping subproblems => exponential-time algorithm
+    * Ex: Number of recursive calls for family of layered instances grows like fibonnaci
+
+Weighted Interval Scheduling: Memoization
+    * Top down dynamic programming (memoization)
+        - cache result of subproblem j in M[j]
+        - Use M[j] to avoid solving subproblem j more than once
+
+Weighted Interval Scheduling: Running time
+    * Claim: Memoized version of algorithm takes O(nlogn) time
+    * Proof:
+        - sort by finish time: O(nlogn) via mergesort
+        - Compute p[j] for each j: O(nlogn) via binary search
+        - M-Computer Opt(j): each invocation takes O(1) time and either 
+            * 1: returns initialized value M[j]
+            * 2 Initializes M[j] and makes two recursive calls
+        - Progress measure Φ = # initialized entires among M[1..n]
+            * Initially Φ = 0, throughout Φ <= n
+            * 2 Increases by Φ by 1 => <= 2n resursive calls
+        - Overall running time of M-computer-opt(n) is O(n)

@@ -1,0 +1,14 @@
+Least Squares:
+    * Foundational problem in statistics
+    * Given n points in the plane: (x_1,y_1), (x_2, y_2), ... , (x_n, y_n)
+    * Find a line y=ax+b that minimizes the sum of the squared error
+        SSE = sum(y_i-ax_i-b)^2
+
+Segmented least squares
+    * Points lie roughly on a sequence of serveral line segments
+    * Given n points in the plane: (x1, y1), (x2, y2) , …, (xn, yn) with x1 < x2 < ... < xn, find a sequence of lines that minimizes f(x).
+    * Goal: Minimize f (x) = E + c L for some constant c > 0, where
+		- E = sum of the sums of the squared errors in each segment.
+		- L = number of lines
+
+Theorem. [Bellman 1961] DP algorithm solves the segmented least squares problem in O(n^3) time and O(n^2) space

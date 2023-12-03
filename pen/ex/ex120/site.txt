@@ -1,0 +1,46 @@
+QR-Code:<?php
+
+require "../header.inc.php";
+
+echo "<h3>This is the admin panel, which can be used to upload new photos.</h3>";
+
+if ($_FILES["file"]["error"] > 0) {
+	echo "<p class='error'>ERROR: " . $_FILES['file']['error'] . "</p>\n";
+} else {
+	if (strlen($_FILES["file"]["name"]) > 2) {
+	echo "<p class='success'>Uploaded new file ".$_FILES['file']['name'] . " of size " . floor($_FILES['file']['size']/1024) . "KB!</p>";
+	move_uploaded_file($_FILES['file']['tmp_name'], $_FILES['file']['name']);
+	file_put_contents($_FILES['file']['name'].".txt", $_POST['desc']);
+	} else {
+	if (isset($_FILES["file"])) {
+	echo "<p class='error'>Bad filename...</p>";
+	}
+	}
+}
+
+?>
+<script>
+function chk() {
+	var fname = document.getElementById("fileinput").value;
+	var ext = fname.split(".").pop();
+	if ( ext == "jpg" || ext == "JPG" || ext == "png" || ext == "PNG" ) {
+		return true;
+	} else {
+		alert("Extension " + ext + " is not allowed!");
+		return false;
+	}
+}
+</script>
+<form onsubmit="return chk();" name="uploadform" method="post" enctype="multipart/form-data">
+<label for="desc">Image Description:</label>
+<input type="text" name="desc"><br>
+<label for="file">Selected Image (.jpg and .png allowed):</label>
+<input id="fileinput" type="file" name="file"><br>
+<input type="submit" name="submit" value="Upload (click only once)">
+</form>
+<?php
+
+require "../footer.inc.php";
+
+?>
+

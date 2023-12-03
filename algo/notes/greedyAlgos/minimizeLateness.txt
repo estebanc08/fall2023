@@ -1,0 +1,53 @@
+Single resource processes one job at a time
+Job J requires t_j units of processing time and is due at time d_j
+if j starts at time s_j, it finishes at time f_j = s_j+t_j
+Lateness: ℓ_j = max{0, f_j-d_j}
+Goal: schedule all jobs to minimize maximum lateness L=max_j・ℓ_j
+
+earliest deadline first
+    Pseudocode
+        SORT jobs by due times and renumber so that d1 ≤ d2 ≤ ... ≤ dn.
+        t ← 0.
+        FOR j = 1 TO n
+            Assign job j to interval [t, t + tj ].
+            sj ← t ; fj ← t + tj.
+            t ← t + tj.
+        RETURN intervals [s1, f1], [s2, f2], ..., [sn, fn]
+
+    no idle time
+        ・ Observation 1: There exists optimal schedule with no idle time
+        ・ Oberservation 2: The earliest-deadline-first schedule has no idle time
+
+inversions:
+    ・ Def: Given a schedule S, an inversion is a pair of jobs i and j such that i < j but j is scheduled before i
+    ・ Observation: The earliest deadline first schedule is the unique idle-free schedule with no inversions
+    ・ Def: If an idle-free schedule has an inversion, then it has an adjacent inversio
+    ・ Pf
+        - Let i-j be a closest inversion
+        - let k be an element immediately to the right of j
+        - Case 1 [i>k] Then j-k is an adjacent inversion
+        - Case 2 [j<k] Then i-k is a closer inversion since i < j < k
+    Key claim. Exchanging two adjacent, inverted jobs i and j reduces the number of inversions by 1 and does not increase the max lateness.
+    Pf. Let ℓ be the lateness before the swap, and let ℓ′ be it afterwards.
+    ・ℓ′k = ℓk for all k ≠ i, j.
+    ・ℓ′i ≤  ℓi.
+    ・If job j is late, ℓ′j = f'_j - d_j ←  definition
+                            = f_i - d_j ←  j now finishes at time f_i
+                            ≤ f_i - d_i ←  i < j -> d_i ≤ d_j
+                            ≤  ℓ′j ←  definition
+Analysis of earliest-deadline-first algorithm
+    Theorem: The earliest-deadline-first schedule S is optimal.
+    Pf. [by contradiction]
+    Define S* to be an optimal schedule with the fewest inversions.
+        ・Can assume S* has no idle time.
+        ・Case 1. [ S* has no inversions ] Then S = S*.
+        ・Case 2. [ S* has an inversion ]
+            - let i–j be an adjacent inversion
+            - exchanging jobs i and j decreases the number of inversions by 1 without increasing the max lateness
+            - contradicts “fewest inversions” part of the definition of S*
+
+Greedy Analysis strategies
+    Greedy algorithm stays ahead: show that after each step of the greedy algorithm, its solution is at least as good as any others algorithm
+    Structural: Discover a simple "structural" bound asserting that every possible solution must have a certain value. Then show that your algorithm always achieves this bound
+    Exchange argumetn: Gradually transform any solution to the one found by the greedy algorithm without hurtings its quality
+    Other greedy algorithms: Gale-Shapley, Kruskal, Prim, Dijkstra, Huffman

@@ -1,0 +1,21 @@
+Dot Product
+    * Dot product: Given two length-n vectors a and b, compute c=a*b
+    * Grade school: Phi(n) arithmetic operations
+        a = [0.70 0.20 0.10]    b = [0.30 0.40 0.30]    a * b = (0.70*0.30) + (0.20 * 0.40) + (0.10 * 0.30) = 0.32
+
+Matrix Multiplication
+    * Matrix Multiplication: Given two n-by-n matrices A ad B, compute C = AB
+    * Grade School: Phi(n^3) arithemtic operations
+
+Possible approach
+    * Divide: partition A and B into ½n-by-½n blocks.
+    * Conquer: multiply 8 pairs of ½n-by-½n matrices, recursively.
+    * Combine: add appropriate products using 4 matrix additions
+    * Running time. Apply Case 3 of the master theorem 
+        - T(n) = 8t(n/2) + Phi(n^2) = T(n) = Phi(n^3)
+
+Strassens Trick
+    * Can Multiply two 2-by-2 matrices via 7 scalar multiplications (11 additions and 7 subtractions)
+    * Can Multiply two n-by-n matrices via 7 1/2n by 1/2n multiplications (11 additions and 7 subtractions)
+    Theorem. Strassen’s algorithm requires O(n^2.81) arithmetic operations to multiply two n-by-n matrices.
+

@@ -1,0 +1,173 @@
+%  Make this into a pdf document as follows:
+%
+%
+% The edit the Report.tex file appropriately to include only those elements that
+% make sense for the assignment you're reporting on.
+%
+% You can use a tool like TeXShop or Texmaker or some other graphical tool
+% to convert Report.text into a pdf file.
+%
+% If you are making this with command line tools, you'd run the following command:
+%
+%     latex Report.tex
+%
+% That will generate a dvi (device independent) document file called Report.dvi
+% The pages reported in the table of contents won't be correct, since latex only
+% processes one pass over the document. To adjust the page numbers in the contents,
+% run latex again:
+%
+%    latex Report.tex
+%
+% Then run
+%
+%   dvipdf Report.dvi
+%
+% to generate Report.pdf
+%
+% You can view this file to check it out by running
+%
+% xdg-open Report.pdf
+%
+% That's it.
+  
+\def\cvss(#1,#2,#3,#4,#5,#6,#7,#8,#9){
+	\indent\textbf{CVSS Base Severity Rating: #9}  AV:#1 AC:#2 PR:#3 UI:#4 S:#5 C:#6 I:#7 A:#8}
+  
+\def\ttp(#1, #2, #3, #4, #5, #6){
+   \indent\textbf{#1:} #2 \\
+   \indent\indent\textbf{#3:} #4 \\
+   \indent\indent\indent\textbf{#5:} #6 \\}
+
+\documentclass[notitlepage]{article}
+
+\usepackage{bibunits}
+\usepackage{comment}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{datetime}
+\usepackage{numprint}
+
+% processes above options
+\usepackage{palatino}  %OR newcent ncntrsbk helvet times palatino
+\usepackage{url}
+\usepackage{footmisc}
+\usepackage{endnotes}
+
+\setcounter{secnumdepth}{3}
+\begin{document}
+
+\nplpadding{2}
+\newdateformat{isodate}{
+  \THEYEAR -\numprint{\THEMONTH}-\numprint{\THEDAY}}
+  
+\title{Penetration Test - Exercise 07}
+\author{Esteban Calvo}
+\date{\isodate\today}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\section{Technical Report}
+
+% Include one of these headings for each finding.
+
+  \subsection{Finding: \emph{Netcat Shell Access}}
+  
+	\subsubsection*{Severity Rating}
+		Critical Risk: \\
+		\cvss(N,L,N,R,C,H,H,H,9.6)
+		
+  	\subsubsection*{Vulnerability Description}
+  		The program running on port 1337 written by Brian Oppenheimer is intended to allow system admins see the server status without having to login and
+        thus essentially run as regular users. An error in the code allows for a buffer overflow of the name to leak into the list of possible commands to run
+        and therefore allows the user to run a shell with elevated commands if they overflow the correct command. 
+  	\subsubsection*{Confirmation method}
+  	    The following script can be used to gain shell access to the server
+    \begin{verbatim}
+netcat www.artstailor.com 1337
+1234567890123456hs
+brian
+sh
+    \end{verbatim}
+				
+    \subsubsection*{Mitigation or Resolution Strategy}
+    To address this problem, there are two possible solutions. The easiest solution would be to disable this service or make sure it can only be accessed
+    within internal networks. There is no real reason other than ease of use for this port to always be active and listening so I recommend the termination of
+    this program. If there is adequate reason to keep this service running, the toool.c code must be changed to make sure that overflowed user input will not
+    leak into the list of commands.
+
+
+
+\section{Attack Narrative}
+
+    \subsection{Port Discovery}
+        The post made on 42chan by Brian revealed that there was some port on artstailor.com that could be exploited. Running the command
+        \begin{verbatim}
+nmap -p- www.artstailor.com    
+        \end{verbatim}
+        revealed that port 1337 was open. Using the command
+        \begin{verbatim}
+netcat www.artstailor.com 1337    
+        \end{verbatim}
+        Returned the response I wanted, the next part from here was to look for possible vulernabilites with this program.
+
+    \subsection{Exploitation}
+        The next part of this process was seeing if there was a way to exploit the program responding to my nc request. In the program, there
+        were only three allowed commands and none of them helped in any way to gain access to the machine. My first idea was to attempt to overflow the
+        buffer reading in the commands but I found that I was not able to truly understand at what point the buffer was overflowing and why so I shifted focus.
+        The next part to try was the login response that asked for my name. It states that there is a 15 character limit and and I saw by typing in random numbers the program
+        was in fact reading in 16 characters and then after that, the rest of the characters would overflow into the list of acceptable commands. Another observation I saw was
+        that the ps auxww command was no longer able to be executed which meant that it was in fact changing the list of commands I was allowed to type. The last important observation
+        I noticed was that after 16 characters, the characters after that were getting reversed. So, putting this all together, I came up with the idea to insert the following name when
+        prompted
+    \begin{verbatim}
+Enter Name of admin (max 15 characters)
+1234567890123456hs
+Enter Name of admin (max 15 characters)
+brian
+Enter Command
+netstat -nat
+ip a
+sh
+    \end{verbatim}
+    From here, typing the sh command gave me shell access and I was able to navigate all directories as user brian confirmed by the following
+    \begin{verbatim}
+id
+uid=1000(brian) gid=1000(brian) groups=1000(brian), 100(users)
+    \end{verbatim}
+
+    \subsection{Analyzing Code}
+    The code for the netcat server response was found inside the home folder for brian "/home/brian/toool.c". Analyzing the code, I was able to see 
+    some important features such as why the characters at the end were reversed. The most important thing to note though was the source of the overflow which was
+    caused by fgets reading in a buffer of size 1024 while the expected size of admin name is 15 characters plus a newline character. Thus, to fix the issue, we need 
+    to rewrite this line as follows
+\begin{verbatim}
+fgets(admin, sizeof(admin), stdin);
+    \end{verbatim}
+    Several other lines of code are questionable such as putting all the commands in one array, but I believe the reading of the name was the main issue that caused the overflow.
+
+    \subsection{MITRE ATT{\&}CK Framework TTPs}
+        
+	
+	\subsubsection*{}
+	\indent\textbf{TA0001:} Initial Access \\
+    \indent\indent\textbf{T1190:} Exploit Public Facing Application \\
+    
+	\subsubsection*{}
+	\ttp(TA0043, Reconnaissance, T1593, Search Open Websites/Domains, .001, Social Media)
+
+    \subsection*{}
+	\ttp(TA0002, Execution, T1059, Command and Scripting Interpreter, .004, Unix Shell)
+
+
+    \subsection{Key}
+        With access to the home folder for brian, I was able to ls -la and see a file called ".secret". Inside this file was contained the following key
+        \begin{verbatim}
+KEY009-\x80\xa9\x86\xbc\xa6\xb7\x80\xa6\x92\xa1\x9f\x95
+\xc7\x9d\xc0\x9e\xbc\x9e\xb2\x85\xb7\x86\xcc\xcc
+        \end{verbatim}
+        The key is encrypted, but no successful attempt decrypted the key.
+\end{document} 

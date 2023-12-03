@@ -1,0 +1,24 @@
+Job j starts at s_j and finishes at f_j
+Two jobs are compatible if they don't overlap
+Goal: find maximum subset of mutually compatible jobs
+
+Earliest-finish-time-first algorithm
+    Psuedocode:
+        Sort jobs by finish times and renumber so that f_1 <= f_2 <= ... <= f_n
+        S <- O (set of jobs selected)
+        For j = 1 to n
+            if(job j is compatible with S)
+                    S <- S U {j}
+        Return S
+
+    Proposition: Can implement earliest-finish-time first in O(nlogn) time
+        ・ Keep track of job j that was added last to S
+        ・ Job j is compatible with s iff s_j >= f_j
+        ・ Sorting by finish times takes O(nlogn) time
+
+    Analysis of earliest-finish-time-first algo
+        Theorem: The earliest-finish-time-first algorithm is optimal
+        Pf [by contradiction]
+            ・ Assume greedy is not optimal, and lets see what happens
+            ・ Let i_1,i_2, ... , i_k denote set of jobs selected by greedy
+            ・ Let j_1, j_2, ... , j_m denote set of jobs in an optimal solution with i_i = j_1, i_2=j_2, ... , i_r = j_r for the largest possible value of r

@@ -1,0 +1,23 @@
+Counting Inversions
+    * Music sitre tries to match your song preferences with others
+        - Your rank n songs
+        - Music site consults database to find people with similar tastes
+    * Similarity metric: Number of inversions between two rankings
+        - My rank: 1,2,...,n
+        - Your rank: a_1m a_2,..., a_n
+        - Songs i and j are inverted if i < j but a_i > a_j
+    * Brute Force: Check all Θ(n^2) pairs
+
+Applications
+    * voting theory                             * Sensitivity analysys of Googles ranking function
+    * Collaborative Filtering                   * Rank Aggregation for meta-searching on web
+    * Measuring the sortedness of an array      * Nonparametric statistics
+
+Divide and Conquer
+    * Divide: separate list into two halves A and B
+    * Conquer: Recursively count inversions in each list
+    * Combine: count inversions (a,b) with a ∈  A and b ∈  B
+    * Return sum of three counts
+    
+Algorithm Analysis
+    * Sort-and-count algorithm counts the number of inversions in a permutation of size n in O(nlogn) time

@@ -1,0 +1,30 @@
+SSLStrip?
+    * Sits between browser and https server
+    * Converts and caches https links delivered to the browser and also converts and caches 302 location redirects
+    * When an HTTPS link in the cache is followed, the page is requestyed from the secure server and delivered via HTTP to the browser
+
+Requirements for best use?
+    * Target a web app that has an HTTP landing page that then goes to an HTTP
+
+Exploting broswer behavior and user expectations
+    * Modern browsers provide:
+        - Few and subtle indicators when the page being viewed is HTTPS
+        - Significant user impediments when the secure page does not have certificate
+
+Steps to use SSLstrip
+    * Enable ip forwarding
+    * Redirect HTTP traffic to sslstrip
+        iptables -t nat -A prerouting -p tcp --destiniation-port 80 -j redirect --to-port Listenport
+    * run sslstrip
+    * arpsoof to get in the middle
+    * ettercap to grap credentials
+
+Possible Problems
+    * Content encodings are hard to handle
+    * Secure cookie will not be sent correctly
+    * Page already cached will be rewritten
+
+How/Why to use in Pen test
+    * Allows misdirection without Phishing
+    * Intercept secure logins to corportate/intranet servers
+    * Be cautions because SSLStrip will strip all HTTPS communications,  even personal ones

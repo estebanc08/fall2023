@@ -1,0 +1,6 @@
+\contentsline {section}{\numberline {1}Attack Narrative}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Address}{2}{}%
+\contentsline {subsection}{\numberline {1.2}Neighborhood}{2}{}%
+\contentsline {subsection}{\numberline {1.3}Date and Time}{2}{}%
+\contentsline {subsection}{\numberline {1.4}Event Name}{2}{}%
+\contentsline {subsection}{\numberline {1.5}Organizer}{2}{}%

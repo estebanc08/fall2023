@@ -1,0 +1,17 @@
+Who found the cow
+    * Phil Oester announced the vulnerability
+    * He found someone elses exploit in the wild
+    * Phil admind a server that supported full packet capture of every HTTP request
+    * Server had been compromised and investigated the server logs
+    * He found that the exploit employed a bug in the Copy on Write to elevate privilege to root
+
+How long was it from discovery to patch
+    * Linux kernel vulnerability was assigned CVE-2016-5195
+    * CVE number assigned 31 may 2016 (>4 months before resolution)
+    * CVE report at mitre was not complete until 23 october 2016
+
+Order of events in disclosure
+    * 13 october 2016, bugzilla.redhat.com reported that kernel bug existed
+    * an unprivileged local user could use this flaw to gain write access to otherwise read only memory mapping and thus increase their privilege on the system
+    * 18 october 2016, Linus Torvalds committed patch to get_user_pages (gup.c) kernel code
+    * In the patch, Linus mentioned he had it seen this 11 years ago but improvements to virtua memory made it more reliably exploitable

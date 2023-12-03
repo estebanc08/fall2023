@@ -1,0 +1,46 @@
+What makes CSRF work
+    * A website trusts the users browser to provide credentials (tokens) and make requests at only the right times
+    * If the parameters of sensitive transactions are predictable, that enables CSRF attacks
+    * If the attacker can forge a request using valid authentication parameters and invalid transaction parameters, mayhem ensues
+    * Forged requests will be fulfilled by the web server
+
+What does the attacker need
+    * Link to initiate transaction
+    * Way to deliver this link to a users browser in such a way that it will be followed
+        - image tags
+        - IFRAMEs
+        - CSS or Javascript imports
+    * If a valid URL is followed under the right conditions, can tell forged transaction
+
+CSRF plan in detail
+    * The attacker finds a web application that has transaction with predictable parameters
+    * Attacker creates a CSRF web page with a request URL for forged transaction
+    * The attacker places that on a server under their control
+    * The attacker arranges for a victim with an open session to browse to the CSRF web page
+    * Victim browser sends a request as a result of rendering the CSRF web page
+    * Web app carries out forged transaction
+
+What kind of transaction gets sent
+    * POST transaction sends appropriate request information to bank
+    * might also be able to send as GET transaction
+
+How does the exploit happen
+    * One possibility:
+        - user is led to navigate to a site containing an img link
+        - If user clicks an image, a new source can be inserted to redirect transaction
+
+Bad ideas to avoid CSRF
+    * Refuse to accept GET requests?
+        - The evil website can easily cause a POST request to be sent to user instead of GET
+    * Require HTTP requests to set the referrer field
+
+Good ideas to avoid CSRF
+    * Requires provider to present a token that the attacker can neither guess nor find. Requires shared secret not stored in regular cookie or JS. Use HTTP only cookie
+    * Use CAPTCHA or MFA
+
+CSRF defense in depth
+    * Use SameSite=Strict Cookie attribute
+    * Server verification that origin and target of requests are same site
+    * Anything stored in regular cookies is available to CSTF
+    * HttpOnly Cookie should be the default
+

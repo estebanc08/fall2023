@@ -1,0 +1,47 @@
+find . -maxdepth 1 -type f -exec ls -alps {} \;
+4 -rw-r--r-- 1 root root 552 Jan  3  2023 ./pam.conf
+4 -rw-r--r-- 1 root root 3040 May 25 11:54 ./adduser.conf
+4 -rw-r--r-- 1 root root 917 Sep 13 22:21 ./group
+4 -rw-r--r-- 1 root root 26 Dec 20  2020 ./libao.conf
+12 -rw-r--r-- 1 root root 11634 Aug  6  2022 ./analog.cfg
+4 -rw-r--r-- 1 root root 1853 Oct 17  2022 ./ethertypes
+4 -rw-r--r-- 1 root root 4 Aug 27 19:30 ./hostname
+16 -rw-r--r-- 1 root root 12569 Nov 11  2022 ./login.defs
+4 -rw-r--r-- 1 root root 72 Sep 13 22:20 ./subgid-
+4 -rw-r--r-- 1 root root 2969 Jan  8  2023 ./debconf.conf
+4 -rw-r--r-- 1 root root 144 Aug 23 19:41 ./kernel-img.conf
+0 -rw-r--r-- 1 root root 0 Aug 23 17:42 ./environment
+4 -rw-r--r-- 1 root root 44 Aug 23 19:42 ./adjtime
+4 -rw-r--r-- 1 root root 72 Sep 13 22:20 ./subuid-
+4 -rw-r--r-- 1 root root 11 Aug 23 17:42 ./timezone
+4 -rw-r--r-- 1 root root 681 Jan 17  2023 ./xattr.conf
+4 -rw-r--r-- 1 root root 1201 Dec  2  2018 ./smi.conf
+8 -rw-r--r-- 1 root root 4343 Jun 27 07:45 ./sudo.conf
+8 -rw-r--r-- 1 root root 7374 Sep 18  2022 ./bogofilter.cf
+4 -r--r--r-- 1 root root 33 Aug 23 17:42 ./machine-id
+44 -rw-r--r-- 1 root root 41158 Sep 18 22:28 ./mailcap
+4 -rw-r--r-- 1 root root 116 Aug 23 17:42 ./shells
+4 -rw-r--r-- 1 root root 51 Mar  7  2022 ./vdpau_wrapper.cfg
+4 -rw-r--r-- 1 root root 2183 Sep 13 22:21 ./passwd
+4 -rw-r--r-- 1 root root 111 Jan 28  2023 ./magic
+4 -rw-r--r-- 1 root root 769 Apr 10  2021 ./profile
+12 -rw-r--r-- 1 root root 11399 Jan 18  2023 ./nanorc
+4 -rw-r--r-- 1 root root 60 Aug 23 17:42 ./networks
+4 -rw-r--r-- 1 root root 248 Aug 23 17:42 ./modules
+4 -rw-r--r-- 1 root root 2223 Sep 13 22:20 ./passwd-
+12 -rw-r--r-- 1 root root 10593 Oct 15  2022 ./sensors3.conf
+4 -rw-r--r-- 1 root root 411 Aug 23 19:01 ./hosts.allow
+4 -rw-r--r-- 1 root root 1994 Apr 23 17:23 ./bash.bashrc
+4 -rw-r--r-- 1 root root 2584 Jul 29  2022 ./gai.conf
+4 -rw-r--r-- 1 root root 711 Aug 23 19:01 ./hosts.deny
+4 -rw-r--r-- 1 root root 45 Jan 24  2020 ./bash_completion
+16 -rw-r--r-- 1 root root 12813 Mar 27  2021 ./services
+4 -rw-r--r-- 1 root root 449 Nov 29  2021 ./mailcap.order
+4 -rw-r--r-- 1 root root 55 Sep 13 22:21 ./subuid
+4 -rw-r--r-- 1 root root 1706 May 25 11:54 ./deluser.conf
+4 -rw-r--r-- 1 root root 494 Dec 14  2022 ./logrotate.conf
+4 -rw-r--r-- 1 root root 767 Aug 11  2022 ./netconfig
+4 -rw-r--r-- 1 root root 2355 Dec 19  2022 ./sysctl.conf
+4 -rw-r--r-- 1 root root 367 Sep 22  2022 ./bindresvport.blacklist
+
+

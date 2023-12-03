@@ -1,0 +1,52 @@
+Caching
+    ・ Cache with capacity to store k items
+    ・ Sequence of m item already in cache when requested
+    ・ Cache hit: iitem already in cache when requested
+    ・ Cache miss: item not already in cache when requested. Must bring requested item into cache and evict some existing item if full
+
+    Goal: Evict schedule that minimizes number of cache misses
+    Ex: k=2, initial cache = ab
+        requests: a,b,c,b,c,a,a,b
+    Optimal eviction schedule: 2 cache misses
+
+Optimal Offline Caching: Farthest-in-future
+    Farthest-in-future: Evict item in the cache that is not requested until farther in the future
+    Theorem [Bellady] FF is optimal eviction schedule
+
+Reduced Eviction Schedules
+    Def: A reduced schedule is a schedule that only inserts an item into the cache in a step in which that item is requested
+    Intuition: Can transform an unreduced schedule into a reduced one with n more cache misses
+    Claim: Given any unreduced schedule S, can transform it into a reduced schedule S' with no more cache misses
+    Pf (by induction on number of unreduced items)
+        ・ Suppose S brings d into the cache at a time t, without a request
+        ・ Let c be the item S evicts when it brings d into the cache
+        ・ Case 1: d evicted at time t'i, before next requested for d
+        ・ Case 2: d requested at time t' before d is evicted
+    Theorem: FF is optimal eviction algo
+    Pf (by induction on number of requests k)
+    Let S be reduced schedule that satisfies invariant through j requests. We produce S' that satisfies invariant after j+1 requests.
+        ・Consider (j+1)st request d = dj+1.
+        ・Since S and SFF have agreed up until now, they have the same cache contents before request j+1.
+        ・Case 1: (d is already in the cache). S' = S satisfies invariant.
+        ・Case 2: (d is not in the cache and S and S_{FF} evict the same element). S' = S satisfies invariant
+        ・Case 3: (d is not in the cache; S_{FF} evicts e; S evicts f /= e).
+            - begin construction of S' from S by evicting e instead of f
+        Case 3a: g = e. Can't happen with Farthest-In-Future since there must be a request for f before e.
+        ・Case 3b: g = f. Element f can't be in cache of S, so let e' be the element  that S evicts.
+            - if e' = e, S' accesses f from cache; now S and S' have same cache
+            - if e' /= e, S' evicts e' and brings e into the cache; now S and S' have the same cache
+        ・Case 3c: g /= e, f. S must evict e. Make S' evict f; now S and S' have the same cache
+
+Online vs. offline algorithms.
+    ・Offline: full sequence of requests is known a priori.
+    ・Online (reality): requests are not known in advance.
+    ・Caching is among most fundamental online problems in CS.
+
+    LIFO. Evict page brought in most recently.
+    LRU. Evict page whose most recent access was earliest.
+    Theorem. FF is optimal offline eviction algorithm.
+    
+    ・Provides basis for understanding and analyzing online algorithms.
+    ・LRU is k-competitive. [Section 13.8]
+    ・LIFO is arbitrarily bad.
+

@@ -1,0 +1,21 @@
+Dinitz' Algorithm
+    * Two types of augmentations:
+        - Normal: Length of shortest path does not change
+        - Special: Length of shortest path strictly increases
+    * Phase of normal augmentations
+        - Construct level graph L_g
+        - Start at s, advance along an edge in L_G until reach t or get stuck
+        - If reach t, augment flow; update L_G; and restart from s
+        - If get stuck, delete node from L_g and retreat to previous node
+
+Dinitz Algorithm analysis
+    * Lemma: A phase can be implemented to run in O(mn) time
+        - Pf: 
+            * Initialization happens once per phase
+            * At most m augmentations per phase
+            * At most n retreats per phase
+            * At most mn advances per phase
+    * Theorem: Dinitz algorithm runs in O(mn^2) time
+        - Pf:
+            * By lemma, O(mn) time per phase
+            * At most n-1 phases 

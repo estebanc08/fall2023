@@ -1,0 +1,37 @@
+String Similarity: How Similar are two strings
+
+Edit Distance: 
+    * Gap penalty δ; mismatch penalty α_{pq}
+    * Cost = sum of gap and mismatch penalties
+    * Applications: Bioinformatics, spell corection, machine translation, speech recognition, information extraction
+
+String distance of Palette vs palate?
+    * Gap penalty = 2, mismatch penalty = 1
+        - Missing t therefore gap of 2
+        - E vs A so mismatchg of 1
+        - Total distance of 3
+
+Sequence aligment
+    * Given two strings x1 x2, ... xm and y1 y2, ... yn , find a min-cost alignment
+    * Def: An alignment M is a set of ordered pairs xi – yj such that each character appears in at most one pair and no crossings.
+    * Def: The cost of an alignment M is:
+
+
+Sequence alignment: problem structure
+    * Def. OPT(i, j) = min cost of aligning prefix strings x_1x_2...x_i and y_1y_2...y_j
+    * Goal. OPT(m, n).
+    * Case 1. OPT(i, j) matches xi – yj.
+        Pay mismatch for xi – yj + min cost of aligning x_1x_2...x_{i–1} and y_1y_2...y_{j–1}
+    * Case 2a. OPT(i, j) leaves xi unmatched.
+        Pay gap for xi + min cost of aligning x_1x_2...x_{i-1} and y_1y_2...y_{j-1}
+    * Case 2b. OPT(i, j) leaves yj unmatched.
+        Pay gap for yj + min cost of aligning x_1x_2...xi and y_1y_2...y_{j–1}
+
+Sequence alignment: analysis
+    * Theorem. The DP algorithm computes the edit distance (and an optimal
+    alignment) of two strings of lengths m and n in Θ(mn) time and space.
+    * Pf:
+    	- Algorithm computes edit distance
+    	- Can trace back to extract optimal alignment itself
+    * Theorem. [Backurs–Indyk 2015] If can compute edit distance of two strings of length n in O(n^{2−ε}) time for some constant ε > 0, then can solve SAT
+    with n variables and m clauses in poly(m) 2^{(1−δ) n} time for some constant δ > 0.

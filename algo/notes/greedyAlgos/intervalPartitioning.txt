@@ -1,0 +1,46 @@
+Lecture j starts at s_j and finishes at f_j
+Goal: find minimum number of classrooms to schedule all lectures so that no two lectures occur at the same time in the same room
+
+Earliest-start-time-first algorithm
+    Psuedocode:
+        Sort lectures by start times and renumber so that s_1 <= s_2 <= ... <= s_m
+        d <- 0
+        For j=1 to n
+            if(lecture j is compatible with some classroom)
+                Schedule lecture j in any such classroom k
+            else
+                allocate a new classroom d+1
+                schedule lecture j in classroom d+1
+                d <- d+1
+        Return schedule
+
+    Proposition: the Earliest-start-time-first algorithm can be implemented in O(nlogn) time
+    Pf
+        ・ Sorting by start time takes O(nlogn) time
+        ・ Store classrooms in priority queue (key = finish time of its last lecture)
+            - to allocate a new classroom, insert classroom into priority queue
+            - to schedule lecture j in classroom k, increase-key of classroom k to f_j
+            - to determine whether lecture j is compatible with any classroom, compare s_j to Find-Min
+        ・ Total # of priority queue implementations is O(n) each takes O(logn) time
+    Remark: This implementation chooses a classroom k whose finish time of its last lecture is the earliest
+
+Lower bound on optimal solution
+    Def: The depth of a set of open intervals is the maximum number of intervals that contain any given point
+
+    Key Observation: Number of classrooms needed >= depth
+
+    Q: Does minimum number of classrooms needed always equal depth?
+    A. Yes! Moreover, earliest-start-time-first algorithm finds a schedule
+    whose number of classrooms equals the depth
+
+Analysis of Earliest-start-time-first algorithm
+    Observation: the Earliest-start-time-first algorithm never schedules two incompatible lectures in the same classroom
+
+    Theorem: Earliest-start-time-first algorithm is optimal
+    Pf
+        ・Let d = number of classrooms that the algorithm allocates.
+        ・Classroom d is opened because we needed to schedule a lecture, say j, that is incompatible with a lecture in each of d – 1 other classrooms.
+        ・Thus, these d lectures each end after sj.
+        ・Since we sorted by start time, each of these incompatible lectures start no later than sj.
+        ・Thus, we have d lectures overlapping at time sj + E.
+        ・Key observation  => all schedules use  >= d classrooms

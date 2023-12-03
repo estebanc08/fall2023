@@ -1,0 +1,41 @@
+Nikto
+    * Open source web site scanner
+    * Tests over 6700 website vulnerabilities
+    * Identifies server vulnerabilities of over 270 different server versions
+    * Default --not very stealthy
+    * In addition to spidering, Nikto uses pathnames identified on numerous servers to guide its search
+
+What does Nikto find
+    * ClickJacking
+        - Anti-clicking X-Frame-Option header is not present thus clickjacking error is found
+    * Non-HttpOnly Cookies
+        - Both PHPSESSID and showhints are not declared HttpOnly
+        - As mentioned before, this means these cookies are easily intercepted and manipulated with js
+        - can potentially used HTTP trace to find HttpOnly cookies
+    * Robots.txt entries
+        - Robots.txt exclusion standard describes the form of robot.txt files
+        - These entries are used in theory to inform compliant web spiders that portion of a web site should not be visited
+        - Robots.txt file must be readable if it is to be useful
+        - May contain information identifying sensitive locations on a web site, so it provides information of potential value to intruders
+    * Path injection vulnerability
+        - Nikto identifies what appears to be a vulnerability in the PHP Nuke-Rocket
+
+SQLMAP
+    * Normal trivial use 
+        sqlmap -u http://example.com/app?uid=15 --dbs
+        -u specifies the URL
+        --dbs tells sqlmap to find the databases
+    * To get the tables in the database:
+        sqlmap -u http://example.com/app?uid=15 --tables -D dbname
+    * To get the columns in a table
+        sqlmap -u http://example.com/app?uid=15 --columns -D dbname -T tablename
+    * To get the contents
+        sqlmap -u http://example.com/app?uid=15 --dump -D dbname -T tablename
+
+SQLMAP - URI with post parameters
+    * Collection of injectable files developed and maintained by secure ideas designed for use in pen tests
+    * Found in /usr/share/laudanum
+    * One script that is useful if you can do php executable file upload is shell.php
+
+Laudanum Shell
+   * Interact through command window 

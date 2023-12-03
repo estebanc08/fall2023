@@ -1,0 +1,10 @@
+\contentsline {section}{\numberline {1}Executive Summary}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Project Overview}{2}{}%
+\contentsline {subsection}{\numberline {1.2}Goals}{2}{}%
+\contentsline {subsection}{\numberline {1.3}Risk Ranking/Profile}{2}{}%
+\contentsline {subsection}{\numberline {1.4}Summary of Findings}{3}{}%
+\contentsline {subsection}{\numberline {1.5}Recommendation Summary}{3}{}%
+\contentsline {section}{\numberline {2}Technical Report}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Finding: \emph {Descriptive Name}}{3}{}%
+\contentsline {section}{\numberline {3}Attack Narrative}{4}{}%
+\contentsline {subsection}{\numberline {3.1}MITRE ATT{\&}CK Framework TTPs}{4}{}%

@@ -1,0 +1,27 @@
+Eternal Red 
+    * Just as eternal blue is an SMB exploit for windows, eternal red is an SMB exploit for Linux
+    * Sophos Naked Security website
+    * plan is as follows:
+        - find a writeable smb share being provided by a vulnerable version of samba
+        - upload a .so (shared object) file
+        - identify the local filename
+        - send an IPC request to run that locally stored program
+    * can get root user 
+
+Keep your socks clean
+    * One recent exploit that followed dirty cow was given the name dirty sock. Not a kernel vulernability
+    * Dirty socks is associated with an injection vulnerability in the snap daemon
+    * this daemon usually used to install software packages can do many other things including create new user
+    * to achieve some of its outcomes, it checks the uid of the executing user and records this in an attribute string
+    * checks for uid, it searches the attribute string for the uid property
+    * one can inject an extra uid property into this string by manipulating a parameter which is not sanatized. Thus, one can get privilege escalation
+
+Sudo
+    * the problem occurs because of a vulnerability associated wth little-used configuration in the sudoers file /etc/sudoers
+    * this sudoers file identifies which users can execute what programs. Can be useful to provide such capabilities to some users for limited activities
+    * when running sudo, the user can be set with -u argument flag, providing the username or uid
+    * if sudo is executed this way
+        - sudo -u#-1 /usr/bin/vi
+        Then the command will be executed as root
+
+

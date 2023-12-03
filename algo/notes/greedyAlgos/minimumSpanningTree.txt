@@ -1,0 +1,85 @@
+Cycles:
+    Def: A path is a sequence of edges which connects a sequence of nodes:
+    Def: A cycle is a path with no repeated nodes or edges other than the starting and ending nodes
+
+Cuts:
+    Def: A cut is a partition of the nodes into two nonempty subsets S and V – S
+    Def: The cutset of a cut S is the set of edges with exactly one endpoint in S
+
+Proposition: A cycle and a cutset intersect in an even number of edges
+
+Spanning Tree:
+    Definition: Let H = (V, T) be a subgraph of an undirected graph G = (V, E). H is a spanning tree of G if H is both acyclic and connected
+    Proposition: Let H = (V, T) be a subgraph of an undirected graph G = (V, E).
+        Then, the following are equivalent:
+        ・H is a spanning tree of G.
+        ・H is acyclic and connected.
+        ・H is connected and has |V| – 1 edges.
+        ・H is acyclic and has |V| – 1 edges.
+        ・H is minimally connected: removal of any edge disconnects it.
+        ・H is maximally acyclic: addition of any edge creates a cycle
+
+Minimum Spanning Tree (MST):
+    ・ Definition: Given a connected, undirected graph G = (V, E) with edge costs ce, 
+    a minimum spanning tree (V, T) is a spanning tree of G such that the sum of the edge costs in T is minimized
+    ・ Cayley’s theorem The complete graph on n nodes has n^{n–2} spanning trees
+    MST is fundamental problem with diverse applications
+    ・Dithering                                                                 ・Cluster analysis
+    ・Max bottleneck paths                                                      ・Real-time face verification 
+    ・LDPC codes for error correction                                           ・Image registration with Renyi entropy
+    ・Find road networks in satellite and aerial imagery                        ・Model locality of particle interactions in turbulent fluid flows
+    ・Reducing data storage in sequencing amino acids in a protein              ・Autoconfig protocol for Ethernet bridging to avoid cycles in a network
+    ・Approximation algorithms for NP-hard problems (eg, TSP, Steiner tree)     ・Network design (communication, electrical, hydraulic, computer, road)
+
+Fundamental cycle
+    Let H = (V, T) be a spanning tree of G = (V, E).
+        ・For any non tree-edge e ∈ E : T ∪ { e } contains a unique cycle, say C.
+        ・For any edge f ∈ C : (V, T ∪ { e } – { f }) is a spanning tree
+    Observation. If ce < cf, then (V, T) is not an MST
+
+Fundamental cutset. Let H = (V, T) be a spanning tree of G = (V, E).
+    ・For any tree edge f ∈ T : (V, T – { f }) has two connected components.
+    ・Let D denote corresponding cutset.
+    ・For any edge e ∈ D : (V, T – { f } ∪ { e }) is a spanning tree
+    Observation. If ce < cf, then (V, T) is not an MST
+
+The Greedy Algorithm
+    Red rule.
+        ・Let C be a cycle with no red edges.
+        ・Select an uncolored edge of C of max cost and color it red.
+    Blue rule.
+        ・Let D be a cutset with no blue edges.
+        ・Select an uncolored edge in D of min cost and color it blue.
+    Greedy algorithm.
+        ・Apply the red and blue rules (nondeterministically!) until all edges are colored. The blue edges form an MST.
+        ・Note: can stop once n – 1 edges colored blue
+
+    Proof of correctness:
+        Color invariant. There exists an MST (V, T*) containing every blue edge and no red edge.
+        Pf. [ by induction on number of iterations ]
+        Base case. No edges colored ⇒ every MST satisfies invariant
+        * Induction step (blue rule). Suppose color invariant true before blue rule.
+            ・let D be chosen cutset, and let f be edge colored blue.
+            ・if f ∈ T*, then T* still satisfies invariant.
+            ・Otherwise, consider fundamental cycle C by adding f to T*.
+            ・let e ∈ C be another edge in D.
+            ・e is uncolored and ce ≥ cf since
+                - e ∈ T* ⇒ e not red
+                - blue rule ⇒ e not blue and ce ≥ cf
+            ・Thus, T* ∪ { f } – { e } satisfies invariant
+        * Induction step (red rule). Suppose color invariant true before red rule.
+            ・let C be chosen cycle, and let e be edge colored red.
+            ・if e ∉ T*, then T* still satisfies invariant.
+            ・Otherwise, consider fundamental cutset D by deleting e from T*.
+            ・let f ∈ D be another edge in C.
+            ・f is uncolored and ce ≥ cf since
+                - f ∉ T* ⇒ f not blue
+                - red rule ⇒ f not red and ce ≥ cf
+            ・Thus, T* ∪ { f } – { e } satisfies invariant
+
+    Theorem: The greedy algorithm terminates Blue edges form an MST
+    Pf We need to show that either the red or blue rule (or both) applies
+        ・Suppose edge e is left uncolored
+        ・Blue edges form a forest
+        ・Case 1: both endpoints of e are in same blue tree ⇒ apply red rule to cycle formed by adding e to blue forest
+        ・Case 2: both endpoints of e are in different blue trees ⇒ apply blue rule to cutset induced by either of two blue trees

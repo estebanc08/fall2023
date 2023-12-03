@@ -1,0 +1,17 @@
+What about local admins
+    - When new machines are deployed, its easier to maintain them if you can gain local admin access easily and reliably
+    - As time goes on, you want to make sure you can maintain local admin access over thesea machines as well
+    - AD made it easy to distribute this local admin control by creating a local user account
+    - groups.xml
+
+Microsoft Issued a Patch
+    - Patch makes itn impossible to place passwords in a group policy 
+
+What does LAPS do
+    - checks whether the password of the local admin account has expired
+    - Generates a new password when the old password is either expired or required to be chainged prior to expiration
+    - Validates the new password against the password policy
+    - Reports the password to active directory, storing it with a confidential attribute with the computer account in active dir
+    - Reports the next expiration time for the password to active directory, storing it with an attribute with the computer account in active directory
+    - Changes admin account password
+    - Can be read from active directory (AD) by allowed users

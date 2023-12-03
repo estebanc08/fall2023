@@ -1,0 +1,56 @@
+Single-pair shortest path problem
+    Problem: Given a diagraph G=(V,E), edge lengths ℓ_e >= 0, sources s elem of V, and destination t elem of V, find a shortest directed path from s to t
+
+Single-source shortest paths problem
+    Problem: Given a digraph G = (V, E), edge lengths ℓe ≥ 0, source s ∈ V, find a shortest directed path from s to every node
+
+Shortest path applications
+・PERT/CPM                  ・Network routing protocols (OSPF, BGP, RIP) 
+・Map routing               ・Routing of telecommunications messages 
+・Seam carving              ・Telemarketer operator scheduling 
+・Robot navigation          ・Urban traffic planning 
+・Texture mapping           ・Typesetting in LaTeX 
+・Optimal truck routing through given traffic congestion pattern 
+
+Dijkstra′s algorithm (for single-source shortest paths problem)
+    Greedy approach: Maintain a set of explored nodes S for which algorithm has determined d[u] = length of a shortest s↝u path.
+    ・Initialize S ← { s }, d[s] ← 0.
+    ・Repeatedly choose unexplored node v ∉ S which minimizes
+    ・𝝿 (v) = min_{e=(u,v): u elem of S} d[u]+l_e and add v to S and set d[v] <- 𝝿 (v)
+    ・To recover path, set pred[v] ← e that achieves min
+
+Dijkstras algorithm: proof of correctness
+    Invariant. For each node u ∈ S : d[u] = length of a shortest s↝u path.
+    Pf. [ by induction on ⎜S⎟ ]
+    Base case: ⎜S⎟ = 1 is easy since S = { s } and d[s] = 0.
+    Inductive hypothesis: Assume true for ⎜S⎟ ≥ 1.
+        ・Let v be next node added to S, and let (u, v) be the final edge.
+        ・A shortest s↝ u path plus (u, v) is an s↝ v path of length π(v).
+        ・Consider any other s↝ v path P. We show that it is no shorter than π(v).
+        ・Let e = (x, y) be the first edge in P that leaves S, and let P′ be the subpath from s to x.
+        ・The length of P is already ≥ π (v) as soon as it reaches y
+
+Dijkstra′s algorithm: efficient implementation
+    * Critical optimization 1. For each unexplored node v ∉ S : explicitly maintain π[v] instead of computing directly from definition
+        ・For each v ∉ S : π(v) can only decrease (because set S increases).
+        ・More specifically, suppose u is added to S and there is an edge e = (u, v) leaving u. Then, it suffices to update:
+            π [v] ← min { π[v], π[u] + ℓe) }
+    * Critical optimization 2. Use a min-oriented priority queue (PQ) to choose an unexplored node that minimizes π[v].
+    * Implementation.
+        ・Algorithm maintains π[v] for each node v.
+        ・Priority queue stores unexplored nodes, using π[ ⋅] as priorities.
+        ・Once u is deleted from the PQ, π[u] = length of a shortest s↝ u path.
+                DIJKSTRA (V, E, ℓ, s)
+                FOREACH v ≠ s : π[v] ← ∞, pred[v] ← null; π[s] ← 0.
+                Create an empty priority queue pq.
+                FOREACH v ∈ V : INSERT(pq, v, π[v]).
+                WHILE (IS-NOT-EMPTY(pq))
+                    u ← DEL-MIN(pq).
+                        FOREACH edge e = (u, v)∈ E leaving u:
+                        IF (π[v] > π[u] + ℓe)
+                            DECREASE-KEY(pq, v, π[u] + ℓe).
+                            π[v] ← π[u] + ℓe ; pred[v] ← e.
+    * Performance: Depends on PQ: n INSERT, n DELETE-MIN, ≤ m DECREASE-KEY.
+        ・Array implementation optimal for dense graphs.
+        ・Binary heap much faster for sparse graphs.
+        ・4-way heap worth the trouble in performance-critical situations

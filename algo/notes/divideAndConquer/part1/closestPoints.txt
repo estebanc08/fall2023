@@ -1,0 +1,29 @@
+Closest pair of points
+    * Closest pair problem: Given n points in the plane, find a pair of points with the smallest euclidean distance between them
+    * Fundamental geometric primitive:
+        - Graphics, computer vision, goegraphic information systems, molecular modeling, air traffic control
+        - Special case of nearest neighbor, euclidean MST, Voronoi
+    * Brute Force: Check all pairs with Phi(n^2) distance calculations
+    * 1D Version: Easy O(nlogn) algorithm if all points are on a line
+    * Non-degeneracy assumption: Now two points hae the same x-coordinate
+
+First attempt: Sorting Solution
+    * Sort by x-coordinate and consider nearby points
+    * Sort by y-coordinate and consider nearby points
+
+Second Attempt: Divide and Conquer
+    * Divide: subdivide region into 4 quadrants
+    * Obstacle: Impossible to ensure n/4 points in each piece
+    * Conquer: Find closest pair in each side recursively
+    * Combine: Find closest pair with one point in each side
+    * Return best of 3 solutions
+        -  To find closest pair with one point on each side, might be better to only consider points < epsilon from partition
+
+Computational Complexity
+    * in quadratic decision tree model, any algorithm for closest pair (even 1D) requires Omega(nlogn) quadratic tests
+
+Convex Hull
+    * The convex hull of a set of n points is the smallest perimeter fence enclosing the points
+    * Intersection of all convex set containing all points
+Delaunay triangulation
+    * The Delaunay triangulation is a triangulation of n points in the plane such that no point is inside the circumcircle of any triangle

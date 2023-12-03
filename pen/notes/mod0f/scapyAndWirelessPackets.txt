@@ -1,0 +1,32 @@
+SCAPY
+    * Scapy is a python program that imports the scapy module then runs an interactive python interpreter session
+    * Provides function that helps you construct, send, receive, and analyze network packets
+    * Functions:
+        - ls() shows the protocol layers supported by scapy (over 300) each one implemented by a python class
+        - ls(protocol name)
+        - lsc() lists scapy commands
+        - help() provides a help message
+
+Scapy Packet Construction
+    * pkt = IP()/ICMP()
+
+Sending/receiving packets with scapy
+    * ans is a list of tuples 
+    * unans is a list of packets for which there was no reply before the timeout occured
+
+displaying packets in scapy
+    * pkt
+
+Python supports lambda
+    * lambda creates a function at run time
+
+Python supports map and join
+    * map applies a function to each element of a list yielding another list of the same size
+    * join is a string method that takes a list of strings as an argument and inserts the operand (receiver) string between each string in the list
+
+Sniffing packets with scapy
+    * airmon -ng check kill
+    * airmon -ng start wlan0
+    * ip a
+
+Claude Boling, Jean-Pierre Rampal

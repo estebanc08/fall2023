@@ -1,0 +1,19 @@
+Randomized quicksort
+    * Pick a random pivot element p ∈  A
+    * 3-way partition the array in L, M and R
+    * Recursively sort both L and R
+
+Proof of correctness
+    * Proposition. Quicksort sorts any array of n elements.
+    * Pf. [ by strong induction on n ]
+        ・Base case: n = 1.
+        ・Inductive hypothesis: assume true for 1, 2, …, n−1.
+        ・3-way partitioning rearranges array around pivot p so that
+             - elements smaller than p in left subarray L
+             - elements equal to p in middle subarray M
+             - elements larger than p in right subarray R
+        ・All elements in L must appear before all elements in M, which must appear before all elements in R.
+        ・By inductive hypothesis, quicksort sorts both L and R.
+
+Time analysis
+    * Proposition: The expected number of compares to quicksort an array of n distinct elements is O(nlogn)

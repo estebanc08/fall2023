@@ -1,0 +1,56 @@
+Android Software Structure
+    * Linux OS at lowest layer
+Android Security Measures
+    * Application sandbox uses Linux user protection scheme to isolcate app resources
+    * Full system encryption using AES128 and higher is available, but only user data is encrypted
+    * Address Space Layout Randomization and no execute-permission on memory areas aer used to avoid stack and heap attacks
+    * Permission model controls access to camera, location, telephony
+    * All applications must be signed with a cert signed by the app developer 
+
+Android Development Tools
+    * System Development Kit (SDK) for Linux, Mac, Windows
+    * Emulator for ARM mobile devices
+    * Cant send phone calls or real sms except to other instance of emulator
+
+Rooting a mobile access
+    * Rooting or jail-braking refers to an escalation of privilege attack in which you increase your privilege attack in
+        which  you increase your privilege so you can gain access to all phone resources
+    * Rooting is arranged by
+        - Exploiting a vulnerability in the underlying software of the device 
+        - replacing your entire ROM wit one supporting superuser access
+
+Benefits and drawbacks of rooting
+    * Benefits:
+        - full control of the device
+        - access to the latest software versions
+        - can run superuser.apk or other programs that control access to root privileges for other purposes
+    * Drawbacks
+        - May brick your device
+        - voids manufacturer warranty
+        - may open your device to a new malware attack
+
+Android App Structure
+    * Android applications apk files are just PK files 
+    * Contents
+        - Manifest: encoded XML file defining software components, services, activities, permissions
+        - classes.dex: Dalvik executable code that implements the application
+        - Broadcast receivers
+
+Trojan Development
+    * Common vector of injection is the Downloading of a Trojan App
+        - behave as expected but with malware component
+        - Dev Plan
+            * Start with legitimate app
+            * Disassemble dex code
+            * Decode manifest
+            * include malicious code
+            * Assemble dex code
+            * Encode the manifest
+            * Signal the final APK
+
+How do these apps get on your device
+    * 2018 survey showed
+        - 52% no password
+        - 57% used for personal email
+
+Emily Kane--Art Brut
