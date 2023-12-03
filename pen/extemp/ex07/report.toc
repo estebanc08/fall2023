@@ -1,8 +1,0 @@
-\contentsline {section}{\numberline {1}Technical Report}{2}{}%
-\contentsline {subsection}{\numberline {1.1}Finding: \emph {Netcat Shell Access}}{2}{}%
-\contentsline {section}{\numberline {2}Attack Narrative}{2}{}%
-\contentsline {subsection}{\numberline {2.1}Port Discovery}{2}{}%
-\contentsline {subsection}{\numberline {2.2}Exploitation}{3}{}%
-\contentsline {subsection}{\numberline {2.3}Analyzing Code}{3}{}%
-\contentsline {subsection}{\numberline {2.4}MITRE ATT{\&}CK Framework TTPs}{4}{}%
-\contentsline {subsection}{\numberline {2.5}Key}{4}{}%

