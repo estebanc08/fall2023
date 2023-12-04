@@ -4,4 +4,4 @@
 \contentsline {subsection}{\numberline {2.1}Finding Credentials}{3}{}%
 \contentsline {subsection}{\numberline {2.2}Database entry}{3}{}%
 \contentsline {subsection}{\numberline {2.3}PCI Data}{4}{}%
-\contentsline {subsection}{\numberline {2.4}MITRE ATT{\&}CK Framework TTPs}{5}{}%
+\contentsline {subsection}{\numberline {2.4}MITRE ATT{\&}CK Framework TTPs}{4}{}%

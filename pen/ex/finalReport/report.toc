@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}Executive Summary}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Project Overview}{2}{}%
+\contentsline {subsection}{\numberline {1.2}Goals}{2}{}%
+\contentsline {subsection}{\numberline {1.3}Risk Ranking/Profile}{2}{}%
+\contentsline {subsection}{\numberline {1.4}Summary of Findings}{2}{}%
+\contentsline {subsection}{\numberline {1.5}Recommendation Summary}{2}{}%
+\contentsline {section}{\numberline {2}Technical Report}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Finding: \emph {Private IP Subdomains}}{3}{}%
+\contentsline {subsection}{\numberline {2.2}Finding: \emph {vsftdp Smiley Face Backdoor}}{5}{}%
+\contentsline {subsection}{\numberline {2.3}Finding: \emph {Netcat Shell Access}}{5}{}%
+\contentsline {subsection}{\numberline {2.4}Finding: \emph {User Credentials}}{6}{}%
+\contentsline {subsection}{\numberline {2.5}Finding: \emph {Root Access and Password Hashing}}{7}{}%
+\contentsline {subsection}{\numberline {2.6}Finding: \emph {Network User Compromised}}{8}{}%
+\contentsline {subsection}{\numberline {2.7}Finding: \emph {NT AUTHORITY/SYSTEM Escalation}}{9}{}%
+\contentsline {subsection}{\numberline {2.8}Finding: \emph {Devbox Root Access}}{9}{}%
+\contentsline {subsection}{\numberline {2.9}Finding: \emph {Credential Access to Secret Page}}{10}{}%
+\contentsline {subsection}{\numberline {2.10}Finding: \emph {Root Access Using Sudo Exploit}}{11}{}%
+\contentsline {subsection}{\numberline {2.11}Finding: \emph {WPAD Spoofing for Credentials}}{12}{}%
+\contentsline {subsection}{\numberline {2.12}Finding: \emph {Browser Hooking and Admin DB Credentials}}{13}{}%
+\contentsline {subsection}{\numberline {2.13}Finding: \emph {www-data shell access}}{14}{}%
+\contentsline {subsection}{\numberline {2.14}Finding: \emph {Android App and Database Credentials}}{15}{}%
