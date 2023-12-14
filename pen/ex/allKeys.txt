@@ -1,0 +1,30 @@
+KEY000-VGhlcmUgaXMgbm8ga2V5Lg==
+KEY001-HcIGRLxTkUEkQVENTLN3zA==
+KEY002-u+9loQ38tAbuRzJbIHcKpQ==
+KEY003-vSS4f8194m2vZhxbxKy3jg== 
+KEY004-X1oCUHUnVMX9kbG16Wtdxw==
+KEY005-hKku4/qTxNsmJIG0iT8pSQ==
+KEY006-LHQ0LWLBEE1FnwPr9clv5A==
+KEY007-52kyxvjHNa8SNF/s55JH0A==
+KEY008-u35DuEmIe319ItByiKdK/Q==
+KEY009-\x80\xa9\x86\xbc\xa6\xb7\x80\xa6\x92\xa1\x9f\x95\xc7\x9d\xc0\x9e\xbc\x9e\xb2\x85\xb7\x86\xcc\xcc
+    Once decoded: KEY009-qXwMWFqWcPnd6l1oMoCtFw=='
+KEY010-OSQWWfy+0dDoux+fU3poNQ==
+KEY011-Vrlvw7uNFcOG+0+tnx6oWg==
+    Once XOR'ed: KEY011-0V/RiTD2g6UDXg8SosE1CQ==
+KEY012-uQC1WMZMFC9syMdne+o0pA==
+KEY013-Hdco+146WmFI8AfAxeFEvQ==
+KEY014-Ea0alCyO8It7TqmQNMWPcQ==
+KEY015-jXuPkMr5V3Fv2LsQFMLC2w==
+KEY016-g+XS/JPvCaodk22fqu6zPw==
+KEY017-5iJXxl+AoPQqKssw3WJUnw==
+KEY018-1aFulon4qe/Hi18bjbCPlw==
+KEY019-8Dqc_a!uE\x7fT`CBBKdr@@dd\x0e\n
+    Use \x13\x33\x37 to decode to: KEY019-+wFplV2FrlgWPquXWESsSw==
+KEY020-yaKtbDTPSfRA66tlV0CyPw==
+KEY021-hx/+Xlvu9RRMPDMNe7ApBQ==
+KEY022-uidv+ycMuQwy9xQ0MSlHCQ==
+KEY023-MtgK8PWxXRmCLrfDD38NxQ==
+KEY025-mhpDpvZI9RSv+3VXa529mQ==
+
+

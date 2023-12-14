@@ -1,0 +1,17 @@
+What is the netmask of the network associated with host 128.227.224.196 having 8,190 hosts?
+
+To determine the netmask for a network with a specified number of hosts, you need to find the smallest subnet size that accommodates the required number of hosts. 
+In this case, you need a subnet that can support at least 8,190 hosts.The formula to calculate the number of hosts in a subnet is given by 2^(32−subnet prefix length)
+Let's find the required subnet size:
+        2^(32−subnet prefix length) ≥ 8190
+        Solving for the subnet prefix length:
+        32-subnet prefix length ≥ log_2(8190)
+        32-subnet prefix length ≥ 13
+        subnet-prefix length ≤ 19
+So the subnet prefix should be 19 bits to accommodate at least 8190 bits
+Now, let's construct the netmask. The subnet prefix length of 19 bits means the netmask will have 19 consecutive '1' bits followed by (32 - 19) = 13 consecutive '0' bits. In dotted-decimal notation, 
+the netmask is:
+    11111111.11111111.11100000.00000000
+Converting each octet to decimal:
+    255.255.224.0
+Therefore, the netmask for the network associated with host IP address 128.227.224.196, having at least 8,190 hosts, is 255.255.224.0.

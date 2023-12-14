@@ -1,0 +1,4 @@
+Key000 (There is no key.)
+    You've gotten in
+
+KEY001 ()

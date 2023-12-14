@@ -1,0 +1,200 @@
+ipp	631/udp	0.450281	# Internet Printing Protocol
+snmp	161/udp	0.433467	# Simple Net Mgmt Proto
+netbios-ns	137/udp	0.365163	# NETBIOS Name Service
+ntp	123/udp	0.330879	# Network Time Protocol
+netbios-dgm	138/udp	0.297830	# NETBIOS Datagram Service
+ms-sql-m	1434/udp	0.293184	# Microsoft-SQL-Monitor
+microsoft-ds	445/udp	0.253118
+msrpc	135/udp	0.244452	# Microsoft RPC services
+dhcps	67/udp	0.228010	# DHCP/Bootstrap Protocol Server
+domain	53/udp	0.213496	# Domain Name Server
+netbios-ssn	139/udp	0.193726	# NETBIOS Session Service
+isakmp	500/udp	0.163742
+dhcpc	68/udp	0.140118	# DHCP/Bootstrap Protocol Client
+route	520/udp	0.139376	# router routed -- RIP
+upnp	1900/udp	0.136543	# Universal PnP
+nat-t-ike	4500/udp	0.124467	# IKE Nat Traversal negotiation (RFC3947)
+syslog	514/udp	0.119804	# BSD syslogd(8)
+unknown	49152/udp	0.116002
+snmptrap	162/udp	0.103346	# snmp-trap
+tftp	69/udp	0.102835	# Trivial File Transfer
+zeroconf	5353/udp	0.100166	# Mac OS X Bonjour/Zeroconf port
+rpcbind	111/udp	0.093988	# portmapper, rpcbind
+unknown	49154/udp	0.092369
+L2TP	1701/udp	0.076163
+puparp	998/udp	0.073395
+vsinet	996/udp	0.073362
+maitrd	997/udp	0.073247
+applix	999/udp	0.073230	# Applix ac
+netassistant	3283/udp	0.066072	# Apple Remote Desktop Net Assistant reporting feature
+unknown	49153/udp	0.060743
+radius	1812/udp	0.053839	# RADIUS authentication protocol (RFC 2138)
+profile	136/udp	0.051862	# PROFILE Naming System
+msantipiracy	2222/udp	0.047902	# Microsoft Office OS X antipiracy network monitor
+nfs	2049/udp	0.044531	# networked file system
+omad	32768/udp	0.044407	# OpenMosix Autodiscovery Daemon
+sip	5060/udp	0.044350	# Session Initiation Protocol (SIP)
+blackjack	1025/udp	0.041813	# network blackjack
+ms-sql-s	1433/udp	0.036821	# Microsoft-SQL-Server
+IISrpc-or-vat	3456/udp	0.036607	# also VAT default data
+http	80/udp	0.035767	# World Wide Web HTTP
+bakbonenetvault	20031/udp	0.025490	# BakBone NetVault primary communications port
+win-rpc	1026/udp	0.024777	# Commonly used to send MS Messenger spam
+echo	7/udp	0.024679
+radacct	1646/udp	0.023196	# radius accounting
+radius	1645/udp	0.023180	# radius authentication
+http-rpc-epmap	593/udp	0.022933	# HTTP RPC Ep Map
+ntalk	518/udp	0.022208	# (talkd)
+dls-monitor	2048/udp	0.021549
+serialnumberd	626/udp	0.021473	# Mac OS X Server serial number (licensing) daemon
+unknown	1027/udp	0.019822
+xdmcp	177/udp	0.018551	# X Display Manager Control Protocol
+h323gatestat	1719/udp	0.018500	# H.323 Gatestat
+svrloc	427/udp	0.018270	# Server Location
+retrospect	497/udp	0.017348
+sun-answerbook	8888/tcp	0.016522	# ddi-udp-1 | ddi-tcp-1 | Sun Answerbook HTTP server.  Or gnump3d streaming music server | NewsEDGE server TCP (TCP 1) | NewsEDGE server UDP (UDP 1)
+krb524	4444/udp	0.016343
+unknown	1023/udp	0.016188
+unknown	65024/udp	0.016064
+chargen	19/udp	0.015865	# ttytst source Character Generator
+discard	9/udp	0.015733	# sink null
+unknown	49193/udp	0.015562
+solid-mux	1029/udp	0.014536	# Solid Mux Server
+tacacs	49/udp	0.014020	# Login Host Protocol (TACACS)
+kerberos-sec	88/udp	0.013476	# Kerberos (v5)
+ms-lsa	1028/udp	0.013443
+wdbrpc	17185/udp	0.013395	# vxWorks WDB remote debugging ONCRPC
+h225gatedisc	1718/udp	0.012554	# H.225 gatekeeper discovery
+unknown	49186/udp	0.012550
+cisco-sccp	2000/udp	0.011697	# cisco SCCP (Skinny Client Control Protocol)
+BackOrifice	31337/udp	0.011469	# cDc Back Orifice remote admin tool
+unknown	49201/udp	0.011044
+unknown	49192/udp	0.011044
+printer	515/udp	0.011022	# spooler (lpd)
+rockwell-csp2	2223/udp	0.010902	# Rockwell CSP2
+https	443/udp	0.010840
+unknown	49181/udp	0.010542
+radacct	1813/udp	0.010429	# RADIUS accounting protocol (RFC 2139)
+cfdptkt	120/udp	0.010181
+pcmail-srv	158/udp	0.010148	# PCMail Server
+unknown	49200/udp	0.010040
+adobeserver-3	3703/udp	0.009580	# Adobe Server 3
+unknown	32815/udp	0.009322
+qotd	17/udp	0.009209	# Quote of the Day
+upnp	5000/udp	0.008913	# also complex-main
+sometimes-rpc6	32771/udp	0.008490	# Sometimes an RPC port on my Solaris box (rusersd)
+unknown	33281/udp	0.008286
+iad1	1030/udp	0.008007	# BBN IAD
+exp2	1022/udp	0.007929	# RFC3692-style Experiment 2 (*)    [RFC4727]
+asf-rmcp	623/udp	0.007929	# ASF Remote Management and Control
+filenet-rpc	32769/udp	0.007768	# Filenet RPC
+pcanywherestat	5632/udp	0.007694
+ndmp	10000/udp	0.007598	# Network Data Management Protocol
+unknown	49194/udp	0.007530
+unknown	49191/udp	0.007530
+unknown	49182/udp	0.007530
+unknown	49156/udp	0.007530
+wap-wsp	9200/udp	0.007268	# WAP connectionless session services
+unknown	30718/udp	0.007190
+unknown	49211/udp	0.007028
+unknown	49190/udp	0.007028
+unknown	49188/udp	0.007028
+unknown	49185/udp	0.007028
+commplex-link	5001/udp	0.007018
+llmnr	5355/udp	0.006938	# LLMNR
+sometimes-rpc4	32770/udp	0.006745	# Sometimes an RPC port on my Solaris box
+unknown	37444/udp	0.006732
+unknown	34861/udp	0.006732
+unknown	34555/udp	0.006732
+iad3	1032/udp	0.006705	# BBN IAD
+lockd	4045/udp	0.006656	# NFS lock daemon/manager
+squid-ipc	3130/udp	0.006656
+iad2	1031/udp	0.006639	# BBN IAD
+unknown	49196/udp	0.006526
+unknown	49158/udp	0.006526
+time	37/udp	0.006458	# timserver
+symantec-av	2967/udp	0.006425	# Symantec AntiVirus (rtvscan.exe)
+icq	4000/udp	0.006392	# AOL ICQ instant messaging clent-server communication
+ftps-data	989/udp	0.006277	# ftp protocol, data, over TLS/SSL
+apple-sasl	3659/udp	0.006277	# Apple SASL
+rfa	4672/udp	0.006227	# remote file access server
+unknown	34862/udp	0.006214
+telnet	23/udp	0.006211
+unknown	49195/udp	0.006024
+unknown	49189/udp	0.006024
+unknown	49187/udp	0.006024
+unknown	49162/udp	0.006024
+veritas-ucl	2148/udp	0.005946	# Veritas Universal Communication Layer
+unknown	41524/udp	0.005697
+amanda	10080/udp	0.005585	# Amanda Backup Util
+sometimes-rpc8	32772/udp	0.005352	# Sometimes an RPC port on my Solaris box (status)
+timbuktu	407/udp	0.005305
+nameserver	42/udp	0.005288	# Host Name Server
+unknown	33354/udp	0.005179
+activesync-notify	1034/udp	0.005173	# Windows Mobile device ActiveSync Notifications
+admdog	5101/tcp	0.005156	# talarian-udp | talarian-tcp | (chili!soft asp) | Talarian_TCP | Talarian_UDP
+unknown	49199/udp	0.005020
+unknown	49180/udp	0.005020
+ms-wbt-server	3389/udp	0.004955	# Microsoft Remote Display Protocol (aka ms-term-serv, microsoft-rdp)
+unknown	1001/udp	0.004955
+gnutella	6346/udp	0.004893	# Gnutella file sharing protocol
+ftp	21/udp	0.004844	# File Transfer [Control]
+daytime	13/udp	0.004827
+talk	517/udp	0.004794	# BSD talkd(8)
+instl_bootc	1068/udp	0.004778	# Installation Bootstrap Proto. Cli.
+ftps	990/udp	0.004625	# ftp protocol, control, over TLS/SSL
+fpitp	1045/udp	0.004625	# Fingerprint Image Transfer Protocol
+danf-ak2	1041/udp	0.004625	# AK2 Product
+X11:1	6001/udp	0.004625
+hp-hcip	1782/udp	0.004625
+keysrvr	19283/udp	0.004575	# Key Server for SASSAFRAS
+unknown	49210/udp	0.004518
+unknown	49209/udp	0.004518
+unknown	49208/udp	0.004518
+unknown	49205/udp	0.004518
+unknown	49202/udp	0.004518
+unknown	49184/udp	0.004518
+unknown	49179/udp	0.004518
+unknown	49171/udp	0.004518
+sd	9876/udp	0.004498	# Session Director
+sygatefw	39213/udp	0.004446	# Sygate Firewall management port version 3.0 build 521 and above
+mdbs_daemon	800/udp	0.004333
+ldap	389/udp	0.004300	# Lightweight Directory Access Protocol
+kpasswd5	464/udp	0.004300	# Kerberos (v5)
+sbl	1039/udp	0.004295	# Streamlined Blackhole
+nsstp	1036/udp	0.004295	# Nebula Secure Segment Transfer Protocol
+mtqp	1038/udp	0.004295	# Message Tracking Query Protocol
+timbuktu-srv3	1419/udp	0.004267	# Timbuktu Service 3 Port
+osu-nms	192/udp	0.004168	# OSU Network Monitoring System
+smux	199/udp	0.004152
+unknown	44968/udp	0.004143
+ufsd	1008/udp	0.004020
+unknown	49166/udp	0.004016
+unknown	49159/udp	0.004016
+netinfo-local	1033/udp	0.003964	# local netinfo port
+unknown	1024/udp	0.003964
+unknown	22986/udp	0.003922
+unknown	19682/udp	0.003922
+ssh	22/udp	0.003905	# Secure Shell Login
+globe	2002/udp	0.003740
+exp1	1021/udp	0.003634	# RFC3692-style Experiment 1 (*)    [RFC4727]
+unknown	11487/udp	0.003634
+secure-aux-bus	664/udp	0.003634
+unknown	58002/udp	0.003514
+unknown	49172/udp	0.003514
+unknown	49168/udp	0.003514
+unknown	49165/udp	0.003514
+unknown	49163/udp	0.003514
+boinc	1043/udp	0.003493	# BOINC Client Control
+vrtstrapserver	1885/udp	0.003304	# Veritas Trap Server
+td-postman	1049/udp	0.003304	# Tobit David Postman VPMN
+sentinel-lm	5093/udp	0.003304	# Sentinel LM
+dcutility	1044/udp	0.003304	# Dev Consortium Utility
+apc-3052	3052/udp	0.003304	# APC 3052
+X11	6000/udp	0.003304
+unknown	7938/udp	0.003304
+unknown	1019/udp	0.003304
+nat-pmp	5351/udp	0.003304
+corba-iiop	683/udp	0.003304
+securid	5500/udp	0.003295	# SecurID
+unknown	27892/udp	0.003268
